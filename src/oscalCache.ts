@@ -1,6 +1,9 @@
-import { Catalog, Component, InformationType, InventoryItem, OrganizationSecurityPolicy, Party, PlanOfActionAndMilestones, Profile, Role, SecurityAssessmentPlan, SecurityAssessmentResults, SystemSecurityPlan, Resource } from "oscal"
-import { ValidationService } from "oscal-atoms"
-import { IdentifiedRisk } from "oscal/dist/shared/IdentifiedRisk"
+import {
+    Catalog, Component, InformationType, InventoryItem,
+    OrganizationSecurityPolicy, Party, PlanOfActionAndMilestones,
+    Profile, Role, SecurityAssessmentPlan,
+    SecurityAssessmentResults, SystemSecurityPlan, Resource
+} from "oscal"
 import sap from "oscal/schemas/oscal_assessment-plan_schema.json"
 import sar from "oscal/schemas/oscal_assessment-results_schema.json"
 import catalog from "oscal/schemas/oscal_catalog_schema.json"
@@ -10,6 +13,8 @@ import profile from "oscal/schemas/oscal_profile_schema.json"
 import ssp from "oscal/schemas/oscal_ssp_schema.json"
 import { composeStore, Store } from "store"
 import { UseStore } from "zustand"
+import ValidationService from "./ValidationService"
+import { IdentifiedRisk } from "oscal/dist/shared/IdentifiedRisk"
 
 
 export type OscalCache = {

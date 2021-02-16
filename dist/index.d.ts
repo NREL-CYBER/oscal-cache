@@ -1,4 +1,4 @@
-import Oscal from "./Oscal";
-import VanillaOscal from "./VanillaOscal";
-export { VanillaOscal };
-export default Oscal;
+import oscal from "./oscalCache";
+import ValidationService from "./ValidationService";
+export { ValidationService };
+export default oscal;
