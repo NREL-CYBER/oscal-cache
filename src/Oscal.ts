@@ -1,29 +1,94 @@
-import { Catalog, Party, PlanOfActionAndMilestones, Profile, Resource, Role, SecurityAssessmentPlan, SecurityAssessmentResults, SystemSecurityPlan } from "oscal"
-import sap_schema from "oscal/schemas/oscal_assessment-plan_schema.json"
-import sar_schema from "oscal/schemas/oscal_assessment-results_schema.json"
-import catalog_schema from "oscal/schemas/oscal_catalog_schema.json"
-import poam_schema from "oscal/schemas/oscal_poam_schema.json"
-import profile_schema from "oscal/schemas/oscal_profile_schema.json"
-import ssp_schema from "oscal/schemas/oscal_ssp_schema.json"
-import { composeStore } from "store"
+import { Catalog, Component, InformationType, InventoryItem, OrganizationSecurityPolicy, Party, PlanOfActionAndMilestones, Profile, Role, SecurityAssessmentPlan, SecurityAssessmentResults, SystemSecurityPlan, Resource } from "oscal"
+import { ValidationService } from "oscal-atoms"
+import { IdentifiedRisk } from "oscal/dist/shared/IdentifiedRisk"
+import sap from "oscal/schemas/oscal_assessment-plan_schema.json"
+import sar from "oscal/schemas/oscal_assessment-results_schema.json"
+import catalog from "oscal/schemas/oscal_catalog_schema.json"
+import osp from "oscal/schemas/oscal_organization_security_policy.json"
+import poam from "oscal/schemas/oscal_poam_schema.json"
+import profile from "oscal/schemas/oscal_profile_schema.json"
+import ssp from "oscal/schemas/oscal_ssp_schema.json"
+import { composeStore, Store } from "store"
+import { UseStore } from "zustand"
 
+
+export type OscalCache = {
+    ssp: UseStore<Store<SystemSecurityPlan>>
+    information_type: UseStore<Store<InformationType>>
+    osp: UseStore<Store<OrganizationSecurityPolicy>>
+    poam: UseStore<Store<PlanOfActionAndMilestones>>
+    sar: UseStore<Store<SecurityAssessmentResults>>
+    sap: UseStore<Store<SecurityAssessmentPlan>>
+    baseline_profile: UseStore<Store<Profile>>
+    catalog: UseStore<Store<Catalog>>
+    party: UseStore<Store<Party>>
+    role: UseStore<Store<Role>>
+    inventory: UseStore<Store<InventoryItem>>
+    component: UseStore<Store<Component>>
+    risk: UseStore<Store<IdentifiedRisk>>
+    resource: UseStore<Store<Resource>>
+}
 
 /**
- *  Global cache for oscal data storage for use in react with hooks
+ *  Global cache hook for oscal data storage for use in react with hooks
  */
-const Oscal = {
-    ssp: composeStore<SystemSecurityPlan>(ssp_schema, "system_security_plan"),
-    poam: composeStore<PlanOfActionAndMilestones>(poam_schema, "plan_of_action_and_milestones"),
-    sar: composeStore<SecurityAssessmentResults>(sar_schema, "assessment_results"),
-    sap: composeStore<SecurityAssessmentPlan>(sap_schema, "assessment_plan"),
-    profile: composeStore<Profile>(profile_schema, "profile"),
-    catalog: composeStore<Catalog>(catalog_schema, "catalog"),
-    party: composeStore<Party>(catalog_schema, "party"),
-    role: composeStore<Role>(catalog_schema, "role"),
-    resources: composeStore<Resource>(profile_schema, "resource")
+const oscal: OscalCache = {
+    ssp: composeStore<SystemSecurityPlan>({
+        validator: ValidationService.validate().ssp,
+        schema: ssp, definition: "system_security_plan"
+    }),
+    information_type: composeStore<InformationType>({
+        schema:
+            { ...ssp.definitions.system_information.properties.information_types.items, definitions: ssp.definitions }
+    }),
+    osp: composeStore<OrganizationSecurityPolicy>({
+        schema: osp, definition: "organization_security_policy"
+    }),
+    poam: composeStore<PlanOfActionAndMilestones>({
+        schema: poam, definition: "plan_of_action_and_milestones"
+    }),
+    sar: composeStore<SecurityAssessmentResults>({
+        schema: sar, definition: "assessment_results"
+    }),
+    sap: composeStore<SecurityAssessmentPlan>({
+        schema: sap, definition: "assessment_plan"
+    }),
+    baseline_profile: composeStore<Profile>({
+        schema: profile, definition: "profile"
+    }),
+    catalog: composeStore<Catalog>({
+        schema: catalog, definition: "catalog"
+    }),
+    party: composeStore<Party>({
+        validator: ValidationService.validate().party,
+        schema: ssp, definition: "party"
+    }),
+    role: composeStore<Role>({
+        validator: ValidationService.validate().role,
+        schema: ssp, definition: "role"
+    }),
+    inventory: composeStore<InventoryItem>({
+        schema: ssp, definition: "inventory_item"
+    }),
+    component: composeStore<Component>({
+        schema: ssp, definition: "system_component"
+    }),
+    risk: composeStore<IdentifiedRisk>({
+        schema: poam, definition: "risk"
+    }),
+    resource: composeStore<Resource>(
+        {
+            definition: "resource",
+            schema:
+            {
+                ...ssp.definitions.back_matter.properties.resources.items,
+                definitions: ssp.definitions
+            },
+            validator: ValidationService.validate().resource
+        }
+    ),
 };
 
 
-
-export default Oscal;
+export default oscal;
 
