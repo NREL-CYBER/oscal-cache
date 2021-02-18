@@ -2,7 +2,7 @@ import {
     Catalog, Component, InformationType, InventoryItem,
     OrganizationSecurityPolicy, Party, PlanOfActionAndMilestones,
     Profile, Role, SecurityAssessmentPlan,
-    SecurityAssessmentResults, SystemSecurityPlan, Resource
+    SecurityAssessmentResults, SystemSecurityPlan, Resource, SystemCharacteristics, AuthorizationBoundary
 } from "oscal"
 import sap from "oscal/schemas/oscal_assessment-plan_schema.json"
 import sar from "oscal/schemas/oscal_assessment-results_schema.json"
@@ -14,6 +14,7 @@ import ssp from "oscal/schemas/oscal_ssp_schema.json"
 import { composeStore, Store } from "store"
 import { UseStore } from "zustand"
 import { IdentifiedRisk } from "oscal/dist/shared/IdentifiedRisk"
+import Validator from "validator"
 
 
 export type OscalCache = {
@@ -31,6 +32,12 @@ export type OscalCache = {
     component: UseStore<Store<Component>>
     risk: UseStore<Store<IdentifiedRisk>>
     resource: UseStore<Store<Resource>>
+    authorization_boundary: {
+        validator: () => Validator<AuthorizationBoundary>
+    }
+    system_characteristics: {
+        validator: () => Validator<SystemCharacteristics>
+    }
 }
 
 /**
@@ -87,6 +94,16 @@ const oscal: OscalCache = {
             },
         }
     ),
+    authorization_boundary: {
+        validator: () => {
+            return new Validator(ssp, "authorization_boundary")
+        }
+    },
+    system_characteristics: {
+        validator: () => {
+            return new Validator(ssp, "system_characteristics")
+        }
+    }
 };
 
 

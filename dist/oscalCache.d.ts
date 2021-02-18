@@ -1,7 +1,8 @@
-import { Catalog, Component, InformationType, InventoryItem, OrganizationSecurityPolicy, Party, PlanOfActionAndMilestones, Profile, Role, SecurityAssessmentPlan, SecurityAssessmentResults, SystemSecurityPlan, Resource } from "oscal";
+import { Catalog, Component, InformationType, InventoryItem, OrganizationSecurityPolicy, Party, PlanOfActionAndMilestones, Profile, Role, SecurityAssessmentPlan, SecurityAssessmentResults, SystemSecurityPlan, Resource, SystemCharacteristics, AuthorizationBoundary } from "oscal";
 import { Store } from "store";
 import { UseStore } from "zustand";
 import { IdentifiedRisk } from "oscal/dist/shared/IdentifiedRisk";
+import Validator from "validator";
 export declare type OscalCache = {
     ssp: UseStore<Store<SystemSecurityPlan>>;
     information_type: UseStore<Store<InformationType>>;
@@ -17,6 +18,12 @@ export declare type OscalCache = {
     component: UseStore<Store<Component>>;
     risk: UseStore<Store<IdentifiedRisk>>;
     resource: UseStore<Store<Resource>>;
+    authorization_boundary: {
+        validator: () => Validator<AuthorizationBoundary>;
+    };
+    system_characteristics: {
+        validator: () => Validator<SystemCharacteristics>;
+    };
 };
 /**
  *  Global cache hook for oscal data storage for use in react with hooks
