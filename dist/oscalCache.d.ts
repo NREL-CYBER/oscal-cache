@@ -1,10 +1,15 @@
-import { Catalog, Component, InformationType, InventoryItem, OrganizationSecurityPolicy, Party, PlanOfActionAndMilestones, Profile, Role, SecurityAssessmentPlan, SecurityAssessmentResults, SystemSecurityPlan, Resource, SystemCharacteristics, AuthorizationBoundary, DataFlow, NetworkArchitecture } from "oscal";
+import { AuthorizationBoundary, Catalog, Component, DataFlow, InformationType, InventoryItem, NetworkArchitecture, OrganizationSecurityPolicy, Party, PlanOfActionAndMilestones, Profile, Resource, Role, SecurityAssessmentPlan, SecurityAssessmentResults, SystemCharacteristics, SystemSecurityPlan } from "oscal";
+import { IdentifiedRisk } from "oscal/dist/shared/IdentifiedRisk";
 import { Store } from "store";
 import { UseStore } from "zustand";
-import { IdentifiedRisk } from "oscal/dist/shared/IdentifiedRisk";
-import Validator from "validator";
 export declare type OscalCache = {
+    /**
+     * System Security Plan Store hook
+     */
     ssp: UseStore<Store<SystemSecurityPlan>>;
+    /**
+     * Information Type store hook
+     */
     information_type: UseStore<Store<InformationType>>;
     osp: UseStore<Store<OrganizationSecurityPolicy>>;
     poam: UseStore<Store<PlanOfActionAndMilestones>>;
@@ -12,27 +17,23 @@ export declare type OscalCache = {
     sap: UseStore<Store<SecurityAssessmentPlan>>;
     baseline_profile: UseStore<Store<Profile>>;
     catalog: UseStore<Store<Catalog>>;
+    /**
+     * Party store hook
+     */
     party: UseStore<Store<Party>>;
+    /**
+     * Role store hook
+     */
     role: UseStore<Store<Role>>;
     inventory: UseStore<Store<InventoryItem>>;
     component: UseStore<Store<Component>>;
     risk: UseStore<Store<IdentifiedRisk>>;
     resource: UseStore<Store<Resource>>;
-    authorization_boundary: () => {
-        validator: () => Validator<AuthorizationBoundary>;
-    };
-    system_characteristics: () => {
-        validator: () => Validator<SystemCharacteristics>;
-    };
-    inventory_item: () => {
-        validator: () => Validator<InventoryItem>;
-    };
-    data_flow: () => {
-        validator: () => Validator<DataFlow>;
-    };
-    network_architecture: () => {
-        validator: () => Validator<NetworkArchitecture>;
-    };
+    authorization_boundary: UseStore<Store<AuthorizationBoundary>>;
+    system_characteristics: UseStore<Store<SystemCharacteristics>>;
+    inventory_item: UseStore<Store<InventoryItem>>;
+    data_flow: UseStore<Store<DataFlow>>;
+    network_architecture: UseStore<Store<NetworkArchitecture>>;
 };
 /**
  *  Global cache hook for oscal data storage for use in react with hooks

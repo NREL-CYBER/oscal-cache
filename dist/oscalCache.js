@@ -21,8 +21,6 @@ var _oscal_ssp_schema = _interopRequireDefault(require("oscal/schemas/oscal_ssp_
 
 var _store = require("store");
 
-var _validator = _interopRequireDefault(require("validator"));
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
@@ -94,41 +92,26 @@ var oscal = {
       definitions: _oscal_ssp_schema["default"].definitions
     })
   }),
-  authorization_boundary: function authorization_boundary() {
-    return {
-      validator: function validator() {
-        return new _validator["default"](_oscal_ssp_schema["default"], "authorization_boundary");
-      }
-    };
-  },
-  system_characteristics: function system_characteristics() {
-    return {
-      validator: function validator() {
-        return new _validator["default"](_oscal_ssp_schema["default"], "system_characteristics");
-      }
-    };
-  },
-  inventory_item: function inventory_item() {
-    return {
-      validator: function validator() {
-        return new _validator["default"](_oscal_ssp_schema["default"], "inventory_item");
-      }
-    };
-  },
-  data_flow: function data_flow() {
-    return {
-      validator: function validator() {
-        return new _validator["default"](_oscal_ssp_schema["default"], "data_flow");
-      }
-    };
-  },
-  network_architecture: function network_architecture() {
-    return {
-      validator: function validator() {
-        return new _validator["default"](_oscal_ssp_schema["default"], "network_architecture");
-      }
-    };
-  }
+  authorization_boundary: (0, _store.composeStore)({
+    schema: _oscal_ssp_schema["default"],
+    definition: "authorization_boundary"
+  }),
+  system_characteristics: (0, _store.composeStore)({
+    schema: _oscal_ssp_schema["default"],
+    definition: "system_characteristics"
+  }),
+  inventory_item: (0, _store.composeStore)({
+    schema: _oscal_ssp_schema["default"],
+    definition: "inventory_item"
+  }),
+  data_flow: (0, _store.composeStore)({
+    schema: _oscal_ssp_schema["default"],
+    definition: "data_flow"
+  }),
+  network_architecture: (0, _store.composeStore)({
+    schema: _oscal_ssp_schema["default"],
+    definition: "network_architecture"
+  })
 };
 var _default = oscal;
 exports["default"] = _default;

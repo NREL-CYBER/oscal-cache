@@ -1,9 +1,10 @@
 import {
-    Catalog, Component, InformationType, InventoryItem,
-    OrganizationSecurityPolicy, Party, PlanOfActionAndMilestones,
-    Profile, Role, SecurityAssessmentPlan,
-    SecurityAssessmentResults, SystemSecurityPlan, Resource, SystemCharacteristics, AuthorizationBoundary, DataFlow, NetworkArchitecture
+    AuthorizationBoundary, Catalog, Component, DataFlow, InformationType, InventoryItem,
+    NetworkArchitecture, OrganizationSecurityPolicy, Party, PlanOfActionAndMilestones,
+    Profile, Resource, Role, SecurityAssessmentPlan, SecurityAssessmentResults,
+    SystemCharacteristics, SystemSecurityPlan
 } from "oscal"
+import { IdentifiedRisk } from "oscal/dist/shared/IdentifiedRisk"
 import sap from "oscal/schemas/oscal_assessment-plan_schema.json"
 import sar from "oscal/schemas/oscal_assessment-results_schema.json"
 import catalog from "oscal/schemas/oscal_catalog_schema.json"
@@ -13,12 +14,16 @@ import profile from "oscal/schemas/oscal_profile_schema.json"
 import ssp from "oscal/schemas/oscal_ssp_schema.json"
 import { composeStore, Store } from "store"
 import { UseStore } from "zustand"
-import { IdentifiedRisk } from "oscal/dist/shared/IdentifiedRisk"
-import Validator from "validator"
 
 
 export type OscalCache = {
+    /**
+     * System Security Plan Store hook
+     */
     ssp: UseStore<Store<SystemSecurityPlan>>
+    /**
+     * Information Type store hook
+     */
     information_type: UseStore<Store<InformationType>>
     osp: UseStore<Store<OrganizationSecurityPolicy>>
     poam: UseStore<Store<PlanOfActionAndMilestones>>
@@ -26,17 +31,23 @@ export type OscalCache = {
     sap: UseStore<Store<SecurityAssessmentPlan>>
     baseline_profile: UseStore<Store<Profile>>
     catalog: UseStore<Store<Catalog>>
+    /**
+     * Party store hook
+     */
     party: UseStore<Store<Party>>
+    /**
+     * Role store hook
+     */
     role: UseStore<Store<Role>>
     inventory: UseStore<Store<InventoryItem>>
     component: UseStore<Store<Component>>
     risk: UseStore<Store<IdentifiedRisk>>
     resource: UseStore<Store<Resource>>
-    authorization_boundary: () => { validator: () => Validator<AuthorizationBoundary> }
-    system_characteristics: () => { validator: () => Validator<SystemCharacteristics> }
-    inventory_item: () => { validator: () => Validator<InventoryItem> }
-    data_flow: () => { validator: () => Validator<DataFlow> }
-    network_architecture: () => { validator: () => Validator<NetworkArchitecture> }
+    authorization_boundary: UseStore<Store<AuthorizationBoundary>>
+    system_characteristics: UseStore<Store<SystemCharacteristics>>
+    inventory_item: UseStore<Store<InventoryItem>>
+    data_flow: UseStore<Store<DataFlow>>
+    network_architecture: UseStore<Store<NetworkArchitecture>>
 }
 
 /**
@@ -93,34 +104,32 @@ const oscal: OscalCache = {
             },
         }
     ),
-    authorization_boundary: () => ({
-        validator: () => {
-            return new Validator(ssp, "authorization_boundary")
+    authorization_boundary: composeStore<AuthorizationBoundary>(
+        {
+            schema: ssp, definition: "authorization_boundary"
         }
-    }),
-    system_characteristics: () => ({
-        validator: () => {
-            return new Validator(ssp, "system_characteristics")
+    ),
+    system_characteristics: composeStore<SystemCharacteristics>(
+        {
+            schema: ssp, definition: "system_characteristics"
         }
-    }),
-    inventory_item: () => ({
-        validator: () => {
-            return new Validator(ssp, "inventory_item")
+    ),
+    inventory_item: composeStore<InventoryItem>(
+        {
+            schema: ssp, definition: "inventory_item"
         }
-    }),
-    data_flow: () => ({
-        validator: () => {
-            return new Validator(ssp, "data_flow")
+    ),
+    data_flow: composeStore<DataFlow>(
+        {
+            schema: ssp, definition: "data_flow"
         }
-    }),
-    network_architecture: () => ({
-        validator: () => {
-            return new Validator(ssp, "network_architecture")
+    ),
+    network_architecture: composeStore<NetworkArchitecture>(
+        {
+            schema: ssp, definition: "network_architecture"
         }
-    })
-
+    )
 };
-
 
 export default oscal;
 
