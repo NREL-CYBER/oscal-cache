@@ -2,7 +2,7 @@ import {
     Catalog, Component, InformationType, InventoryItem,
     OrganizationSecurityPolicy, Party, PlanOfActionAndMilestones,
     Profile, Role, SecurityAssessmentPlan,
-    SecurityAssessmentResults, SystemSecurityPlan, Resource, SystemCharacteristics, AuthorizationBoundary
+    SecurityAssessmentResults, SystemSecurityPlan, Resource, SystemCharacteristics, AuthorizationBoundary, DataFlow, NetworkArchitecture
 } from "oscal"
 import sap from "oscal/schemas/oscal_assessment-plan_schema.json"
 import sar from "oscal/schemas/oscal_assessment-results_schema.json"
@@ -35,6 +35,8 @@ export type OscalCache = {
     authorization_boundary: () => { validator: () => Validator<AuthorizationBoundary> }
     system_characteristics: () => { validator: () => Validator<SystemCharacteristics> }
     inventory_item: () => { validator: () => Validator<InventoryItem> }
+    data_flow: () => { validator: () => Validator<DataFlow> }
+    network_architecture: () => { validator: () => Validator<NetworkArchitecture> }
 }
 
 /**
@@ -105,7 +107,18 @@ const oscal: OscalCache = {
         validator: () => {
             return new Validator(ssp, "inventory_item")
         }
+    }),
+    data_flow: () => ({
+        validator: () => {
+            return new Validator(ssp, "data_flow")
+        }
+    }),
+    network_architecture: () => ({
+        validator: () => {
+            return new Validator(ssp, "network_architecture")
+        }
     })
+
 };
 
 

@@ -114,6 +114,20 @@ var oscal = {
         return new _validator["default"](_oscal_ssp_schema["default"], "inventory_item");
       }
     };
+  },
+  data_flow: function data_flow() {
+    return {
+      validator: function validator() {
+        return new _validator["default"](_oscal_ssp_schema["default"], "data_flow");
+      }
+    };
+  },
+  network_architecture: function network_architecture() {
+    return {
+      validator: function validator() {
+        return new _validator["default"](_oscal_ssp_schema["default"], "network_architecture");
+      }
+    };
   }
 };
 var _default = oscal;

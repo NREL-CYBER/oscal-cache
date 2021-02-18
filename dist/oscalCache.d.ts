@@ -1,4 +1,4 @@
-import { Catalog, Component, InformationType, InventoryItem, OrganizationSecurityPolicy, Party, PlanOfActionAndMilestones, Profile, Role, SecurityAssessmentPlan, SecurityAssessmentResults, SystemSecurityPlan, Resource, SystemCharacteristics, AuthorizationBoundary } from "oscal";
+import { Catalog, Component, InformationType, InventoryItem, OrganizationSecurityPolicy, Party, PlanOfActionAndMilestones, Profile, Role, SecurityAssessmentPlan, SecurityAssessmentResults, SystemSecurityPlan, Resource, SystemCharacteristics, AuthorizationBoundary, DataFlow, NetworkArchitecture } from "oscal";
 import { Store } from "store";
 import { UseStore } from "zustand";
 import { IdentifiedRisk } from "oscal/dist/shared/IdentifiedRisk";
@@ -26,6 +26,12 @@ export declare type OscalCache = {
     };
     inventory_item: () => {
         validator: () => Validator<InventoryItem>;
+    };
+    data_flow: () => {
+        validator: () => Validator<DataFlow>;
+    };
+    network_architecture: () => {
+        validator: () => Validator<NetworkArchitecture>;
     };
 };
 /**
