@@ -94,20 +94,26 @@ var oscal = {
       definitions: _oscal_ssp_schema["default"].definitions
     })
   }),
-  authorization_boundary: {
-    validator: function validator() {
-      return new _validator["default"](_oscal_ssp_schema["default"], "authorization_boundary");
-    }
+  authorization_boundary: function authorization_boundary() {
+    return {
+      validator: function validator() {
+        return new _validator["default"](_oscal_ssp_schema["default"], "authorization_boundary");
+      }
+    };
   },
-  system_characteristics: {
-    validator: function validator() {
-      return new _validator["default"](_oscal_ssp_schema["default"], "system_characteristics");
-    }
+  system_characteristics: function system_characteristics() {
+    return {
+      validator: function validator() {
+        return new _validator["default"](_oscal_ssp_schema["default"], "system_characteristics");
+      }
+    };
   },
-  inventory_item: {
-    validator: function validator() {
-      return new _validator["default"](_oscal_ssp_schema["default"], "inventory_item");
-    }
+  inventory_item: function inventory_item() {
+    return {
+      validator: function validator() {
+        return new _validator["default"](_oscal_ssp_schema["default"], "inventory_item");
+      }
+    };
   }
 };
 var _default = oscal;

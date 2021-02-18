@@ -18,13 +18,13 @@ export declare type OscalCache = {
     component: UseStore<Store<Component>>;
     risk: UseStore<Store<IdentifiedRisk>>;
     resource: UseStore<Store<Resource>>;
-    authorization_boundary: {
+    authorization_boundary: () => {
         validator: () => Validator<AuthorizationBoundary>;
     };
-    system_characteristics: {
+    system_characteristics: () => {
         validator: () => Validator<SystemCharacteristics>;
     };
-    inventory_item: {
+    inventory_item: () => {
         validator: () => Validator<InventoryItem>;
     };
 };
