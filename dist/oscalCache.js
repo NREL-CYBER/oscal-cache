@@ -21,8 +21,6 @@ var _oscal_ssp_schema = _interopRequireDefault(require("oscal/schemas/oscal_ssp_
 
 var _store = require("store");
 
-var _ValidationService = _interopRequireDefault(require("./ValidationService"));
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
@@ -36,7 +34,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
  */
 var oscal = {
   ssp: (0, _store.composeStore)({
-    validator: _ValidationService["default"].validate().ssp,
     schema: _oscal_ssp_schema["default"],
     definition: "system_security_plan"
   }),
@@ -70,12 +67,10 @@ var oscal = {
     definition: "catalog"
   }),
   party: (0, _store.composeStore)({
-    validator: _ValidationService["default"].validate().party,
     schema: _oscal_ssp_schema["default"],
     definition: "party"
   }),
   role: (0, _store.composeStore)({
-    validator: _ValidationService["default"].validate().role,
     schema: _oscal_ssp_schema["default"],
     definition: "role"
   }),
@@ -95,8 +90,7 @@ var oscal = {
     definition: "resource",
     schema: _objectSpread(_objectSpread({}, _oscal_ssp_schema["default"].definitions.back_matter.properties.resources.items), {}, {
       definitions: _oscal_ssp_schema["default"].definitions
-    }),
-    validator: _ValidationService["default"].validate().resource
+    })
   })
 };
 var _default = oscal;

@@ -13,7 +13,6 @@ import profile from "oscal/schemas/oscal_profile_schema.json"
 import ssp from "oscal/schemas/oscal_ssp_schema.json"
 import { composeStore, Store } from "store"
 import { UseStore } from "zustand"
-import ValidationService from "./ValidationService"
 import { IdentifiedRisk } from "oscal/dist/shared/IdentifiedRisk"
 
 
@@ -39,7 +38,6 @@ export type OscalCache = {
  */
 const oscal: OscalCache = {
     ssp: composeStore<SystemSecurityPlan>({
-        validator: ValidationService.validate().ssp,
         schema: ssp, definition: "system_security_plan"
     }),
     information_type: composeStore<InformationType>({
@@ -65,11 +63,9 @@ const oscal: OscalCache = {
         schema: catalog, definition: "catalog"
     }),
     party: composeStore<Party>({
-        validator: ValidationService.validate().party,
         schema: ssp, definition: "party"
     }),
     role: composeStore<Role>({
-        validator: ValidationService.validate().role,
         schema: ssp, definition: "role"
     }),
     inventory: composeStore<InventoryItem>({
@@ -89,7 +85,6 @@ const oscal: OscalCache = {
                 ...ssp.definitions.back_matter.properties.resources.items,
                 definitions: ssp.definitions
             },
-            validator: ValidationService.validate().resource
         }
     ),
 };
