@@ -103,6 +103,11 @@ var oscal = {
     validator: function validator() {
       return new _validator["default"](_oscal_ssp_schema["default"], "system_characteristics");
     }
+  },
+  inventory_item: {
+    validator: function validator() {
+      return new _validator["default"](_oscal_ssp_schema["default"], "inventory_item");
+    }
   }
 };
 var _default = oscal;

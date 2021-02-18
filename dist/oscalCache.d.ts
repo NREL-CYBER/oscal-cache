@@ -24,6 +24,9 @@ export declare type OscalCache = {
     system_characteristics: {
         validator: () => Validator<SystemCharacteristics>;
     };
+    inventory_item: {
+        validator: () => Validator<InventoryItem>;
+    };
 };
 /**
  *  Global cache hook for oscal data storage for use in react with hooks

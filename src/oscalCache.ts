@@ -32,12 +32,9 @@ export type OscalCache = {
     component: UseStore<Store<Component>>
     risk: UseStore<Store<IdentifiedRisk>>
     resource: UseStore<Store<Resource>>
-    authorization_boundary: {
-        validator: () => Validator<AuthorizationBoundary>
-    }
-    system_characteristics: {
-        validator: () => Validator<SystemCharacteristics>
-    }
+    authorization_boundary: { validator: () => Validator<AuthorizationBoundary> }
+    system_characteristics: { validator: () => Validator<SystemCharacteristics> }
+    inventory_item: { validator: () => Validator<InventoryItem> }
 }
 
 /**
@@ -103,7 +100,13 @@ const oscal: OscalCache = {
         validator: () => {
             return new Validator(ssp, "system_characteristics")
         }
+    },
+    inventory_item: {
+        validator: () => {
+            return new Validator(ssp, "inventory_item")
+        }
     }
+
 };
 
 
