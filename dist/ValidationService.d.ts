@@ -1,6 +1,6 @@
 import Validator from "validator";
-import { Party, Role, InventoryItem, Component, SystemSecurityPlan, AuthorizationBoundary, Resource } from 'oscal';
-declare class ValidationService {
+import { Party, Role, InventoryItem, Component, SystemSecurityPlan, AuthorizationBoundary, Resource, SystemCharacteristics } from 'oscal';
+declare class OscalValidationService {
     private static _instance;
     party: Validator<Party>;
     role: Validator<Role>;
@@ -9,7 +9,8 @@ declare class ValidationService {
     ssp: Validator<SystemSecurityPlan>;
     authorization_boundary: Validator<AuthorizationBoundary>;
     resource: Validator<Resource>;
+    system_characteristics: Validator<SystemCharacteristics>;
     private constructor();
-    static validate(): ValidationService;
+    static validate(): OscalValidationService;
 }
-export default ValidationService;
+export default OscalValidationService;

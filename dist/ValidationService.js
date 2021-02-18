@@ -19,9 +19,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var ValidationService = /*#__PURE__*/function () {
-  function ValidationService() {
-    _classCallCheck(this, ValidationService);
+var OscalValidationService = /*#__PURE__*/function () {
+  function OscalValidationService() {
+    _classCallCheck(this, OscalValidationService);
 
     _defineProperty(this, "party", void 0);
 
@@ -36,6 +36,8 @@ var ValidationService = /*#__PURE__*/function () {
     _defineProperty(this, "authorization_boundary", void 0);
 
     _defineProperty(this, "resource", void 0);
+
+    _defineProperty(this, "system_characteristics", void 0);
 
     this.ssp = new _validator["default"](_oscal_ssp_schema["default"], "system_security_plan");
     this.party = this.ssp.makeReferenceValidator({
@@ -53,22 +55,25 @@ var ValidationService = /*#__PURE__*/function () {
     this.authorization_boundary = this.ssp.makeReferenceValidator({
       $ref: "#/authorization_boundary"
     });
+    this.system_characteristics = this.ssp.makeReferenceValidator({
+      $ref: "#/system_characteristics"
+    });
     this.resource = this.ssp.makeReferenceValidator({
       $ref: "#/resource"
     });
   }
 
-  _createClass(ValidationService, null, [{
+  _createClass(OscalValidationService, null, [{
     key: "validate",
     value: function validate() {
       return this._instance || (this._instance = new this());
     }
   }]);
 
-  return ValidationService;
+  return OscalValidationService;
 }();
 
-_defineProperty(ValidationService, "_instance", void 0);
+_defineProperty(OscalValidationService, "_instance", void 0);
 
-var _default = ValidationService;
+var _default = OscalValidationService;
 exports["default"] = _default;
