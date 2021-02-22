@@ -2,7 +2,7 @@ import {
     AuthorizationBoundary, Catalog, Component, DataFlow, InformationType, InventoryItem,
     NetworkArchitecture, OrganizationSecurityPolicy, Party, PlanOfActionAndMilestones,
     Profile, Resource, Role, SecurityAssessmentPlan, SecurityAssessmentResults,
-    SystemCharacteristics, SystemSecurityPlan
+    SystemCharacteristics, SystemSecurityPlan, Control
 } from "oscal"
 import { IdentifiedRisk } from "oscal/dist/shared/IdentifiedRisk"
 import sap from "oscal/schemas/oscal_assessment-plan_schema.json"
@@ -14,6 +14,7 @@ import profile from "oscal/schemas/oscal_profile_schema.json"
 import ssp from "oscal/schemas/oscal_ssp_schema.json"
 import { composeStore, Store } from "store"
 import { UseStore } from "zustand"
+import { ControlGroup } from "oscal/dist/profile"
 
 
 export type OscalCache = {
@@ -48,6 +49,8 @@ export type OscalCache = {
     inventory_item: UseStore<Store<InventoryItem>>
     data_flow: UseStore<Store<DataFlow>>
     network_architecture: UseStore<Store<NetworkArchitecture>>
+    control: UseStore<Store<Control>>
+    controlGroup: UseStore<Store<ControlGroup>>
 }
 
 /**
@@ -94,41 +97,31 @@ const oscal: OscalCache = {
     risk: composeStore<IdentifiedRisk>({
         schema: poam, definition: "risk"
     }),
-    resource: composeStore<Resource>(
-        {
-            definition: "resource",
-            schema:
-            {
-                ...ssp.definitions.back_matter.properties.resources.items,
-                definitions: ssp.definitions
-            },
-        }
-    ),
-    authorization_boundary: composeStore<AuthorizationBoundary>(
-        {
-            schema: ssp, definition: "authorization_boundary"
-        }
-    ),
-    system_characteristics: composeStore<SystemCharacteristics>(
-        {
-            schema: ssp, definition: "system_characteristics"
-        }
-    ),
-    inventory_item: composeStore<InventoryItem>(
-        {
-            schema: ssp, definition: "inventory_item"
-        }
-    ),
-    data_flow: composeStore<DataFlow>(
-        {
-            schema: ssp, definition: "data_flow"
-        }
-    ),
-    network_architecture: composeStore<NetworkArchitecture>(
-        {
-            schema: ssp, definition: "network_architecture"
-        }
-    )
+    resource: composeStore<Resource>({
+        definition: "back_batter_resource",
+        schema: ssp,
+    }),
+    authorization_boundary: composeStore<AuthorizationBoundary>({
+        schema: ssp, definition: "authorization_boundary"
+    }),
+    system_characteristics: composeStore<SystemCharacteristics>({
+        schema: ssp, definition: "system_characteristics"
+    }),
+    inventory_item: composeStore<InventoryItem>({
+        schema: ssp, definition: "inventory_item"
+    }),
+    data_flow: composeStore<DataFlow>({
+        schema: ssp, definition: "data_flow"
+    }),
+    network_architecture: composeStore<NetworkArchitecture>({
+        schema: ssp, definition: "network_architecture"
+    }),
+    control: composeStore<Control>({
+        schema: catalog, definition: "control"
+    }),
+    controlGroup: composeStore<ControlGroup>({
+        schema: catalog, definition: "control_group"
+    })
 };
 
 export default oscal;

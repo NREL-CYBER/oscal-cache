@@ -87,10 +87,8 @@ var oscal = {
     definition: "risk"
   }),
   resource: (0, _store.composeStore)({
-    definition: "resource",
-    schema: _objectSpread(_objectSpread({}, _oscal_ssp_schema["default"].definitions.back_matter.properties.resources.items), {}, {
-      definitions: _oscal_ssp_schema["default"].definitions
-    })
+    definition: "back_batter_resource",
+    schema: _oscal_ssp_schema["default"]
   }),
   authorization_boundary: (0, _store.composeStore)({
     schema: _oscal_ssp_schema["default"],
@@ -111,6 +109,14 @@ var oscal = {
   network_architecture: (0, _store.composeStore)({
     schema: _oscal_ssp_schema["default"],
     definition: "network_architecture"
+  }),
+  control: (0, _store.composeStore)({
+    schema: _oscal_catalog_schema["default"],
+    definition: "control"
+  }),
+  controlGroup: (0, _store.composeStore)({
+    schema: _oscal_catalog_schema["default"],
+    definition: "control_group"
   })
 };
 var _default = oscal;
