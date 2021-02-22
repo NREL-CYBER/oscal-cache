@@ -36,7 +36,7 @@ export declare type OscalCache = {
     data_flow: UseStore<Store<DataFlow>>;
     network_architecture: UseStore<Store<NetworkArchitecture>>;
     control: UseStore<Store<Control>>;
-    controlGroup: UseStore<Store<ControlGroup>>;
+    control_group: UseStore<Store<ControlGroup>>;
 };
 /**
  *  Global cache hook for oscal data storage for use in react with hooks

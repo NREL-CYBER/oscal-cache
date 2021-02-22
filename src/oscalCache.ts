@@ -50,7 +50,7 @@ export type OscalCache = {
     data_flow: UseStore<Store<DataFlow>>
     network_architecture: UseStore<Store<NetworkArchitecture>>
     control: UseStore<Store<Control>>
-    controlGroup: UseStore<Store<ControlGroup>>
+    control_group: UseStore<Store<ControlGroup>>
 }
 
 /**
@@ -119,7 +119,7 @@ const oscal: OscalCache = {
     control: composeStore<Control>({
         schema: catalog, definition: "control"
     }),
-    controlGroup: composeStore<ControlGroup>({
+    control_group: composeStore<ControlGroup>({
         schema: catalog, definition: "control_group"
     })
 };

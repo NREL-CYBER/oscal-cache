@@ -114,7 +114,7 @@ var oscal = {
     schema: _oscal_catalog_schema["default"],
     definition: "control"
   }),
-  controlGroup: (0, _store.composeStore)({
+  control_group: (0, _store.composeStore)({
     schema: _oscal_catalog_schema["default"],
     definition: "control_group"
   })
