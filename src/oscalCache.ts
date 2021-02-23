@@ -52,7 +52,7 @@ export type OscalCache = {
     network_architecture: UseStore<Store<NetworkArchitecture>>
     control: UseStore<Store<Control>>
     control_group: UseStore<Store<ControlGroup>>
-    control_implementation: UseStore<Store<ControlBasedRequirement>>
+    implemented_requirement: UseStore<Store<ControlBasedRequirement>>
 }
 
 /**
@@ -124,8 +124,8 @@ const oscal: OscalCache = {
     control_group: composeStore<ControlGroup>({
         schema: catalog, definition: "control_group"
     }),
-    control_implementation: composeStore<ControlBasedRequirement>({
-        schema: catalog, definition: "control_based_requirement"
+    implemented_requirement: composeStore<ControlBasedRequirement>({
+        schema: ssp, definition: "implemented_requirement"
     })
 
 
