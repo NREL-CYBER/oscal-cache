@@ -1,8 +1,8 @@
-import { AuthorizationBoundary, Catalog, Component, DataFlow, InformationType, InventoryItem, NetworkArchitecture, OrganizationSecurityPolicy, Party, PlanOfActionAndMilestones, Profile, Resource, Role, SecurityAssessmentPlan, SecurityAssessmentResults, SystemCharacteristics, SystemSecurityPlan, Control } from "oscal";
+import { AuthorizationBoundary, Catalog, Component, DataFlow, InformationType, InventoryItem, NetworkArchitecture, OrganizationSecurityPolicy, Party, PlanOfActionAndMilestones, Profile, Resource, Role, SecurityAssessmentPlan, SecurityAssessmentResults, SystemCharacteristics, SystemSecurityPlan, Control, ControlBasedRequirement } from "oscal";
 import { IdentifiedRisk } from "oscal/dist/shared/IdentifiedRisk";
 import { Store } from "store";
 import { UseStore } from "zustand";
-import { ControlGroup } from "oscal/dist/profile";
+import { ControlGroup } from "oscal";
 export declare type OscalCache = {
     /**
      * System Security Plan Store hook
@@ -37,6 +37,7 @@ export declare type OscalCache = {
     network_architecture: UseStore<Store<NetworkArchitecture>>;
     control: UseStore<Store<Control>>;
     control_group: UseStore<Store<ControlGroup>>;
+    control_implementation: UseStore<Store<ControlBasedRequirement>>;
 };
 /**
  *  Global cache hook for oscal data storage for use in react with hooks

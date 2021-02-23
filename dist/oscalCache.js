@@ -117,6 +117,10 @@ var oscal = {
   control_group: (0, _store.composeStore)({
     schema: _oscal_catalog_schema["default"],
     definition: "control_group"
+  }),
+  control_implementation: (0, _store.composeStore)({
+    schema: _oscal_catalog_schema["default"],
+    definition: "control_based_requirement"
   })
 };
 var _default = oscal;
