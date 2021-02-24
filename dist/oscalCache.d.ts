@@ -1,8 +1,7 @@
-import { AuthorizationBoundary, Catalog, Component, DataFlow, InformationType, InventoryItem, NetworkArchitecture, OrganizationSecurityPolicy, Party, PlanOfActionAndMilestones, Profile, Resource, Role, SecurityAssessmentPlan, SecurityAssessmentResults, SystemCharacteristics, SystemSecurityPlan, Control, ControlBasedRequirement, ComponentControlImplementation } from "oscal";
+import { AuthorizationBoundary, Catalog, Component, ComponentControlImplementation, Control, ControlBasedRequirement, ControlGroup, DataFlow, InformationType, InventoryItem, NetworkArchitecture, OrganizationSecurityPolicy, Party, PlanOfActionAndMilestones, Profile, Resource, Role, SecurityAssessmentPlan, SecurityAssessmentResults, SystemCharacteristics, SystemSecurityPlan } from "oscal";
 import { IdentifiedRisk } from "oscal/dist/shared/IdentifiedRisk";
 import { Store } from "store";
 import { UseStore } from "zustand";
-import { ControlGroup } from "oscal";
 export declare type OscalCache = {
     /**
      * System Security Plan Store hook

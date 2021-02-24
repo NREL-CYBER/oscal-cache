@@ -87,7 +87,7 @@ var oscal = {
     definition: "risk"
   }),
   resource: (0, _store.composeStore)({
-    definition: "back_batter_resource",
+    definition: "resource",
     schema: _oscal_ssp_schema["default"]
   }),
   authorization_boundary: (0, _store.composeStore)({
