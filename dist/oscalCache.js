@@ -121,6 +121,10 @@ var oscal = {
   implemented_requirement: (0, _store.composeStore)({
     schema: _oscal_ssp_schema["default"],
     definition: "implemented_requirement"
+  }),
+  by_component: (0, _store.composeStore)({
+    schema: _oscal_ssp_schema["default"],
+    definition: "by_component"
   })
 };
 var _default = oscal;

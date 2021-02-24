@@ -2,7 +2,7 @@ import {
     AuthorizationBoundary, Catalog, Component, DataFlow, InformationType, InventoryItem,
     NetworkArchitecture, OrganizationSecurityPolicy, Party, PlanOfActionAndMilestones,
     Profile, Resource, Role, SecurityAssessmentPlan, SecurityAssessmentResults,
-    SystemCharacteristics, SystemSecurityPlan, Control, ControlBasedRequirement
+    SystemCharacteristics, SystemSecurityPlan, Control, ControlBasedRequirement, ComponentControlImplementation
 } from "oscal"
 import { IdentifiedRisk } from "oscal/dist/shared/IdentifiedRisk"
 import sap from "oscal/schemas/oscal_assessment-plan_schema.json"
@@ -53,6 +53,7 @@ export type OscalCache = {
     control: UseStore<Store<Control>>
     control_group: UseStore<Store<ControlGroup>>
     implemented_requirement: UseStore<Store<ControlBasedRequirement>>
+    by_component: UseStore<Store<ComponentControlImplementation>>
 }
 
 /**
@@ -126,6 +127,9 @@ const oscal: OscalCache = {
     }),
     implemented_requirement: composeStore<ControlBasedRequirement>({
         schema: ssp, definition: "implemented_requirement"
+    }),
+    by_component: composeStore<ComponentControlImplementation>({
+        schema: ssp, definition: "by_component"
     })
 
 
