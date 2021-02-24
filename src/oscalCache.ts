@@ -1,8 +1,9 @@
 import {
-    AuthorizationBoundary, Catalog, Component, DataFlow, InformationType, InventoryItem,
+    AuthorizationBoundary, Catalog, Component,
+    ComponentControlImplementation, Control, ControlBasedRequirement, ControlGroup, DataFlow, InformationType, InventoryItem,
     NetworkArchitecture, OrganizationSecurityPolicy, Party, PlanOfActionAndMilestones,
     Profile, Resource, Role, SecurityAssessmentPlan, SecurityAssessmentResults,
-    SystemCharacteristics, SystemSecurityPlan, Control, ControlBasedRequirement, ComponentControlImplementation
+    SystemCharacteristics, SystemSecurityPlan
 } from "oscal"
 import { IdentifiedRisk } from "oscal/dist/shared/IdentifiedRisk"
 import sap from "oscal/schemas/oscal_assessment-plan_schema.json"
@@ -14,8 +15,6 @@ import profile from "oscal/schemas/oscal_profile_schema.json"
 import ssp from "oscal/schemas/oscal_ssp_schema.json"
 import { composeStore, Store } from "store"
 import { UseStore } from "zustand"
-import { ControlGroup } from "oscal"
-import { ImplementedComponent } from "oscal/dist/assessment_results"
 
 
 export type OscalCache = {
@@ -101,7 +100,7 @@ const oscal: OscalCache = {
         schema: poam, definition: "risk"
     }),
     resource: composeStore<Resource>({
-        definition: "back_batter_resource",
+        definition: "resource",
         schema: ssp,
     }),
     authorization_boundary: composeStore<AuthorizationBoundary>({
