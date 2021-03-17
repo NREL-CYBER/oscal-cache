@@ -17,13 +17,7 @@ export declare type OscalCache = {
     sap: UseStore<Store<SecurityAssessmentPlan>>;
     baseline_profile: UseStore<Store<Profile>>;
     catalog: UseStore<Store<Catalog>>;
-    /**
-     * Party store hook
-     */
     party: UseStore<Store<Party>>;
-    /**
-     * Role store hook
-     */
     role: UseStore<Store<Role>>;
     inventory: UseStore<Store<InventoryItem>>;
     component: UseStore<Store<Component>>;

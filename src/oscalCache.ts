@@ -32,13 +32,7 @@ export type OscalCache = {
     sap: UseStore<Store<SecurityAssessmentPlan>>
     baseline_profile: UseStore<Store<Profile>>
     catalog: UseStore<Store<Catalog>>
-    /**
-     * Party store hook
-     */
     party: UseStore<Store<Party>>
-    /**
-     * Role store hook
-     */
     role: UseStore<Store<Role>>
     inventory: UseStore<Store<InventoryItem>>
     component: UseStore<Store<Component>>
@@ -130,8 +124,6 @@ const oscal: OscalCache = {
     by_component: composeStore<ComponentControlImplementation>({
         schema: ssp, definition: "by_component"
     })
-
-
 };
 
 export default oscal;
