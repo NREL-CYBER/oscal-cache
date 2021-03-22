@@ -1,2 +1,3 @@
-import oscal from "./oscalCache";
+import oscal, { OscalCachedDefinition } from "./oscalCache";
+export { OscalCachedDefinition };
 export default oscal;
