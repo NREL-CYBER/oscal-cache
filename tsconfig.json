@@ -6,6 +6,7 @@
         "tests/**/*"
     ],
     "compilerOptions": {
+        "jsx": "react",
         "declaration": true,
         "module": "ESNext",
         "moduleResolution": "node",

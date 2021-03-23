@@ -23,24 +23,19 @@ var _store = require("store");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 /**
  *  Global cache hook for oscal data storage for use in react with hooks
  */
 var oscal = {
   ssp: (0, _store.composeStore)({
     schema: _oscal_ssp_schema["default"],
-    definition: "oscal_ssp_system_security_plan"
+    definition: "system_security_plan"
   }),
   information_type: (0, _store.composeStore)({
-    schema: _objectSpread(_objectSpread({}, _oscal_ssp_schema["default"].definitions.system_information.properties.information_types.items), {}, {
-      definitions: _oscal_ssp_schema["default"].definitions
-    })
+    schema: {
+      ssp: _oscal_ssp_schema["default"]
+    },
+    definition: "information_type"
   }),
   osp: (0, _store.composeStore)({
     schema: _oscal_organization_security_policy["default"],
