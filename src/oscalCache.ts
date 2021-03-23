@@ -80,10 +80,7 @@ const oscal: OscalCache = {
         schema: ssp, definition: "system_security_plan"
     }),
     information_type: composeStore<InformationType>({
-        schema:
-        {
-            ssp
-        }
+        schema: ssp
         , definition: "information_type"
     }),
     osp: composeStore<OrganizationSecurityPolicy>({

@@ -32,9 +32,7 @@ var oscal = {
     definition: "system_security_plan"
   }),
   information_type: (0, _store.composeStore)({
-    schema: {
-      ssp: _oscal_ssp_schema["default"]
-    },
+    schema: _oscal_ssp_schema["default"],
     definition: "information_type"
   }),
   osp: (0, _store.composeStore)({
