@@ -2155,7 +2155,7 @@ once@^1.3.0:
 
 "oscal@git://github.nrel.gov/CyberSecurity/oscal.git":
   version "1.5.0"
-  resolved "git://github.nrel.gov/CyberSecurity/oscal.git#978eb17849f9f7a54d364919c35697385d62c7f6"
+  resolved "git://github.nrel.gov/CyberSecurity/oscal.git#5224e8eeed8b4de0ff435e0b7d5b010614e39892"
   dependencies:
     "@babel/cli" "^7.12.10"
     "@babel/core" "^7.12.10"

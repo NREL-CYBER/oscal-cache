@@ -33,7 +33,7 @@ export declare type OscalCache = {
     implemented_requirement: UseStore<Store<ControlBasedRequirement>>;
     by_component: UseStore<Store<ComponentControlImplementation>>;
 };
-export declare type OscalCachedDefinition = "oscal_ssp_system_security_plan" | "organization_security_policy" | "oscal_poam_plan_of_action_and_milestones" | "oscal_ar_assessment_results" | "oscal_ap_assessment_plan" | "oscal_profile_profile" | "oscal_catalog_catalog" | "oscal_ssp_party" | "oscal_ssp_role" | "oscal_ssp_inventory_item" | "oscal_ssp_system_component" | "oscal_poam_risk" | "oscal_ssp_resource" | "oscal_ssp_authorization_boundary" | "oscal_ssp_system_characteristics" | "oscal_ssp_authorization_boundary" | "oscal_ssp_data_flow" | "oscal_catalog_control" | "oscal_catalog_control_group" | "oscal_ssp_implemented_requirement" | "oscal_ssp_by_component";
+export declare type OscalCachedDefinition = "system_security_plan" | "organization_security_policy" | "plan_of_action_and_milestones" | "assessment_results" | "assessment_plan" | "profile" | "catalog" | "party" | "role" | "inventory_item" | "system_component" | "risk" | "resource" | "authorization_boundary" | "system_characteristics" | "authorization_boundary" | "data_flow" | "control" | "control_group" | "implemented_requirement" | "by_component";
 /**
  *  Global cache hook for oscal data storage for use in react with hooks
  */

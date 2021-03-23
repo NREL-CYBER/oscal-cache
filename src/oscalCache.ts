@@ -50,27 +50,27 @@ export type OscalCache = {
 }
 
 export type OscalCachedDefinition =
-    "oscal_ssp_system_security_plan" |
+    "system_security_plan" |
     "organization_security_policy" |
-    "oscal_poam_plan_of_action_and_milestones" |
-    "oscal_ar_assessment_results" |
-    "oscal_ap_assessment_plan" |
-    "oscal_profile_profile" |
-    "oscal_catalog_catalog" |
-    "oscal_ssp_party" |
-    "oscal_ssp_role" |
-    "oscal_ssp_inventory_item" |
-    "oscal_ssp_system_component" |
-    "oscal_poam_risk" |
-    "oscal_ssp_resource" |
-    "oscal_ssp_authorization_boundary" |
-    "oscal_ssp_system_characteristics" |
-    "oscal_ssp_authorization_boundary" |
-    "oscal_ssp_data_flow" |
-    "oscal_catalog_control" |
-    "oscal_catalog_control_group" |
-    "oscal_ssp_implemented_requirement" |
-    "oscal_ssp_by_component"
+    "plan_of_action_and_milestones" |
+    "assessment_results" |
+    "assessment_plan" |
+    "profile" |
+    "catalog" |
+    "party" |
+    "role" |
+    "inventory_item" |
+    "system_component" |
+    "risk" |
+    "resource" |
+    "authorization_boundary" |
+    "system_characteristics" |
+    "authorization_boundary" |
+    "data_flow" |
+    "control" |
+    "control_group" |
+    "implemented_requirement" |
+    "by_component"
 
 /**
  *  Global cache hook for oscal data storage for use in react with hooks
@@ -81,71 +81,71 @@ const oscal: OscalCache = {
     }),
     information_type: composeStore<InformationType>({
         schema:
-            { ...ssp.definitions.oscal_ssp_system_information.properties.information_types.items, definitions: ssp.definitions }
+            { ...ssp.definitions.system_information.properties.information_types.items, definitions: ssp.definitions }
     }),
     osp: composeStore<OrganizationSecurityPolicy>({
         schema: osp, definition: "organization_security_policy"
     }),
     poam: composeStore<PlanOfActionAndMilestones>({
-        schema: poam, definition: "oscal_poam_plan_of_action_and_milestones"
+        schema: poam, definition: "plan_of_action_and_milestones"
     }),
     sar: composeStore<SecurityAssessmentResults>({
-        schema: sar, definition: "oscal_ar_assessment_results"
+        schema: sar, definition: "assessment_results"
     }),
     sap: composeStore<SecurityAssessmentPlan>({
-        schema: sap, definition: "oscal_ap_assessment_plan"
+        schema: sap, definition: "assessment_plan"
     }),
     baseline_profile: composeStore<Profile>({
-        schema: profile, definition: "oscal_profile_profile"
+        schema: profile, definition: "profile"
     }),
     catalog: composeStore<Catalog>({
-        schema: catalog, definition: "oscal_catalog_catalog"
+        schema: catalog, definition: "catalog"
     }),
     party: composeStore<Party>({
-        schema: ssp, definition: "oscal_ssp_party"
+        schema: ssp, definition: "party"
     }),
     role: composeStore<Role>({
-        schema: ssp, definition: "oscal_ssp_role"
+        schema: ssp, definition: "role"
     }),
     inventory: composeStore<InventoryItem>({
-        schema: ssp, definition: "oscal_ssp_inventory_item"
+        schema: ssp, definition: "inventory_item"
     }),
     component: composeStore<Component>({
-        schema: ssp, definition: "oscal_ssp_system_component"
+        schema: ssp, definition: "system_component"
     }),
     risk: composeStore<IdentifiedRisk>({
-        schema: poam, definition: "oscal_poam_risk"
+        schema: poam, definition: "poam_risk"
     }),
     resource: composeStore<Resource>({
-        definition: "oscal_ssp_resource",
+        definition: "resource",
         schema: ssp,
     }),
     authorization_boundary: composeStore<AuthorizationBoundary>({
-        schema: ssp, definition: "oscal_ssp_authorization_boundary"
+        schema: ssp, definition: "authorization_boundary"
     }),
     system_characteristics: composeStore<SystemCharacteristics>({
-        schema: ssp, definition: "oscal_ssp_system_characteristics"
+        schema: ssp, definition: "system_characteristics"
     }),
     inventory_item: composeStore<InventoryItem>({
-        schema: ssp, definition: "oscal_ssp_inventory_item"
+        schema: ssp, definition: "inventory_item"
     }),
     data_flow: composeStore<DataFlow>({
-        schema: ssp, definition: "oscal_ssp_data_flow"
+        schema: ssp, definition: "data_flow"
     }),
     network_architecture: composeStore<NetworkArchitecture>({
-        schema: ssp, definition: "oscal_ssp_network_architecture"
+        schema: ssp, definition: "network_architecture"
     }),
     control: composeStore<Control>({
-        schema: catalog, definition: "oscal_catalog_control"
+        schema: catalog, definition: "control"
     }),
     control_group: composeStore<ControlGroup>({
-        schema: catalog, definition: "oscal_catalog_control_group"
+        schema: catalog, definition: "control_group"
     }),
     implemented_requirement: composeStore<ControlBasedRequirement>({
-        schema: ssp, definition: "oscal_ssp_implemented_requirement"
+        schema: ssp, definition: "implemented_requirement"
     }),
     by_component: composeStore<ComponentControlImplementation>({
-        schema: ssp, definition: "oscal_ssp_by_component"
+        schema: ssp, definition: "by_component"
     })
 };
 

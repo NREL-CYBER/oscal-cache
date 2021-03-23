@@ -38,7 +38,7 @@ var oscal = {
     definition: "oscal_ssp_system_security_plan"
   }),
   information_type: (0, _store.composeStore)({
-    schema: _objectSpread(_objectSpread({}, _oscal_ssp_schema["default"].definitions.oscal_ssp_system_information.properties.information_types.items), {}, {
+    schema: _objectSpread(_objectSpread({}, _oscal_ssp_schema["default"].definitions.system_information.properties.information_types.items), {}, {
       definitions: _oscal_ssp_schema["default"].definitions
     })
   }),
@@ -48,83 +48,83 @@ var oscal = {
   }),
   poam: (0, _store.composeStore)({
     schema: _oscal_poam_schema["default"],
-    definition: "oscal_poam_plan_of_action_and_milestones"
+    definition: "plan_of_action_and_milestones"
   }),
   sar: (0, _store.composeStore)({
     schema: _oscal_assessmentResults_schema["default"],
-    definition: "oscal_ar_assessment_results"
+    definition: "assessment_results"
   }),
   sap: (0, _store.composeStore)({
     schema: _oscal_assessmentPlan_schema["default"],
-    definition: "oscal_ap_assessment_plan"
+    definition: "assessment_plan"
   }),
   baseline_profile: (0, _store.composeStore)({
     schema: _oscal_profile_schema["default"],
-    definition: "oscal_profile_profile"
+    definition: "profile"
   }),
   catalog: (0, _store.composeStore)({
     schema: _oscal_catalog_schema["default"],
-    definition: "oscal_catalog_catalog"
+    definition: "catalog"
   }),
   party: (0, _store.composeStore)({
     schema: _oscal_ssp_schema["default"],
-    definition: "oscal_ssp_party"
+    definition: "party"
   }),
   role: (0, _store.composeStore)({
     schema: _oscal_ssp_schema["default"],
-    definition: "oscal_ssp_role"
+    definition: "role"
   }),
   inventory: (0, _store.composeStore)({
     schema: _oscal_ssp_schema["default"],
-    definition: "oscal_ssp_inventory_item"
+    definition: "inventory_item"
   }),
   component: (0, _store.composeStore)({
     schema: _oscal_ssp_schema["default"],
-    definition: "oscal_ssp_system_component"
+    definition: "system_component"
   }),
   risk: (0, _store.composeStore)({
     schema: _oscal_poam_schema["default"],
-    definition: "oscal_poam_risk"
+    definition: "poam_risk"
   }),
   resource: (0, _store.composeStore)({
-    definition: "oscal_ssp_resource",
+    definition: "resource",
     schema: _oscal_ssp_schema["default"]
   }),
   authorization_boundary: (0, _store.composeStore)({
     schema: _oscal_ssp_schema["default"],
-    definition: "oscal_ssp_authorization_boundary"
+    definition: "authorization_boundary"
   }),
   system_characteristics: (0, _store.composeStore)({
     schema: _oscal_ssp_schema["default"],
-    definition: "oscal_ssp_system_characteristics"
+    definition: "system_characteristics"
   }),
   inventory_item: (0, _store.composeStore)({
     schema: _oscal_ssp_schema["default"],
-    definition: "oscal_ssp_inventory_item"
+    definition: "inventory_item"
   }),
   data_flow: (0, _store.composeStore)({
     schema: _oscal_ssp_schema["default"],
-    definition: "oscal_ssp_data_flow"
+    definition: "data_flow"
   }),
   network_architecture: (0, _store.composeStore)({
     schema: _oscal_ssp_schema["default"],
-    definition: "oscal_ssp_network_architecture"
+    definition: "network_architecture"
   }),
   control: (0, _store.composeStore)({
     schema: _oscal_catalog_schema["default"],
-    definition: "oscal_catalog_control"
+    definition: "control"
   }),
   control_group: (0, _store.composeStore)({
     schema: _oscal_catalog_schema["default"],
-    definition: "oscal_catalog_control_group"
+    definition: "control_group"
   }),
   implemented_requirement: (0, _store.composeStore)({
     schema: _oscal_ssp_schema["default"],
-    definition: "oscal_ssp_implemented_requirement"
+    definition: "implemented_requirement"
   }),
   by_component: (0, _store.composeStore)({
     schema: _oscal_ssp_schema["default"],
-    definition: "oscal_ssp_by_component"
+    definition: "by_component"
   })
 };
 var _default = oscal;
