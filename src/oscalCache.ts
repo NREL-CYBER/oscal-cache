@@ -77,11 +77,14 @@ export type OscalCachedDefinition =
  */
 const oscal: OscalCache = {
     ssp: composeStore<SystemSecurityPlan>({
-        schema: ssp, definition: "oscal_ssp_system_security_plan"
+        schema: ssp, definition: "system_security_plan"
     }),
     information_type: composeStore<InformationType>({
         schema:
-            { ...ssp.definitions.system_information.properties.information_types.items, definitions: ssp.definitions }
+        {
+            ssp
+        }
+        , definition: "information_type"
     }),
     osp: composeStore<OrganizationSecurityPolicy>({
         schema: osp, definition: "organization_security_policy"
