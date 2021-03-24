@@ -114,11 +114,11 @@ const oscal: OscalCache = {
         schema: ssp, definition: "system_component"
     }),
     risk: composeStore<IdentifiedRisk>({
-        schema: poam, definition: "poam_risk"
+        schema: poam, definition: "risk"
     }),
     resource: composeStore<Resource>({
-        definition: "resource",
         schema: ssp,
+        definition: "resource",
     }),
     authorization_boundary: composeStore<AuthorizationBoundary>({
         schema: ssp, definition: "authorization_boundary"

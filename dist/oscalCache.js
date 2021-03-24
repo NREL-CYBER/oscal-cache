@@ -77,11 +77,11 @@ var oscal = {
   }),
   risk: (0, _store.composeStore)({
     schema: _oscal_poam_schema["default"],
-    definition: "poam_risk"
+    definition: "risk"
   }),
   resource: (0, _store.composeStore)({
-    definition: "resource",
-    schema: _oscal_ssp_schema["default"]
+    schema: _oscal_ssp_schema["default"],
+    definition: "resource"
   }),
   authorization_boundary: (0, _store.composeStore)({
     schema: _oscal_ssp_schema["default"],
