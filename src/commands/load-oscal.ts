@@ -22,7 +22,7 @@ interface OscalDirectoryLayout {
 
 
 
-const load_oscal: () => OscalDirectoryLayout = () => {
+export const load_oscal: () => OscalDirectoryLayout = () => {
     const nist_catalog = importOscal((NIST_800_53_CATALOG_REV5 as any)["catalog"]) as Catalog;
     const catalog = { [nist_catalog.uuid]: nist_catalog }
     const role = DEFAULT_ROLES.filter(x => !x.id.includes("isa")).reduce((roles, role) => {
@@ -69,5 +69,3 @@ const load_oscal: () => OscalDirectoryLayout = () => {
 
     return { catalog, baseline_profile, information_type, role, control, control_group };
 }
-
-export default load_oscal;

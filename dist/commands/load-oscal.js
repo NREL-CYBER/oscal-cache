@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.load_oscal = void 0;
 
 var _oscal = require("oscal");
 
@@ -104,5 +104,4 @@ var load_oscal = function load_oscal() {
   };
 };
 
-var _default = load_oscal;
-exports["default"] = _default;
+exports.load_oscal = load_oscal;

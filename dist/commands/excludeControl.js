@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.excludeControl = void 0;
 
 var excludeControl = function excludeControl(import_profile, control_id, with_child_controls) {
   return function (baselineDraft) {
@@ -66,5 +66,4 @@ var excludeControl = function excludeControl(import_profile, control_id, with_ch
   };
 };
 
-var _default = excludeControl;
-exports["default"] = _default;
+exports.excludeControl = excludeControl;

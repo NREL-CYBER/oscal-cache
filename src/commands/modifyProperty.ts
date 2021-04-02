@@ -1,7 +1,7 @@
 import { Property } from "oscal";
 import { propIndex } from "../queries/propertyQueries";
 
-const modifyProperty = (name: string, value: string) => (props: Property[] | undefined) => {
+export const modifyProperty = (name: string, value: string) => (props: Property[] | undefined) => {
     const index = propIndex(name)((props))
     const modified_prop = { name, value, ns: "https://nrel.gov/oscal" };
     if (typeof index === "boolean" && index === false) {
@@ -14,4 +14,3 @@ const modifyProperty = (name: string, value: string) => (props: Property[] | und
     }
 
 }
-export default modifyProperty;

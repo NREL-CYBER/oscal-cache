@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.modifyAssessmentSubject = void 0;
 
 var modifyAssessmentSubject = function modifyAssessmentSubject(type, uuid, selection) {
   return function (sapDraft) {
@@ -56,5 +56,4 @@ var modifyAssessmentSubject = function modifyAssessmentSubject(type, uuid, selec
   };
 };
 
-var _default = modifyAssessmentSubject;
-exports["default"] = _default;
+exports.modifyAssessmentSubject = modifyAssessmentSubject;

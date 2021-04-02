@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.filterByName = void 0;
 
 var filterByName = function filterByName(query) {
   return function (target) {
@@ -11,5 +11,4 @@ var filterByName = function filterByName(query) {
   };
 };
 
-var _default = filterByName;
-exports["default"] = _default;
+exports.filterByName = filterByName;

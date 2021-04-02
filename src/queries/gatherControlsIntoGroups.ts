@@ -5,7 +5,7 @@ import { Control, ControlGroup } from "oscal";
  * @param groups 
  * @param control 
  */
-const gatherControlsIntoGroups = (groups: ControlGroup[], controls: Control[]) => {
+export const gatherControlsIntoGroups = (groups: ControlGroup[], controls: Control[]) => {
     const control_ids = controls.map(x => x.id);
     const matching_groups = groups.map(group => {
         const matching_controls = group.controls!.filter(control => control_ids.includes(control.id)) || [];
@@ -16,4 +16,3 @@ const gatherControlsIntoGroups = (groups: ControlGroup[], controls: Control[]) =
     });
     return matching_groups.filter(group => group.controls && group.controls.length !== 0);
 }
-export default gatherControlsIntoGroups;

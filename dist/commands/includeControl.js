@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.includeControl = void 0;
 
 var includeControl = function includeControl(import_profile, control_id, with_child_controls) {
   return function (baselineDraft) {
@@ -59,5 +59,4 @@ var includeControl = function includeControl(import_profile, control_id, with_ch
   };
 };
 
-var _default = includeControl;
-exports["default"] = _default;
+exports.includeControl = includeControl;

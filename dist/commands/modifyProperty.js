@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.modifyProperty = void 0;
 
 var _propertyQueries = require("../queries/propertyQueries");
 
@@ -26,5 +26,4 @@ var modifyProperty = function modifyProperty(name, value) {
   };
 };
 
-var _default = modifyProperty;
-exports["default"] = _default;
+exports.modifyProperty = modifyProperty;

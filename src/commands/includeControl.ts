@@ -2,7 +2,7 @@ import { Draft } from "immer";
 import { Profile } from "oscal";
 import { CatalogOrProfileReference, ControlID } from "oscal/dist/profile";
 
-const includeControl = (import_profile: CatalogOrProfileReference, control_id: ControlID, with_child_controls?: "yes" | "no" | undefined) => {
+export const includeControl = (import_profile: CatalogOrProfileReference, control_id: ControlID, with_child_controls?: "yes" | "no" | undefined) => {
     return (baselineDraft: Draft<Profile>) => {
         const profileIndex = baselineDraft.imports.findIndex(x => x.href === import_profile);
         const profile = baselineDraft.imports[profileIndex];
@@ -27,4 +27,3 @@ const includeControl = (import_profile: CatalogOrProfileReference, control_id: C
         }
     }
 }
-export default includeControl;

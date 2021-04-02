@@ -1,8 +1,8 @@
 import { Draft } from "immer";
 import { SecurityAssessmentPlan, UUIDReference } from "oscal";
 
-type includeOrExclude = "include" | "exclude"
-const modifyAssessmentSubject = (type: string, uuid: UUIDReference, selection: includeOrExclude[]) => (sapDraft: Draft<SecurityAssessmentPlan>) => {
+export type includeOrExclude = "include" | "exclude"
+export const modifyAssessmentSubject = (type: string, uuid: UUIDReference, selection: includeOrExclude[]) => (sapDraft: Draft<SecurityAssessmentPlan>) => {
     let subject_index = sapDraft.assessment_subjects!.findIndex(x => x.type === type)
     if (subject_index === -1) {
         sapDraft.assessment_subjects!.push({ type })
@@ -28,4 +28,3 @@ const modifyAssessmentSubject = (type: string, uuid: UUIDReference, selection: i
     sapDraft.assessment_subjects![subject_index].include_subjects = include_subjects;
 
 }
-export default modifyAssessmentSubject;
