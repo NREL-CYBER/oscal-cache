@@ -5,6 +5,9 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+var _exportNames = {
+  OscalCachedDefinition: true
+};
 Object.defineProperty(exports, "OscalCachedDefinition", {
   enumerable: true,
   get: function get() {
@@ -14,6 +17,34 @@ Object.defineProperty(exports, "OscalCachedDefinition", {
 exports["default"] = void 0;
 
 var _oscalCache = _interopRequireWildcard(require("./oscalCache"));
+
+var _commands = require("./commands/");
+
+Object.keys(_commands).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
+  if (key in exports && exports[key] === _commands[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _commands[key];
+    }
+  });
+});
+
+var _queries = require("./queries/");
+
+Object.keys(_queries).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
+  if (key in exports && exports[key] === _queries[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _queries[key];
+    }
+  });
+});
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
