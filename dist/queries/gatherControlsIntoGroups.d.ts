@@ -4,5 +4,4 @@ import { Control, ControlGroup } from "oscal";
  * @param groups
  * @param control
  */
-declare const gatherControlsIntoGroups: (groups: ControlGroup[], controls: Control[]) => ControlGroup[];
-export default gatherControlsIntoGroups;
+export declare const gatherControlsIntoGroups: (groups: ControlGroup[], controls: Control[]) => ControlGroup[];

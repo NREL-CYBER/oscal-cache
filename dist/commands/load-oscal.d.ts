@@ -8,5 +8,5 @@ interface OscalDirectoryLayout {
     control: Record<ControlIdentifier, Control>;
     control_group: Record<GroupIdentifier, ControlGroup>;
 }
-declare const load_oscal: () => OscalDirectoryLayout;
-export default load_oscal;
+export declare const load_oscal: () => OscalDirectoryLayout;
+export {};
