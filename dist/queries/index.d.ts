@@ -5,4 +5,5 @@ export * from "./gatherControlsIntoGroups";
 export * from "./isImplemented";
 export * from "./propertyQueries";
 export * from "./flattenControlTree";
+export * from "./flattenPartTree";
 export * from "./responsiblePartiesForRole";
