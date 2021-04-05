@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.implementationValid = exports.implementationStatementsCount = exports.implementationHasStatements = void 0;
+exports.isImplementationValid = exports.implementationStatementsCount = exports.implementationHasStatements = void 0;
 
 var _flattenPartTree = require("./flattenPartTree");
 
@@ -19,10 +19,9 @@ var implementationStatementsCount = function implementationStatementsCount(imple
 
 exports.implementationStatementsCount = implementationStatementsCount;
 
-var implementationValid = function implementationValid(implementation, control) {
-  var _control$parts;
-
-  var statementParts = (_control$parts = control.parts) === null || _control$parts === void 0 ? void 0 : _control$parts.filter(function (x) {
+var isImplementationValid = function isImplementationValid(implementation, control) {
+  if (typeof implementation === "undefined" || typeof control === "undefined" || typeof control.parts === "undefined") return false;
+  var statementParts = control.parts.filter(function (x) {
     return x.name === "statement";
   });
   var required_parts = statementParts.flatMap(_flattenPartTree.flattenPartLeaves).map(function (x) {
@@ -32,4 +31,4 @@ var implementationValid = function implementationValid(implementation, control) 
   return required_parts.length === implementation_statement_count;
 };
 
-exports.implementationValid = implementationValid;
+exports.isImplementationValid = isImplementationValid;

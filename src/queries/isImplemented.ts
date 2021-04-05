@@ -9,8 +9,11 @@ export const implementationStatementsCount = (implementation: ControlBasedRequir
     return Object.keys(implementation.statements || {}).length
 }
 
-export const implementationValid = (implementation: ControlBasedRequirement, control: Control) => {
-    const statementParts = control.parts?.filter(x => x.name === "statement");
+export const isImplementationValid = (implementation: ControlBasedRequirement, control: Control) => {
+    if (typeof implementation === "undefined" || typeof control === "undefined" || typeof control.parts === "undefined")
+        return false;
+
+    const statementParts = control.parts.filter(x => x.name === "statement");
     const required_parts = statementParts!.flatMap(flattenPartLeaves).map(x => x.id!)
     const implementation_statement_count = implementationStatementsCount(implementation);
     return required_parts.length === implementation_statement_count
