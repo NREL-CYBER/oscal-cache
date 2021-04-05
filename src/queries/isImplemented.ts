@@ -10,11 +10,12 @@ export const implementationStatementsCount = (implementation: ControlBasedRequir
 }
 
 export const isImplementationValid = (implementation: ControlBasedRequirement, control: Control) => {
-    if (typeof implementation === "undefined" || typeof control === "undefined" || typeof control.parts === "undefined")
+    if (typeof implementation === "undefined" || typeof control === "undefined" || typeof control.parts === "undefined") {
         return false;
+    }
 
     const statementParts = control.parts.filter(x => x.name === "statement");
-    const required_parts = statementParts!.flatMap(flattenPartLeaves).map(x => x.id!)
+    const required_parts = statementParts.flatMap(flattenPartLeaves).map(x => x.id);
     const implementation_statement_count = implementationStatementsCount(implementation);
     return required_parts.length === implementation_statement_count
 }

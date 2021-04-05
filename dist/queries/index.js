@@ -95,6 +95,19 @@ Object.keys(_flattenControlTree).forEach(function (key) {
   });
 });
 
+var _flattenPartTree = require("./flattenPartTree");
+
+Object.keys(_flattenPartTree).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _flattenPartTree[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _flattenPartTree[key];
+    }
+  });
+});
+
 var _responsiblePartiesForRole = require("./responsiblePartiesForRole");
 
 Object.keys(_responsiblePartiesForRole).forEach(function (key) {

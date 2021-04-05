@@ -20,7 +20,10 @@ var implementationStatementsCount = function implementationStatementsCount(imple
 exports.implementationStatementsCount = implementationStatementsCount;
 
 var isImplementationValid = function isImplementationValid(implementation, control) {
-  if (typeof implementation === "undefined" || typeof control === "undefined" || typeof control.parts === "undefined") return false;
+  if (typeof implementation === "undefined" || typeof control === "undefined" || typeof control.parts === "undefined") {
+    return false;
+  }
+
   var statementParts = control.parts.filter(function (x) {
     return x.name === "statement";
   });
