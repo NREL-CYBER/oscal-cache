@@ -1,3 +1,4 @@
-import { ControlBasedRequirement } from "oscal";
-export declare const isPartialyImplementation: (implementation: ControlBasedRequirement) => boolean;
-export declare const implementationStatements: (implementation: ControlBasedRequirement) => number;
+import { ControlBasedRequirement, Control } from "oscal";
+export declare const implementationHasStatements: (implementation: ControlBasedRequirement) => boolean;
+export declare const implementationStatementsCount: (implementation: ControlBasedRequirement) => number;
+export declare const implementationValid: (implementation: ControlBasedRequirement, control: Control) => boolean;
