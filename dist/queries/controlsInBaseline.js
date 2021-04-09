@@ -22,7 +22,7 @@ exports.profileModifications = profileModifications;
 
 var profileAlterations = function profileAlterations(baseline) {
   var alterations = baseline && baseline.modify && baseline.modify.alters && baseline.modify.alters;
-  return alterations;
+  return (alterations === null || alterations === void 0 ? void 0 : alterations.filter(Boolean)) || [];
 };
 
 exports.profileAlterations = profileAlterations;
@@ -35,7 +35,7 @@ var profileInclusions = function profileInclusions(baseline) {
     return include === null || include === void 0 ? void 0 : (_include$calls = include.calls) === null || _include$calls === void 0 ? void 0 : _include$calls.map(function (x) {
       return x ? x.control_id : "";
     });
-  });
+  }).filter(Boolean);
   return inclusions || [];
 };
 
@@ -49,7 +49,7 @@ var profileExclusions = function profileExclusions(baseline) {
     return exclude === null || exclude === void 0 ? void 0 : (_exclude$calls = exclude.calls) === null || _exclude$calls === void 0 ? void 0 : _exclude$calls.map(function (x) {
       return x ? x.control_id : "";
     });
-  });
+  }).filter(Boolean);
   return exclusions || [];
 };
 

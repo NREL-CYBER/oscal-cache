@@ -11,14 +11,14 @@ export const profileModifications = (baseline: Profile) => {
 }
 export const profileAlterations = (baseline: Profile) => {
     const alterations = (baseline && baseline.modify && baseline.modify.alters && baseline.modify.alters);
-    return alterations;
+    return alterations?.filter(Boolean) || [];
 }
 export const profileInclusions = (baseline: Profile) => {
-    const inclusions = baseline.imports.flatMap(({ include }) => include?.calls?.map(x => x ? x.control_id : ""));
-    return inclusions || [];
+    const inclusions = baseline.imports.flatMap(({ include }) => include?.calls?.map(x => x ? x.control_id : "")).filter(Boolean);
+    return (inclusions || []) as string[];
 }
 export const profileExclusions = (baseline: Profile) => {
-    const exclusions = baseline.imports.flatMap(({ exclude }) => exclude?.calls?.map(x => x ? x.control_id : ""));
-    return exclusions || [];
+    const exclusions = baseline.imports.flatMap(({ exclude }) => exclude?.calls?.map(x => x ? x.control_id : "")).filter(Boolean);
+    return (exclusions || []) as string[];
 }
 
