@@ -56,7 +56,7 @@ Object.keys(_insertResponsibleParty).forEach(function (key) {
   });
 });
 
-var _loadOscal = require("./load-oscal");
+var _loadOscal = require("./loadOscal");
 
 Object.keys(_loadOscal).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
