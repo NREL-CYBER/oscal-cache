@@ -18,13 +18,7 @@ import { UseStore } from "zustand"
 
 
 export type OscalCache = {
-    /**
-     * System Security Plan Store hook
-     */
     ssp: UseStore<Store<SystemSecurityPlan>>
-    /**
-     * Information Type store hook
-     */
     information_type: UseStore<Store<InformationType>>
     osp: UseStore<Store<OrganizationSecurityPolicy>>
     poam: UseStore<Store<PlanOfActionAndMilestones>>
