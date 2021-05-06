@@ -1,2 +1,6 @@
 import { Part } from "oscal";
-export declare const flattenPartLeaves: (p: Part) => Part[];
+/**
+ * Flatten all sub parts for easy iteration
+ * @param root Root Part
+ */
+export declare const flattenPartLeaves: (root: Part) => Part[];
