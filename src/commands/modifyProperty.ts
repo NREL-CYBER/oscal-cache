@@ -8,7 +8,11 @@ export const modifyProperty = (name: string, value: string) => (props: Property[
         props = [modified_prop];
     }
     else if (typeof (index) === 'number') {
-        props![index] = modified_prop
+        if (index === 0) {
+            props = [modified_prop];
+        } else {
+            props![index] = modified_prop
+        }
     } else {
         props!.push(modified_prop);
     }

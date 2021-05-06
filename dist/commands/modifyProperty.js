@@ -19,7 +19,11 @@ var modifyProperty = function modifyProperty(name, value) {
     if (typeof index === "boolean" && index === false) {
       props = [modified_prop];
     } else if (typeof index === 'number') {
-      props[index] = modified_prop;
+      if (index === 0) {
+        props = [modified_prop];
+      } else {
+        props[index] = modified_prop;
+      }
     } else {
       props.push(modified_prop);
     }

@@ -1,5 +1,6 @@
 import { ControlBasedRequirement, Control } from "oscal"
 import { flattenPartLeaves } from "./flattenPartTree"
+import { propValue } from "./propertyQueries"
 
 export const implementationHasStatements = (implementation: ControlBasedRequirement) => {
     return Object.keys(implementation.statements || {}).length > 0
@@ -13,9 +14,12 @@ export const isImplementationValid = (implementation: ControlBasedRequirement, c
     if (typeof implementation === "undefined" || typeof control === "undefined" || typeof control.parts === "undefined") {
         return false;
     }
-
+    const getStatus = propValue("status");
     const statementParts = control.parts.filter(x => x.name === "statement");
-    const required_parts = statementParts.flatMap(flattenPartLeaves).map(x => x.id);
+    const required_parts = statementParts
+        .flatMap((part) => part && flattenPartLeaves(part))
+        .map(x => getStatus(x.props) !== "withdrawn" && typeof x.parts === "undefined" ? x.id : undefined)
+        .filter(x => typeof x !== "undefined");
     const implementation_statement_count = implementationStatementsCount(implementation);
     return required_parts.length === implementation_statement_count
 }
