@@ -1,4 +1,4 @@
-import { AuthorizationBoundary, Catalog, Component, ComponentControlImplementation, Control, ControlBasedRequirement, ControlGroup, DataFlow, InformationType, InventoryItem, NetworkArchitecture, OrganizationSecurityPolicy, Party, PlanOfActionAndMilestones, Profile, Resource, Role, SecurityAssessmentPlan, SecurityAssessmentResults, SystemCharacteristics, SystemSecurityPlan } from "oscal";
+import { Catalog, Component, Control, ControlBasedRequirement, ControlGroup, InformationType, InventoryItem, OrganizationSecurityPolicy, Party, PlanOfActionAndMilestones, Profile, Resource, Role, SecurityAssessmentPlan, SecurityAssessmentResults, SystemSecurityPlan, Capability, ComponentDefinition } from "oscal";
 import { IdentifiedRisk } from "oscal/dist/shared/IdentifiedRisk";
 import { Store } from "store";
 import { UseStore } from "zustand";
@@ -13,21 +13,17 @@ export declare type OscalCache = {
     catalog: UseStore<Store<Catalog>>;
     party: UseStore<Store<Party>>;
     role: UseStore<Store<Role>>;
-    inventory: UseStore<Store<InventoryItem>>;
     component: UseStore<Store<Component>>;
+    component_definition: UseStore<Store<ComponentDefinition>>;
+    capability: UseStore<Store<Capability>>;
     risk: UseStore<Store<IdentifiedRisk>>;
     resource: UseStore<Store<Resource>>;
-    authorization_boundary: UseStore<Store<AuthorizationBoundary>>;
-    system_characteristics: UseStore<Store<SystemCharacteristics>>;
     inventory_item: UseStore<Store<InventoryItem>>;
-    data_flow: UseStore<Store<DataFlow>>;
-    network_architecture: UseStore<Store<NetworkArchitecture>>;
     control: UseStore<Store<Control>>;
     control_group: UseStore<Store<ControlGroup>>;
     implemented_requirement: UseStore<Store<ControlBasedRequirement>>;
-    by_component: UseStore<Store<ComponentControlImplementation>>;
 };
-export declare type OscalCachedDefinition = "system_security_plan" | "organization_security_policy" | "plan_of_action_and_milestones" | "assessment_results" | "assessment_plan" | "profile" | "catalog" | "party" | "role" | "inventory_item" | "system_component" | "risk" | "resource" | "authorization_boundary" | "system_characteristics" | "authorization_boundary" | "data_flow" | "control" | "control_group" | "implemented_requirement" | "by_component";
+export declare type OscalCachedDefinition = "system_security_plan" | "organization_security_policy" | "plan_of_action_and_milestones" | "assessment_results" | "assessment_plan" | "profile" | "catalog" | "party" | "role" | "inventory_item" | "system_component" | "risk" | "resource" | "authorization_boundary" | "system_characteristics" | "authorization_boundary" | "data_flow" | "control" | "control_group" | "implemented_requirement";
 /**
  *  Global cache hook for oscal data storage for use in react with hooks
  */

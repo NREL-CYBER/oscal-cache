@@ -1,15 +1,16 @@
 import {
-    AuthorizationBoundary, Catalog, Component,
-    ComponentControlImplementation, Control, ControlBasedRequirement, ControlGroup, DataFlow, InformationType, InventoryItem,
-    NetworkArchitecture, OrganizationSecurityPolicy, Party, PlanOfActionAndMilestones,
+    Catalog, Component,
+    Control, ControlBasedRequirement, ControlGroup, InformationType, InventoryItem,
+    OrganizationSecurityPolicy, Party, PlanOfActionAndMilestones,
     Profile, Resource, Role, SecurityAssessmentPlan, SecurityAssessmentResults,
-    SystemCharacteristics, SystemSecurityPlan
+    SystemSecurityPlan, Capability, ComponentDefinition
 } from "oscal"
 import { IdentifiedRisk } from "oscal/dist/shared/IdentifiedRisk"
 import sap from "oscal/schemas/oscal_assessment-plan_schema.json"
 import sar from "oscal/schemas/oscal_assessment-results_schema.json"
 import catalog from "oscal/schemas/oscal_catalog_schema.json"
 import osp from "oscal/schemas/oscal_organization_security_policy.json"
+import component_def from "oscal/schemas/oscal_component_schema.json"
 import poam from "oscal/schemas/oscal_poam_schema.json"
 import profile from "oscal/schemas/oscal_profile_schema.json"
 import ssp from "oscal/schemas/oscal_ssp_schema.json"
@@ -28,19 +29,15 @@ export type OscalCache = {
     catalog: UseStore<Store<Catalog>>
     party: UseStore<Store<Party>>
     role: UseStore<Store<Role>>
-    inventory: UseStore<Store<InventoryItem>>
     component: UseStore<Store<Component>>
+    component_definition: UseStore<Store<ComponentDefinition>>
+    capability: UseStore<Store<Capability>>
     risk: UseStore<Store<IdentifiedRisk>>
     resource: UseStore<Store<Resource>>
-    authorization_boundary: UseStore<Store<AuthorizationBoundary>>
-    system_characteristics: UseStore<Store<SystemCharacteristics>>
     inventory_item: UseStore<Store<InventoryItem>>
-    data_flow: UseStore<Store<DataFlow>>
-    network_architecture: UseStore<Store<NetworkArchitecture>>
     control: UseStore<Store<Control>>
     control_group: UseStore<Store<ControlGroup>>
     implemented_requirement: UseStore<Store<ControlBasedRequirement>>
-    by_component: UseStore<Store<ComponentControlImplementation>>
 }
 
 export type OscalCachedDefinition =
@@ -63,8 +60,7 @@ export type OscalCachedDefinition =
     "data_flow" |
     "control" |
     "control_group" |
-    "implemented_requirement" |
-    "by_component"
+    "implemented_requirement"
 
 /**
  *  Global cache hook for oscal data storage for use in react with hooks
@@ -101,11 +97,14 @@ const oscal: OscalCache = {
     role: composeStore<Role>({
         schema: ssp, definition: "role"
     }),
-    inventory: composeStore<InventoryItem>({
-        schema: ssp, definition: "inventory_item"
-    }),
     component: composeStore<Component>({
         schema: ssp, definition: "system_component"
+    }),
+    capability: composeStore<Capability>({
+        schema: component_def, definition: "capability"
+    }),
+    component_definition: composeStore<ComponentDefinition>({
+        schema: component_def, definition: "component_definition"
     }),
     risk: composeStore<IdentifiedRisk>({
         schema: poam, definition: "risk"
@@ -114,20 +113,8 @@ const oscal: OscalCache = {
         schema: ssp,
         definition: "resource",
     }),
-    authorization_boundary: composeStore<AuthorizationBoundary>({
-        schema: ssp, definition: "authorization_boundary"
-    }),
-    system_characteristics: composeStore<SystemCharacteristics>({
-        schema: ssp, definition: "system_characteristics"
-    }),
     inventory_item: composeStore<InventoryItem>({
         schema: ssp, definition: "inventory_item"
-    }),
-    data_flow: composeStore<DataFlow>({
-        schema: ssp, definition: "data_flow"
-    }),
-    network_architecture: composeStore<NetworkArchitecture>({
-        schema: ssp, definition: "network_architecture"
     }),
     control: composeStore<Control>({
         schema: catalog, definition: "control"
@@ -138,9 +125,6 @@ const oscal: OscalCache = {
     implemented_requirement: composeStore<ControlBasedRequirement>({
         schema: ssp, definition: "implemented_requirement"
     }),
-    by_component: composeStore<ComponentControlImplementation>({
-        schema: ssp, definition: "by_component"
-    })
 };
 
 export default oscal;

@@ -13,6 +13,8 @@ var _oscal_catalog_schema = _interopRequireDefault(require("oscal/schemas/oscal_
 
 var _oscal_organization_security_policy = _interopRequireDefault(require("oscal/schemas/oscal_organization_security_policy.json"));
 
+var _oscal_component_schema = _interopRequireDefault(require("oscal/schemas/oscal_component_schema.json"));
+
 var _oscal_poam_schema = _interopRequireDefault(require("oscal/schemas/oscal_poam_schema.json"));
 
 var _oscal_profile_schema = _interopRequireDefault(require("oscal/schemas/oscal_profile_schema.json"));
@@ -67,13 +69,17 @@ var oscal = {
     schema: _oscal_ssp_schema["default"],
     definition: "role"
   }),
-  inventory: (0, _store.composeStore)({
-    schema: _oscal_ssp_schema["default"],
-    definition: "inventory_item"
-  }),
   component: (0, _store.composeStore)({
     schema: _oscal_ssp_schema["default"],
     definition: "system_component"
+  }),
+  capability: (0, _store.composeStore)({
+    schema: _oscal_component_schema["default"],
+    definition: "capability"
+  }),
+  component_definition: (0, _store.composeStore)({
+    schema: _oscal_component_schema["default"],
+    definition: "component_definition"
   }),
   risk: (0, _store.composeStore)({
     schema: _oscal_poam_schema["default"],
@@ -83,25 +89,9 @@ var oscal = {
     schema: _oscal_ssp_schema["default"],
     definition: "resource"
   }),
-  authorization_boundary: (0, _store.composeStore)({
-    schema: _oscal_ssp_schema["default"],
-    definition: "authorization_boundary"
-  }),
-  system_characteristics: (0, _store.composeStore)({
-    schema: _oscal_ssp_schema["default"],
-    definition: "system_characteristics"
-  }),
   inventory_item: (0, _store.composeStore)({
     schema: _oscal_ssp_schema["default"],
     definition: "inventory_item"
-  }),
-  data_flow: (0, _store.composeStore)({
-    schema: _oscal_ssp_schema["default"],
-    definition: "data_flow"
-  }),
-  network_architecture: (0, _store.composeStore)({
-    schema: _oscal_ssp_schema["default"],
-    definition: "network_architecture"
   }),
   control: (0, _store.composeStore)({
     schema: _oscal_catalog_schema["default"],
@@ -114,10 +104,6 @@ var oscal = {
   implemented_requirement: (0, _store.composeStore)({
     schema: _oscal_ssp_schema["default"],
     definition: "implemented_requirement"
-  }),
-  by_component: (0, _store.composeStore)({
-    schema: _oscal_ssp_schema["default"],
-    definition: "by_component"
   })
 };
 var _default = oscal;
