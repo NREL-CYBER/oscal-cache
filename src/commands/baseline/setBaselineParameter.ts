@@ -1,6 +1,6 @@
 import { Profile } from "oscal";
 
-const setBaselineParameter = (param_id: string, values: string[]) => (baseline: Profile) => {
+export const setBaselineParameter = (param_id: string, values: string[]) => (baseline: Profile) => {
     const modify = baseline.modify || {};
     const set_parameters = modify.set_parameters || {}
     let parameter_setting = set_parameters[param_id] || {}
