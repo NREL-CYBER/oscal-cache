@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _controlParts = require("./controlParts");
+var _controlParts = require("./catalog/controlParts");
 
 Object.keys(_controlParts).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -17,7 +17,7 @@ Object.keys(_controlParts).forEach(function (key) {
   });
 });
 
-var _controlsInBaseline = require("./controlsInBaseline");
+var _controlsInBaseline = require("./baseline/controlsInBaseline");
 
 Object.keys(_controlsInBaseline).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30,7 +30,7 @@ Object.keys(_controlsInBaseline).forEach(function (key) {
   });
 });
 
-var _filterByName = require("./filterByName");
+var _filterByName = require("./shared/filterByName");
 
 Object.keys(_filterByName).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -43,7 +43,7 @@ Object.keys(_filterByName).forEach(function (key) {
   });
 });
 
-var _gatherControlsIntoGroups = require("./gatherControlsIntoGroups");
+var _gatherControlsIntoGroups = require("./catalog/gatherControlsIntoGroups");
 
 Object.keys(_gatherControlsIntoGroups).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -56,7 +56,7 @@ Object.keys(_gatherControlsIntoGroups).forEach(function (key) {
   });
 });
 
-var _isImplemented = require("./isImplemented");
+var _isImplemented = require("./ssp/isImplemented");
 
 Object.keys(_isImplemented).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -69,7 +69,7 @@ Object.keys(_isImplemented).forEach(function (key) {
   });
 });
 
-var _propertyQueries = require("./propertyQueries");
+var _propertyQueries = require("./shared/propertyQueries");
 
 Object.keys(_propertyQueries).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -82,7 +82,7 @@ Object.keys(_propertyQueries).forEach(function (key) {
   });
 });
 
-var _flattenControlTree = require("./flattenControlTree");
+var _flattenControlTree = require("./catalog/flattenControlTree");
 
 Object.keys(_flattenControlTree).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -95,7 +95,7 @@ Object.keys(_flattenControlTree).forEach(function (key) {
   });
 });
 
-var _flattenPartTree = require("./flattenPartTree");
+var _flattenPartTree = require("./catalog/flattenPartTree");
 
 Object.keys(_flattenPartTree).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -108,7 +108,7 @@ Object.keys(_flattenPartTree).forEach(function (key) {
   });
 });
 
-var _responsiblePartiesForRole = require("./responsiblePartiesForRole");
+var _responsiblePartiesForRole = require("./shared/responsiblePartiesForRole");
 
 Object.keys(_responsiblePartiesForRole).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;

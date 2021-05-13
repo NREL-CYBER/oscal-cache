@@ -1,5 +1,5 @@
 import { RoleIdentifier } from "oscal/dist/shared";
-import { hasPublicationMetadata } from "../commands/insertResponsibleParty";
+import { hasPublicationMetadata } from "../../commands/shared/insertResponsibleParty";
 
 export const responsiblePartiesForRole = <T extends hasPublicationMetadata>(origin: T, role_id: RoleIdentifier) =>
     typeof origin !== "undefined" && typeof (origin.metadata) !== "undefined" &&

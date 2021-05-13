@@ -1,6 +1,6 @@
 import { ControlBasedRequirement, Control } from "oscal"
-import { flattenPartLeaves } from "./flattenPartTree"
-import { propValue } from "./propertyQueries"
+import { flattenPartLeaves } from "../catalog/flattenPartTree"
+import { propValue } from "../shared/propertyQueries"
 
 export const implementationHasStatements = (implementation: ControlBasedRequirement) => {
     return Object.keys(implementation.statements || {}).length > 0

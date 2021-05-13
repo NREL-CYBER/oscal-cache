@@ -8,7 +8,7 @@ import DEFAULT_INFO_TYPES from "oscal/content/information-type/fedramp-info-type
 import DEFAULT_ROLES from "oscal/content/role/default-roles.json";
 import { v4 } from 'uuid';
 import { ProfileUniversallyUniqueIdentifier, Profile, GroupIdentifier } from "oscal/dist/profile";
-import { flattenControlTree } from "../queries/flattenControlTree";
+import { flattenControlTree } from "../../queries/catalog/flattenControlTree";
 
 
 interface OscalDirectoryLayout {

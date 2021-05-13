@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _addRoleToMetadata = require("./addRoleToMetadata");
+var _addRoleToMetadata = require("./shared/addRoleToMetadata");
 
 Object.keys(_addRoleToMetadata).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -17,7 +17,7 @@ Object.keys(_addRoleToMetadata).forEach(function (key) {
   });
 });
 
-var _excludeControl = require("./excludeControl");
+var _excludeControl = require("./baseline/excludeControl");
 
 Object.keys(_excludeControl).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30,7 +30,7 @@ Object.keys(_excludeControl).forEach(function (key) {
   });
 });
 
-var _includeControl = require("./includeControl");
+var _includeControl = require("./baseline/includeControl");
 
 Object.keys(_includeControl).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -43,7 +43,7 @@ Object.keys(_includeControl).forEach(function (key) {
   });
 });
 
-var _insertResponsibleParty = require("./insertResponsibleParty");
+var _insertResponsibleParty = require("./shared/insertResponsibleParty");
 
 Object.keys(_insertResponsibleParty).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -56,7 +56,7 @@ Object.keys(_insertResponsibleParty).forEach(function (key) {
   });
 });
 
-var _loadOscal = require("./loadOscal");
+var _loadOscal = require("./shared/loadOscal");
 
 Object.keys(_loadOscal).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -69,7 +69,7 @@ Object.keys(_loadOscal).forEach(function (key) {
   });
 });
 
-var _modifyAssessmentSubject = require("./modifyAssessmentSubject");
+var _modifyAssessmentSubject = require("./sap/modifyAssessmentSubject");
 
 Object.keys(_modifyAssessmentSubject).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -82,7 +82,7 @@ Object.keys(_modifyAssessmentSubject).forEach(function (key) {
   });
 });
 
-var _modifyControl = require("./modifyControl");
+var _modifyControl = require("./baseline/modifyControl");
 
 Object.keys(_modifyControl).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -95,7 +95,7 @@ Object.keys(_modifyControl).forEach(function (key) {
   });
 });
 
-var _modifyProperty = require("./modifyProperty");
+var _modifyProperty = require("./shared/modifyProperty");
 
 Object.keys(_modifyProperty).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -104,6 +104,19 @@ Object.keys(_modifyProperty).forEach(function (key) {
     enumerable: true,
     get: function get() {
       return _modifyProperty[key];
+    }
+  });
+});
+
+var _setBaselineParameter = require("./baseline/setBaselineParameter");
+
+Object.keys(_setBaselineParameter).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _setBaselineParameter[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _setBaselineParameter[key];
     }
   });
 });
