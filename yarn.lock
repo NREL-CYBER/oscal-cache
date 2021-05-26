@@ -2201,8 +2201,8 @@ once@^1.3.0:
     wrappy "1"
 
 "oscal@git://github.com/NREL-CYBER/oscal.git":
-  version "1.6.9"
-  resolved "git://github.com/NREL-CYBER/oscal.git#451b3b74a879913d4dae8defff173b9cf1c67d37"
+  version "1.7.3"
+  resolved "git://github.com/NREL-CYBER/oscal.git#1da2142a128c0545946c7852de863f9b03f07cb2"
   dependencies:
     "@babel/cli" "^7.12.10"
     "@babel/core" "^7.12.10"
@@ -2546,7 +2546,7 @@ static-extend@^0.1.1:
     immer "^8.0.2"
     ts-node "^9.1.1"
     uuid "^8.3.2"
-    validator "git://github.com/NREL-CYBER/validator.git"
+    validator "git://github.nrel.gov/CyberSecurity/validator.git"
     zustand "^3.3.3"
 
 string_decoder@~1.1.1:
