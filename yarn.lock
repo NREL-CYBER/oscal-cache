@@ -2200,9 +2200,9 @@ once@^1.3.0:
   dependencies:
     wrappy "1"
 
-"oscal@git://github.nrel.gov/CyberSecurity/oscal.git":
+"oscal@git://github.com/NREL-CYBER/oscal.git":
   version "1.6.9"
-  resolved "git://github.nrel.gov/CyberSecurity/oscal.git#451b3b74a879913d4dae8defff173b9cf1c67d37"
+  resolved "git://github.com/NREL-CYBER/oscal.git#451b3b74a879913d4dae8defff173b9cf1c67d37"
   dependencies:
     "@babel/cli" "^7.12.10"
     "@babel/core" "^7.12.10"
@@ -2535,9 +2535,9 @@ static-extend@^0.1.1:
     define-property "^0.2.5"
     object-copy "^0.1.0"
 
-"store@git://github.nrel.gov/CyberSecurity/store.git":
+"store@git://github.com/NREL-CYBER/store.git":
   version "1.4.4"
-  resolved "git://github.nrel.gov/CyberSecurity/store.git#3fea031dd6ad6d8289f904d05e98a242e9fc9b36"
+  resolved "git://github.com/NREL-CYBER/store.git#3fea031dd6ad6d8289f904d05e98a242e9fc9b36"
   dependencies:
     "@babel/runtime" "^7.13.10"
     "@types/uuid" "^8.3.0"
@@ -2546,7 +2546,7 @@ static-extend@^0.1.1:
     immer "^8.0.2"
     ts-node "^9.1.1"
     uuid "^8.3.2"
-    validator "git://github.nrel.gov/CyberSecurity/validator.git"
+    validator "git://github.com/NREL-CYBER/validator.git"
     zustand "^3.3.3"
 
 string_decoder@~1.1.1:
@@ -2741,9 +2741,9 @@ uuid@^8.3.2:
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-8.3.2.tgz#80d5b5ced271bb9af6c445f21a1a04c606cefbe2"
   integrity sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==
 
-"validator@git://github.nrel.gov/CyberSecurity/validator.git":
+"validator@git://github.com/NREL-CYBER/validator.git":
   version "4.3.4"
-  resolved "git://github.nrel.gov/CyberSecurity/validator.git#915355175ede4b42fc93a0ad8bbc8d2bbb5e300d"
+  resolved "git://github.com/NREL-CYBER/validator.git#915355175ede4b42fc93a0ad8bbc8d2bbb5e300d"
   dependencies:
     "@types/uuid" "^8.3.0"
     ajv "^7.2.1"

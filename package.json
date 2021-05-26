@@ -8,13 +8,12 @@
     "src": "src"
   },
   "scripts": {
-    "build:types": "tsc --emitDeclarationOnly ",
-    "build:dist": "babel src --out-dir dist --extensions .ts,.tsx ",
-    "build:docs": "typedoc --mode file"
+    "build": "tsc --emitDeclarationOnly  && babel src --out-dir dist --extensions .ts,.tsx ",
+    "docs": "typedoc --out docs src/index.ts"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.nrel.gov/CyberSecurity/oscal-cache.git"
+    "url": "https://github.com/NREL-CYBER/oscal-cache.git"
   },
   "keywords": [],
   "author": "",
@@ -23,10 +22,10 @@
     "@types/lodash": "^4.14.168",
     "ajv": "^7.2.1",
     "ajv-formats": "^1.5.1",
-    "oscal": "git://github.nrel.gov/CyberSecurity/oscal.git",
-    "store": "git://github.nrel.gov/CyberSecurity/store.git",
+    "oscal": "git://github.com/NREL-CYBER/oscal.git",
+    "store": "git://github.com/NREL-CYBER/store.git",
     "typescript": "^4.2.3",
-    "validator": "git://github.nrel.gov/CyberSecurity/validator.git"
+    "validator": "git://github.com/NREL-CYBER/validator.git"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.10",
