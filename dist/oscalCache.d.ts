@@ -1,5 +1,5 @@
 import { Catalog, Component, Control, ControlBasedRequirement, ControlGroup, InformationType, InventoryItem, OrganizationSecurityPolicy, Party, PlanOfActionAndMilestones, Profile, Resource, Role, SecurityAssessmentPlan, SecurityAssessmentResults, SystemSecurityPlan, Capability, ComponentDefinition } from "oscal";
-import { IdentifiedRisk } from "oscal/dist/shared/IdentifiedRisk";
+import { IdentifiedRisk } from "oscal";
 import { Store } from "store";
 import { UseStore } from "zustand";
 export declare type OscalCache = {

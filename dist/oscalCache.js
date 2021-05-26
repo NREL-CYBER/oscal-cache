@@ -5,21 +5,21 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 
-var _oscal_assessmentPlan_schema = _interopRequireDefault(require("oscal/schemas/oscal_assessment-plan_schema.json"));
+var _oscal_assessmentPlan_schema = _interopRequireDefault(require("oscal/src/schemas/oscal_assessment-plan_schema.json"));
 
-var _oscal_assessmentResults_schema = _interopRequireDefault(require("oscal/schemas/oscal_assessment-results_schema.json"));
+var _oscal_assessmentResults_schema = _interopRequireDefault(require("oscal/src/schemas/oscal_assessment-results_schema.json"));
 
-var _oscal_catalog_schema = _interopRequireDefault(require("oscal/schemas/oscal_catalog_schema.json"));
+var _oscal_catalog_schema = _interopRequireDefault(require("oscal/src/schemas/oscal_catalog_schema.json"));
 
-var _oscal_organization_security_policy = _interopRequireDefault(require("oscal/schemas/oscal_organization_security_policy.json"));
+var _oscal_organization_security_policy = _interopRequireDefault(require("oscal/src/schemas/oscal_organization_security_policy.json"));
 
-var _oscal_component_schema = _interopRequireDefault(require("oscal/schemas/oscal_component_schema.json"));
+var _oscal_component_schema = _interopRequireDefault(require("oscal/src/schemas/oscal_component_schema.json"));
 
-var _oscal_poam_schema = _interopRequireDefault(require("oscal/schemas/oscal_poam_schema.json"));
+var _oscal_poam_schema = _interopRequireDefault(require("oscal/src/schemas/oscal_poam_schema.json"));
 
-var _oscal_profile_schema = _interopRequireDefault(require("oscal/schemas/oscal_profile_schema.json"));
+var _oscal_profile_schema = _interopRequireDefault(require("oscal/src/schemas/oscal_profile_schema.json"));
 
-var _oscal_ssp_schema = _interopRequireDefault(require("oscal/schemas/oscal_ssp_schema.json"));
+var _oscal_ssp_schema = _interopRequireDefault(require("oscal/src/schemas/oscal_ssp_schema.json"));
 
 var _store = require("store");
 
