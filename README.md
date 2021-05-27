@@ -1,4 +1,4 @@
 # oscal-cache
  Oscal storage container
  
-    yarn add git://github.com/NREL-CYBER/oscal-cache.git
+    yarn add git+ssh://github.com/NREL-CYBER/oscal-cache.git
