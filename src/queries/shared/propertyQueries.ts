@@ -1,4 +1,4 @@
-import { Component, Property, Link, AnnotatedProperty } from "oscal"
+import { Component, Property, Link } from "oscal"
 
 
 
@@ -55,18 +55,6 @@ const propIndex = (name: string) => {
 }
 
 
-const annotationsHaveValue = (name: string, value: string) => {
-    return (annotations?: AnnotatedProperty[]) => {
-        return annotations ? typeof (annotations.find(annotation => annotation.name === name && value === annotation.value)) !== 'undefined' : false
-    }
-}
-const annotationExists = (name: string) => {
-    return (annotations?: AnnotatedProperty[]) => {
-        return annotations ? typeof (annotations.find(annotation => annotation.name === name)) !== 'undefined' : false
-    }
-}
-
-
 
 const linkHasRelations = (rel: string) => {
     return (links?: Link[]) => {
@@ -92,4 +80,4 @@ const componentPropValue = (name: string) => {
 
 
 
-export { addProp, propIndex, componentHasProp, componentHasPropValue, annotationExists, propValue, annotationsHaveValue, dependentComponents, propExists, componentHasRelationalLink, componentPropValue, propsHaveValue }
+export { addProp, propIndex, componentHasProp, componentHasPropValue, propValue, dependentComponents, propExists, componentHasRelationalLink, componentPropValue, propsHaveValue }

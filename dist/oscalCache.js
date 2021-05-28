@@ -29,6 +29,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
  *  Global cache hook for oscal data storage for use in react with hooks
  */
 var oscal = {
+  observation: (0, _store.composeStore)({
+    schema: _oscal_assessmentResults_schema["default"],
+    definition: "observation"
+  }),
   assessment_platform: (0, _store.composeStore)({
     schema: _oscal_assessmentPlan_schema["default"],
     definition: "assessment_platform"

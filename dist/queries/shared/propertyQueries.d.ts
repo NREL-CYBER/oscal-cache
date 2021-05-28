@@ -1,4 +1,4 @@
-import { Component, Property, AnnotatedProperty } from "oscal";
+import { Component, Property } from "oscal";
 declare const componentHasPropValue: (name: string, value: string) => (component: Component) => boolean;
 declare const componentHasProp: (name: string) => (component: Component) => boolean;
 declare const componentHasRelationalLink: (rel: string) => (component: Component) => boolean;
@@ -7,8 +7,6 @@ declare const propsHaveValue: (name: string, value: string) => (props?: Property
 declare const propValue: (name: string) => (props?: Property[] | undefined) => string | undefined;
 declare const propExists: (name: string) => (props?: Property[] | undefined) => boolean;
 declare const propIndex: (name: string) => (props?: Property[] | undefined) => number | false;
-declare const annotationsHaveValue: (name: string, value: string) => (annotations?: AnnotatedProperty[] | undefined) => boolean;
-declare const annotationExists: (name: string) => (annotations?: AnnotatedProperty[] | undefined) => boolean;
 declare const dependentComponents: (component: Component) => string[];
 declare const componentPropValue: (name: string) => (component: Component) => string | undefined;
-export { addProp, propIndex, componentHasProp, componentHasPropValue, annotationExists, propValue, annotationsHaveValue, dependentComponents, propExists, componentHasRelationalLink, componentPropValue, propsHaveValue };
+export { addProp, propIndex, componentHasProp, componentHasPropValue, propValue, dependentComponents, propExists, componentHasRelationalLink, componentPropValue, propsHaveValue };

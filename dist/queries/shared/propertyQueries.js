@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.propsHaveValue = exports.componentPropValue = exports.componentHasRelationalLink = exports.propExists = exports.dependentComponents = exports.annotationsHaveValue = exports.propValue = exports.annotationExists = exports.componentHasPropValue = exports.componentHasProp = exports.propIndex = exports.addProp = void 0;
+exports.propsHaveValue = exports.componentPropValue = exports.componentHasRelationalLink = exports.propExists = exports.dependentComponents = exports.propValue = exports.componentHasPropValue = exports.componentHasProp = exports.propIndex = exports.addProp = void 0;
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
@@ -98,26 +98,6 @@ var propIndex = function propIndex(name) {
 };
 
 exports.propIndex = propIndex;
-
-var annotationsHaveValue = function annotationsHaveValue(name, value) {
-  return function (annotations) {
-    return annotations ? typeof annotations.find(function (annotation) {
-      return annotation.name === name && value === annotation.value;
-    }) !== 'undefined' : false;
-  };
-};
-
-exports.annotationsHaveValue = annotationsHaveValue;
-
-var annotationExists = function annotationExists(name) {
-  return function (annotations) {
-    return annotations ? typeof annotations.find(function (annotation) {
-      return annotation.name === name;
-    }) !== 'undefined' : false;
-  };
-};
-
-exports.annotationExists = annotationExists;
 
 var linkHasRelations = function linkHasRelations(rel) {
   return function (links) {

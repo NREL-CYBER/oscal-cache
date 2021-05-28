@@ -1,5 +1,4 @@
-import { Capability, Catalog, Component, ComponentDefinition, Control, ControlBasedRequirement, ControlGroup, IdentifiedRisk, InformationType, InventoryItem, OrganizationSecurityPolicy, Party, PlanOfActionAndMilestones, Profile, Resource, Role, SecurityAssessmentPlan, SecurityAssessmentResults, SystemSecurityPlan } from "oscal";
-import { AssessmentPlatform } from "oscal/dist/assessment_plan";
+import { AssessmentPlatform, Capability, Catalog, Component, ComponentDefinition, Control, ControlBasedRequirement, ControlGroup, IdentifiedRisk, InformationType, InventoryItem, Observation, OrganizationSecurityPolicy, Party, PlanOfActionAndMilestones, Profile, Resource, Role, SecurityAssessmentPlan, SecurityAssessmentResults, SystemSecurityPlan } from "oscal";
 import { Store } from "store";
 import { UseStore } from "zustand";
 export declare type OscalCache = {
@@ -23,8 +22,9 @@ export declare type OscalCache = {
     control: UseStore<Store<Control>>;
     control_group: UseStore<Store<ControlGroup>>;
     implemented_requirement: UseStore<Store<ControlBasedRequirement>>;
+    observation: UseStore<Store<Observation>>;
 };
-export declare type OscalCachedDefinition = "system_security_plan" | "organization_security_policy" | "plan_of_action_and_milestones" | "assessment_results" | "assessment_plan" | "profile" | "catalog" | "party" | "role" | "inventory_item" | "system_component" | "risk" | "resource" | "authorization_boundary" | "system_characteristics" | "authorization_boundary" | "data_flow" | "control" | "control_group" | "implemented_requirement" | "assessment_platform";
+export declare type OscalCachedDefinition = "system_security_plan" | "organization_security_policy" | "plan_of_action_and_milestones" | "assessment_results" | "assessment_plan" | "profile" | "catalog" | "party" | "role" | "inventory_item" | "system_component" | "risk" | "resource" | "authorization_boundary" | "system_characteristics" | "authorization_boundary" | "data_flow" | "control" | "control_group" | "implemented_requirement" | "assessment_platform" | "observation";
 /**
  *  Global cache hook for oscal data storage for use in react with hooks
  */

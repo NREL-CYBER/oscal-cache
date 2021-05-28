@@ -1,14 +1,14 @@
 import {
-    Capability, Catalog, Component,
-
-
-
+    AssessmentPlatform, Capability, Catalog, Component,
     ComponentDefinition, Control, ControlBasedRequirement, ControlGroup, IdentifiedRisk, InformationType, InventoryItem,
-    OrganizationSecurityPolicy, Party, PlanOfActionAndMilestones,
+
+
+
+
+    Observation, OrganizationSecurityPolicy, Party, PlanOfActionAndMilestones,
     Profile, Resource, Role, SecurityAssessmentPlan, SecurityAssessmentResults,
     SystemSecurityPlan
 } from "oscal"
-import { AssessmentPlatform } from "oscal/dist/assessment_plan"
 import sap from "oscal/src/schemas/oscal_assessment-plan_schema.json"
 import sar from "oscal/src/schemas/oscal_assessment-results_schema.json"
 import catalog from "oscal/src/schemas/oscal_catalog_schema.json"
@@ -42,6 +42,7 @@ export type OscalCache = {
     control: UseStore<Store<Control>>
     control_group: UseStore<Store<ControlGroup>>
     implemented_requirement: UseStore<Store<ControlBasedRequirement>>
+    observation: UseStore<Store<Observation>>
 }
 
 export type OscalCachedDefinition =
@@ -65,12 +66,16 @@ export type OscalCachedDefinition =
     "control" |
     "control_group" |
     "implemented_requirement" |
-    "assessment_platform"
+    "assessment_platform" |
+    "observation"
 
 /**
  *  Global cache hook for oscal data storage for use in react with hooks
  */
 const oscal: OscalCache = {
+    observation: composeStore<Observation>({
+        schema: sar, definition: "observation"
+    }),
     assessment_platform: composeStore<AssessmentPlatform>({
         schema: sap, definition: "assessment_platform"
     }),
