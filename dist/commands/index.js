@@ -120,3 +120,29 @@ Object.keys(_setBaselineParameter).forEach(function (key) {
     }
   });
 });
+
+var _insertResource = require("./shared/insertResource");
+
+Object.keys(_insertResource).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _insertResource[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _insertResource[key];
+    }
+  });
+});
+
+var _removeResource = require("./shared/removeResource");
+
+Object.keys(_removeResource).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _removeResource[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _removeResource[key];
+    }
+  });
+});

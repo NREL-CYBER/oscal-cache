@@ -7,3 +7,5 @@ export * from "./sap/modifyAssessmentSubject";
 export * from "./baseline/modifyControl";
 export * from "./shared/modifyProperty";
 export * from "./baseline/setBaselineParameter";
+export * from "./shared/insertResource";
+export * from "./shared/removeResource";
