@@ -11,9 +11,9 @@ var _oscal_assessmentResults_schema = _interopRequireDefault(require("oscal/src/
 
 var _oscal_catalog_schema = _interopRequireDefault(require("oscal/src/schemas/oscal_catalog_schema.json"));
 
-var _oscal_organization_security_policy = _interopRequireDefault(require("oscal/src/schemas/oscal_organization_security_policy.json"));
-
 var _oscal_component_schema = _interopRequireDefault(require("oscal/src/schemas/oscal_component_schema.json"));
+
+var _oscal_organization_security_policy = _interopRequireDefault(require("oscal/src/schemas/oscal_organization_security_policy.json"));
 
 var _oscal_poam_schema = _interopRequireDefault(require("oscal/src/schemas/oscal_poam_schema.json"));
 
@@ -29,6 +29,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
  *  Global cache hook for oscal data storage for use in react with hooks
  */
 var oscal = {
+  assessment_platform: (0, _store.composeStore)({
+    schema: _oscal_assessmentPlan_schema["default"],
+    definition: "assessment_platform"
+  }),
   ssp: (0, _store.composeStore)({
     schema: _oscal_ssp_schema["default"],
     definition: "system_security_plan"
