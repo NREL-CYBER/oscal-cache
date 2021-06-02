@@ -8,6 +8,7 @@
     "src": "src"
   },
   "scripts": {
+    "update": "yarn add git+ssh://git@github.com/NREL-CYBER/oscal.git git+ssh://git@github.com/NREL-CYBER/store.git git+ssh://git@github.com/NREL-CYBER/validator.git",
     "build": "tsc --emitDeclarationOnly  && babel src --out-dir dist --extensions .ts,.tsx ",
     "docs": "typedoc --out docs src/index.ts"
   },

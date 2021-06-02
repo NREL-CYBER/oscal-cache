@@ -2269,8 +2269,8 @@ once@^1.3.0:
     wrappy "1"
 
 "oscal@git+ssh://git@github.com/NREL-CYBER/oscal.git":
-  version "1.7.7"
-  resolved "git+ssh://git@github.com/NREL-CYBER/oscal.git#9759b88b15db00c509be8ad704531e40aa7001e8"
+  version "1.7.8"
+  resolved "git+ssh://git@github.com/NREL-CYBER/oscal.git#bee6d6dd4acad22edc59816249ef780816aea1a0"
   dependencies:
     "@babel/cli" "^7.14.3"
     "@babel/core" "^7.14.3"
@@ -2605,7 +2605,7 @@ static-extend@^0.1.1:
 
 "store@git+ssh://git@github.com/NREL-CYBER/store.git":
   version "1.4.8"
-  resolved "git+ssh://git@github.com/NREL-CYBER/store.git#877a45e9c33533f9b8e1e2f90e9557fca68d3e81"
+  resolved "git+ssh://git@github.com/NREL-CYBER/store.git#7a6a3c3607dd9f47c84bb8cf4a48e56d17e40e8d"
   dependencies:
     "@babel/runtime" "^7.13.10"
     "@types/uuid" "^8.3.0"
@@ -2811,7 +2811,7 @@ uuid@^8.3.2:
 
 "validator@git+ssh://git@github.com/NREL-CYBER/validator.git":
   version "4.3.6"
-  resolved "git+ssh://git@github.com/NREL-CYBER/validator.git#04df48a3f0dd199d1553154df2b52d7a0925f6e9"
+  resolved "git+ssh://git@github.com/NREL-CYBER/validator.git#ffcf7264c73543e70092b4f5e31a456137002f4d"
   dependencies:
     "@types/uuid" "^8.3.0"
     ajv "^7.2.1"
