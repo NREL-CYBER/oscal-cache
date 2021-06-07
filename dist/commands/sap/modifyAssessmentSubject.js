@@ -7,20 +7,21 @@ exports.modifyAssessmentSubject = void 0;
 
 var modifyAssessmentSubject = function modifyAssessmentSubject(type, uuid, selection) {
   return function (sapDraft) {
-    var subject_index = sapDraft.assessment_subjects.findIndex(function (x) {
+    var assessment_subjects = sapDraft.assessment_subjects || [];
+    var subject_index = assessment_subjects === null || assessment_subjects === void 0 ? void 0 : assessment_subjects.findIndex(function (x) {
       return x.type === type;
     });
 
     if (subject_index === -1) {
-      sapDraft.assessment_subjects.push({
+      assessment_subjects.push({
         type: type
       });
     }
 
-    subject_index = sapDraft.assessment_subjects.findIndex(function (x) {
+    subject_index = assessment_subjects.findIndex(function (x) {
       return x.type === type;
     });
-    var subject = sapDraft.assessment_subjects.find(function (x) {
+    var subject = assessment_subjects.find(function (x) {
       return x.type === type;
     });
     var _ref = subject,
@@ -51,8 +52,9 @@ var modifyAssessmentSubject = function modifyAssessmentSubject(type, uuid, selec
       });
     }
 
-    sapDraft.assessment_subjects[subject_index].exclude_subjects = exclude_subjects;
-    sapDraft.assessment_subjects[subject_index].include_subjects = include_subjects;
+    assessment_subjects[subject_index].exclude_subjects = exclude_subjects;
+    assessment_subjects[subject_index].include_subjects = include_subjects;
+    sapDraft.assessment_subjects = assessment_subjects;
   };
 };
 
