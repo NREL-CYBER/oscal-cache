@@ -7,7 +7,8 @@ import {
 
     Observation, OrganizationSecurityPolicy, Party, PlanOfActionAndMilestones,
     Profile, Resource, Role, SecurityAssessmentPlan, SecurityAssessmentResults,
-    SystemSecurityPlan
+    SystemSecurityPlan,
+    LeveragedAuthorization
 } from "oscal"
 import sap from "oscal/src/schemas/oscal_assessment-plan_schema.json"
 import sar from "oscal/src/schemas/oscal_assessment-results_schema.json"
@@ -22,6 +23,7 @@ import { UseStore } from "zustand"
 
 
 export type OscalCache = {
+    leveraged_authentication: UseStore<Store<LeveragedAuthorization>>
     assessment_platform: UseStore<Store<AssessmentPlatform>>
     ssp: UseStore<Store<SystemSecurityPlan>>
     information_type: UseStore<Store<InformationType>>
@@ -46,6 +48,7 @@ export type OscalCache = {
 }
 
 export type OscalCachedDefinition =
+    "leveraged_authentication" |
     "system_security_plan" |
     "organization_security_policy" |
     "plan_of_action_and_milestones" |
@@ -73,6 +76,9 @@ export type OscalCachedDefinition =
  *  Global cache hook for oscal data storage for use in react with hooks
  */
 const oscal: OscalCache = {
+    leveraged_authentication: composeStore<LeveragedAuthorization>({
+        schema: ssp, definition: "leveraged_authentication"
+    }),
     observation: composeStore<Observation>({
         schema: sar, definition: "observation"
     }),

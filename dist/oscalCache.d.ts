@@ -1,7 +1,8 @@
-import { AssessmentPlatform, Capability, Catalog, Component, ComponentDefinition, Control, ControlBasedRequirement, ControlGroup, IdentifiedRisk, InformationType, InventoryItem, Observation, OrganizationSecurityPolicy, Party, PlanOfActionAndMilestones, Profile, Resource, Role, SecurityAssessmentPlan, SecurityAssessmentResults, SystemSecurityPlan } from "oscal";
+import { AssessmentPlatform, Capability, Catalog, Component, ComponentDefinition, Control, ControlBasedRequirement, ControlGroup, IdentifiedRisk, InformationType, InventoryItem, Observation, OrganizationSecurityPolicy, Party, PlanOfActionAndMilestones, Profile, Resource, Role, SecurityAssessmentPlan, SecurityAssessmentResults, SystemSecurityPlan, LeveragedAuthorization } from "oscal";
 import { Store } from "store";
 import { UseStore } from "zustand";
 export declare type OscalCache = {
+    leveraged_authentication: UseStore<Store<LeveragedAuthorization>>;
     assessment_platform: UseStore<Store<AssessmentPlatform>>;
     ssp: UseStore<Store<SystemSecurityPlan>>;
     information_type: UseStore<Store<InformationType>>;
@@ -24,7 +25,7 @@ export declare type OscalCache = {
     implemented_requirement: UseStore<Store<ControlBasedRequirement>>;
     observation: UseStore<Store<Observation>>;
 };
-export declare type OscalCachedDefinition = "system_security_plan" | "organization_security_policy" | "plan_of_action_and_milestones" | "assessment_results" | "assessment_plan" | "profile" | "catalog" | "party" | "role" | "inventory_item" | "system_component" | "risk" | "resource" | "authorization_boundary" | "system_characteristics" | "authorization_boundary" | "data_flow" | "control" | "control_group" | "implemented_requirement" | "assessment_platform" | "observation";
+export declare type OscalCachedDefinition = "leveraged_authentication" | "system_security_plan" | "organization_security_policy" | "plan_of_action_and_milestones" | "assessment_results" | "assessment_plan" | "profile" | "catalog" | "party" | "role" | "inventory_item" | "system_component" | "risk" | "resource" | "authorization_boundary" | "system_characteristics" | "authorization_boundary" | "data_flow" | "control" | "control_group" | "implemented_requirement" | "assessment_platform" | "observation";
 /**
  *  Global cache hook for oscal data storage for use in react with hooks
  */

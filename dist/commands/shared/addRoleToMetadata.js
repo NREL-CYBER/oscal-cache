@@ -7,16 +7,17 @@ exports.addRoleToMetadata = void 0;
 
 var addRoleToMetadata = function addRoleToMetadata(role) {
   return function (authPackage) {
-    var _authPackage$metadata;
+    var roles = authPackage.metadata.roles || [];
 
-    if ((_authPackage$metadata = authPackage.metadata.roles) !== null && _authPackage$metadata !== void 0 && _authPackage$metadata.map(function (_ref) {
+    if (roles.map(function (_ref) {
       var id = _ref.id;
       return id;
     }).includes(role.id)) {
       return;
     }
 
-    authPackage.metadata.roles ? authPackage.metadata.roles.push(role) : authPackage.metadata.roles = [role];
+    roles.push(role);
+    authPackage.metadata.roles = roles;
   };
 };
 

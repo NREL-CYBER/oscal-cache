@@ -29,6 +29,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
  *  Global cache hook for oscal data storage for use in react with hooks
  */
 var oscal = {
+  leveraged_authentication: (0, _store.composeStore)({
+    schema: _oscal_ssp_schema["default"],
+    definition: "leveraged_authentication"
+  }),
   observation: (0, _store.composeStore)({
     schema: _oscal_assessmentResults_schema["default"],
     definition: "observation"
