@@ -20,6 +20,7 @@ import profile from "oscal/src/schemas/oscal_profile_schema.json"
 import ssp from "oscal/src/schemas/oscal_ssp_schema.json"
 import { composeStore, Store } from "store"
 import { UseStore } from "zustand"
+import { v4 } from "uuid"
 
 
 export type OscalCache = {
@@ -84,9 +85,11 @@ const oscal: OscalCache = {
     }),
     assessment_platform: composeStore<AssessmentPlatform>({
         schema: sap, definition: "assessment_platform"
+
     }),
     ssp: composeStore<SystemSecurityPlan>({
-        schema: ssp, definition: "system_security_plan"
+        schema: ssp, definition: "system_security_plan",
+        workspaceGenerationMap: { uuid: v4 }
     }),
     information_type: composeStore<InformationType>({
         schema: ssp, definition: "information_type"
@@ -98,13 +101,16 @@ const oscal: OscalCache = {
         schema: poam, definition: "plan_of_action_and_milestones"
     }),
     sar: composeStore<SecurityAssessmentResults>({
-        schema: sar, definition: "assessment_results"
+        schema: sar, definition: "assessment_results",
+        workspaceGenerationMap: { uuid: v4 }
     }),
     sap: composeStore<SecurityAssessmentPlan>({
-        schema: sap, definition: "assessment_plan"
+        schema: sap, definition: "assessment_plan",
+        workspaceGenerationMap: { uuid: v4 }
     }),
     baseline_profile: composeStore<Profile>({
-        schema: profile, definition: "profile"
+        schema: profile, definition: "profile",
+        workspaceGenerationMap: { uuid: v4 }
     }),
     catalog: composeStore<Catalog>({
         schema: catalog, definition: "catalog"

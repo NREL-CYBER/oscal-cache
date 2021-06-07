@@ -23,6 +23,8 @@ var _oscal_ssp_schema = _interopRequireDefault(require("oscal/src/schemas/oscal_
 
 var _store = require("store");
 
+var _uuid = require("uuid");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 /**
@@ -43,7 +45,10 @@ var oscal = {
   }),
   ssp: (0, _store.composeStore)({
     schema: _oscal_ssp_schema["default"],
-    definition: "system_security_plan"
+    definition: "system_security_plan",
+    workspaceGenerationMap: {
+      uuid: _uuid.v4
+    }
   }),
   information_type: (0, _store.composeStore)({
     schema: _oscal_ssp_schema["default"],
@@ -59,15 +64,24 @@ var oscal = {
   }),
   sar: (0, _store.composeStore)({
     schema: _oscal_assessmentResults_schema["default"],
-    definition: "assessment_results"
+    definition: "assessment_results",
+    workspaceGenerationMap: {
+      uuid: _uuid.v4
+    }
   }),
   sap: (0, _store.composeStore)({
     schema: _oscal_assessmentPlan_schema["default"],
-    definition: "assessment_plan"
+    definition: "assessment_plan",
+    workspaceGenerationMap: {
+      uuid: _uuid.v4
+    }
   }),
   baseline_profile: (0, _store.composeStore)({
     schema: _oscal_profile_schema["default"],
-    definition: "profile"
+    definition: "profile",
+    workspaceGenerationMap: {
+      uuid: _uuid.v4
+    }
   }),
   catalog: (0, _store.composeStore)({
     schema: _oscal_catalog_schema["default"],
