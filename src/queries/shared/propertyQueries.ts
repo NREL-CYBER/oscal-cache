@@ -1,20 +1,20 @@
-import { Component, Property, Link } from "oscal"
+import { SystemComponent, Property, Link } from "oscal"
 
 
 
 
 const componentHasPropValue = (name: string, value: string) => {
-    return (component: Component) => {
+    return (component: SystemComponent) => {
         return propsHaveValue(name, value)(component.props)
     }
 }
 const componentHasProp = (name: string) => {
-    return (component: Component) => {
+    return (component: SystemComponent) => {
         return propExists(name)(component.props);
     }
 }
 const componentHasRelationalLink = (rel: string) => {
-    return (component: Component) => {
+    return (component: SystemComponent) => {
         return linkHasRelations(rel)(component.links);
     }
 }
@@ -67,12 +67,12 @@ const linksWithRelationalUuids = (rel: string) => {
     }
 }
 
-const dependentComponents = (component: Component) => {
+const dependentComponents = (component: SystemComponent) => {
     return linksWithRelationalUuids("depends-on")(component.links);
 }
 
 const componentPropValue = (name: string) => {
-    return (component: Component) => {
+    return (component: SystemComponent) => {
         return component.props ? (component.props.find(prop => prop.name === name)?.value) : undefined
     }
 }

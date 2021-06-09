@@ -5,21 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 
-var _oscal_assessmentPlan_schema = _interopRequireDefault(require("oscal/src/schemas/oscal_assessment-plan_schema.json"));
-
-var _oscal_assessmentResults_schema = _interopRequireDefault(require("oscal/src/schemas/oscal_assessment-results_schema.json"));
-
-var _oscal_catalog_schema = _interopRequireDefault(require("oscal/src/schemas/oscal_catalog_schema.json"));
-
-var _oscal_component_schema = _interopRequireDefault(require("oscal/src/schemas/oscal_component_schema.json"));
-
-var _oscal_organization_security_policy = _interopRequireDefault(require("oscal/src/schemas/oscal_organization_security_policy.json"));
-
-var _oscal_poam_schema = _interopRequireDefault(require("oscal/src/schemas/oscal_poam_schema.json"));
-
-var _oscal_profile_schema = _interopRequireDefault(require("oscal/src/schemas/oscal_profile_schema.json"));
-
-var _oscal_ssp_schema = _interopRequireDefault(require("oscal/src/schemas/oscal_ssp_schema.json"));
+var _oscal_complete_schema = _interopRequireDefault(require("oscal/src/schemas/oscal_complete_schema.json"));
 
 var _store = require("store");
 
@@ -32,103 +18,105 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
  */
 var oscal = {
   leveraged_authentication: (0, _store.composeStore)({
-    schema: _oscal_ssp_schema["default"],
+    schema: _oscal_complete_schema["default"],
     definition: "leveraged_authentication"
   }),
   observation: (0, _store.composeStore)({
-    schema: _oscal_assessmentResults_schema["default"],
+    schema: _oscal_complete_schema["default"],
     definition: "observation"
   }),
   assessment_platform: (0, _store.composeStore)({
-    schema: _oscal_assessmentPlan_schema["default"],
+    schema: _oscal_complete_schema["default"],
     definition: "assessment_platform"
   }),
   ssp: (0, _store.composeStore)({
-    schema: _oscal_ssp_schema["default"],
+    schema: _oscal_complete_schema["default"],
     definition: "system_security_plan",
     workspaceGenerationMap: {
       uuid: _uuid.v4
     }
   }),
   information_type: (0, _store.composeStore)({
-    schema: _oscal_ssp_schema["default"],
+    schema: _oscal_complete_schema["default"],
     definition: "information_type"
   }),
   osp: (0, _store.composeStore)({
-    schema: _oscal_organization_security_policy["default"],
-    definition: "organization_security_policy"
+    schema: _oscal_complete_schema["default"],
+    definition: "organization_security_policy",
+    workspaceGenerationMap: {
+      uuid: _uuid.v4
+    }
   }),
   poam: (0, _store.composeStore)({
-    schema: _oscal_poam_schema["default"],
-    definition: "plan_of_action_and_milestones"
+    schema: _oscal_complete_schema["default"],
+    definition: "plan_of_action_and_milestones",
+    workspaceGenerationMap: {
+      uuid: _uuid.v4
+    }
   }),
   sar: (0, _store.composeStore)({
-    schema: _oscal_assessmentResults_schema["default"],
+    schema: _oscal_complete_schema["default"],
     definition: "assessment_results",
     workspaceGenerationMap: {
       uuid: _uuid.v4
     }
   }),
   sap: (0, _store.composeStore)({
-    schema: _oscal_assessmentPlan_schema["default"],
+    schema: _oscal_complete_schema["default"],
     definition: "assessment_plan",
     workspaceGenerationMap: {
       uuid: _uuid.v4
     }
   }),
-  baseline_profile: (0, _store.composeStore)({
-    schema: _oscal_profile_schema["default"],
+  profile: (0, _store.composeStore)({
+    schema: _oscal_complete_schema["default"],
     definition: "profile",
     workspaceGenerationMap: {
       uuid: _uuid.v4
     }
   }),
   catalog: (0, _store.composeStore)({
-    schema: _oscal_catalog_schema["default"],
+    schema: _oscal_complete_schema["default"],
     definition: "catalog"
   }),
   party: (0, _store.composeStore)({
-    schema: _oscal_ssp_schema["default"],
+    schema: _oscal_complete_schema["default"],
     definition: "party"
   }),
   role: (0, _store.composeStore)({
-    schema: _oscal_ssp_schema["default"],
+    schema: _oscal_complete_schema["default"],
     definition: "role"
   }),
   component: (0, _store.composeStore)({
-    schema: _oscal_ssp_schema["default"],
+    schema: _oscal_complete_schema["default"],
     definition: "system_component"
   }),
-  capability: (0, _store.composeStore)({
-    schema: _oscal_component_schema["default"],
-    definition: "capability"
-  }),
   component_definition: (0, _store.composeStore)({
-    schema: _oscal_component_schema["default"],
+    schema: _oscal_complete_schema["default"],
     definition: "component_definition"
   }),
   risk: (0, _store.composeStore)({
-    schema: _oscal_poam_schema["default"],
+    schema: _oscal_complete_schema["default"],
     definition: "risk"
   }),
   resource: (0, _store.composeStore)({
-    schema: _oscal_ssp_schema["default"],
+    schema: _oscal_complete_schema["default"],
     definition: "resource"
   }),
   inventory_item: (0, _store.composeStore)({
-    schema: _oscal_ssp_schema["default"],
+    schema: _oscal_complete_schema["default"],
     definition: "inventory_item"
   }),
   control: (0, _store.composeStore)({
-    schema: _oscal_catalog_schema["default"],
+    schema: _oscal_complete_schema["default"],
     definition: "control"
   }),
-  control_group: (0, _store.composeStore)({
-    schema: _oscal_catalog_schema["default"],
-    definition: "control_group"
+  group: (0, _store.composeStore)({
+    schema: _oscal_complete_schema["default"],
+    definition: "group"
   }),
   implemented_requirement: (0, _store.composeStore)({
-    schema: _oscal_ssp_schema["default"],
+    schema: _oscal_complete_schema["default"],
     definition: "implemented_requirement"
   })
 };

@@ -1,13 +1,13 @@
 import { importOscal, Catalog, CatalogUniversallyUniqueIdentifier, RoleIdentifier, Role, InformationTypeUniversallyUniqueIdentifier, InformationType, ControlIdentifier, Control, ControlGroup } from "oscal";
-import NIST_HIGH from "oscal/src/content/baseline-profile/NIST_SP-800-53_rev5_HIGH-baseline_profile.json";
-import NIST_LOW from "oscal/src/content/baseline-profile/NIST_SP-800-53_rev5_LOW-baseline_profile.json";
-import NIST_MODERATE from "oscal/src/content/baseline-profile/NIST_SP-800-53_rev5_MODERATE-baseline_profile.json";
-import NIST_PRIVACY from "oscal/src/content/baseline-profile/NIST_SP-800-53_rev5_PRIVACY-baseline_profile.json";
+import NIST_HIGH from "oscal/src/content/profile/NIST_SP-800-53_rev5_HIGH-baseline_profile.json";
+import NIST_LOW from "oscal/src/content/profile/NIST_SP-800-53_rev5_LOW-baseline_profile.json";
+import NIST_MODERATE from "oscal/src/content/profile/NIST_SP-800-53_rev5_MODERATE-baseline_profile.json";
+import NIST_PRIVACY from "oscal/src/content/profile/NIST_SP-800-53_rev5_PRIVACY-baseline_profile.json";
 import NIST_800_53_CATALOG_REV5 from "oscal/src/content/catalog/NIST_SP-800-53_rev5_catalog.json";
 import DEFAULT_INFO_TYPES from "oscal/src/content/information-type/fedramp-info-types.json";
 import DEFAULT_ROLES from "oscal/src/content/role/default-roles.json";
 import { v4 } from 'uuid';
-import { ProfileUniversallyUniqueIdentifier, Profile, GroupIdentifier } from "oscal/dist/profile";
+import { ProfileUniversallyUniqueIdentifier, Profile, GroupIdentifier } from "oscal";
 import { flattenControlTree } from "../../queries/catalog/flattenControlTree";
 
 

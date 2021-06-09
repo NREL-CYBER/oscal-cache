@@ -1,3 +1,3 @@
-import { RoleIdentifier } from "oscal/dist/shared";
+import { RoleIdentifier } from "oscal";
 import { hasPublicationMetadata } from "../../commands/shared/insertResponsibleParty";
-export declare const responsiblePartiesForRole: <T extends hasPublicationMetadata>(origin: T, role_id: RoleIdentifier) => string[];
+export declare const responsiblePartiesForRole: <T extends hasPublicationMetadata>(origin: T, role_id: RoleIdentifier) => false | string[] | undefined;

@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.modifyAssessmentSubject = void 0;
 
-var modifyAssessmentSubject = function modifyAssessmentSubject(type, uuid, selection) {
+var modifyAssessmentSubject = function modifyAssessmentSubject(type, subject_uuid, selection) {
   return function (sapDraft) {
     var assessment_subjects = sapDraft.assessment_subjects || [];
     var subject_index = assessment_subjects === null || assessment_subjects === void 0 ? void 0 : assessment_subjects.findIndex(function (x) {
@@ -30,25 +30,27 @@ var modifyAssessmentSubject = function modifyAssessmentSubject(type, uuid, selec
 
     if (selection.includes("include")) {
       exclude_subjects = exclude_subjects ? exclude_subjects.filter(function (ex) {
-        return ex.uuid_ref !== uuid;
+        return ex.subject_uuid !== subject_uuid;
       }) : [];
       include_subjects = include_subjects ? include_subjects.filter(function (x) {
-        return x.uuid_ref !== uuid;
+        return x.subject_uuid !== subject_uuid;
       }) : [];
       include_subjects.push({
-        uuid_ref: uuid
+        subject_uuid: subject_uuid,
+        type: type
       });
     }
 
     if (selection.includes("exclude")) {
       exclude_subjects = exclude_subjects ? exclude_subjects.filter(function (x) {
-        return x.uuid_ref !== uuid;
+        return x.subject_uuid !== subject_uuid;
       }) : [];
       include_subjects = include_subjects ? include_subjects.filter(function (x) {
-        return x.uuid_ref !== uuid;
+        return x.subject_uuid !== subject_uuid;
       }) : [];
       exclude_subjects.push({
-        uuid_ref: uuid
+        subject_uuid: subject_uuid,
+        type: type
       });
     }
 

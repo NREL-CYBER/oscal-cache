@@ -1,5 +1,4 @@
-import { Profile, Catalog } from "oscal";
-import { CatalogOrProfileReference } from "oscal/dist/profile";
+import { Profile } from "oscal";
 
 /**
  * Get Control ID's of all included or altered in baseline
@@ -14,11 +13,11 @@ export const profileAlterations = (baseline: Profile) => {
     return alterations?.filter(Boolean) || [];
 }
 export const profileInclusions = (baseline: Profile) => {
-    const inclusions = baseline.imports.flatMap(({ include }) => include?.calls?.map(x => x ? x.control_id : "")).filter(Boolean);
+    const inclusions = baseline.imports.flatMap(({ include_controls }) => include_controls?.map(x => x ? x.control_id : "")).filter(Boolean);
     return (inclusions || []) as string[];
 }
 export const profileExclusions = (baseline: Profile) => {
-    const exclusions = baseline.imports.flatMap(({ exclude }) => exclude?.calls?.map(x => x ? x.control_id : "")).filter(Boolean);
+    const exclusions = baseline.imports.flatMap(({ exclude_controls }) => exclude_controls?.map(x => x ? x.control_id : "")).filter(Boolean);
     return (exclusions || []) as string[];
 }
 

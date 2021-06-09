@@ -29,10 +29,8 @@ exports.profileAlterations = profileAlterations;
 
 var profileInclusions = function profileInclusions(baseline) {
   var inclusions = baseline.imports.flatMap(function (_ref) {
-    var _include$calls;
-
-    var include = _ref.include;
-    return include === null || include === void 0 ? void 0 : (_include$calls = include.calls) === null || _include$calls === void 0 ? void 0 : _include$calls.map(function (x) {
+    var include_controls = _ref.include_controls;
+    return include_controls === null || include_controls === void 0 ? void 0 : include_controls.map(function (x) {
       return x ? x.control_id : "";
     });
   }).filter(Boolean);
@@ -43,10 +41,8 @@ exports.profileInclusions = profileInclusions;
 
 var profileExclusions = function profileExclusions(baseline) {
   var exclusions = baseline.imports.flatMap(function (_ref2) {
-    var _exclude$calls;
-
-    var exclude = _ref2.exclude;
-    return exclude === null || exclude === void 0 ? void 0 : (_exclude$calls = exclude.calls) === null || _exclude$calls === void 0 ? void 0 : _exclude$calls.map(function (x) {
+    var exclude_controls = _ref2.exclude_controls;
+    return exclude_controls === null || exclude_controls === void 0 ? void 0 : exclude_controls.map(function (x) {
       return x ? x.control_id : "";
     });
   }).filter(Boolean);

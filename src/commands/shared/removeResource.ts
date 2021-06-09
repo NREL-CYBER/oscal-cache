@@ -7,4 +7,7 @@ export const removeResource: (resource: Resource) => (oscal_document: { back_mat
     } else {
         oscal_document.back_matter = { resources }
     }
+    if (oscal_document.back_matter.resources?.length === 0) {
+        oscal_document.back_matter = undefined;
+    }
 }

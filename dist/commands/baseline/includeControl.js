@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.includeControl = void 0;
 
-var includeControl = function includeControl(import_profile, control_id, with_child_controls) {
+var includeControl = function includeControl(import_profile, control_id, statement_ids) {
   return function (baselineDraft) {
     var profileIndex = baselineDraft.imports.findIndex(function (x) {
       return x.href === import_profile;
@@ -13,33 +13,26 @@ var includeControl = function includeControl(import_profile, control_id, with_ch
     var profile = baselineDraft.imports[profileIndex];
 
     if (profile) {
-      var _include$calls;
-
       var _ref = profile || {
-        include: {
-          calls: []
-        }
+        include_controls: []
       },
-          include = _ref.include;
+          include_controls = _ref.include_controls;
 
-      var control_ids = include === null || include === void 0 ? void 0 : (_include$calls = include.calls) === null || _include$calls === void 0 ? void 0 : _include$calls.map(function (x) {
+      var control_ids = include_controls && include_controls.map(function (x) {
         return x ? x.control_id : "";
-      });
+      }) || [];
 
       if (control_ids !== null && control_ids !== void 0 && control_ids.includes(control_id)) {//This Control ID has been included in our profile already
         //Since we just trying to include a control, we can just exit the function
-      } else if (include !== null && include !== void 0 && include.calls) {
-        baselineDraft.imports[profileIndex].include.calls.push({
+      } else if (include_controls) {
+        baselineDraft.imports[profileIndex].include_controls.push({
           control_id: control_id,
-          with_child_controls: with_child_controls
+          statement_ids: statement_ids
         });
       } else {
-        baselineDraft.imports[profileIndex].include = {
-          calls: [{
-            control_id: control_id,
-            with_child_controls: with_child_controls
-          }]
-        };
+        baselineDraft.imports[profileIndex].include_controls = [{
+          control_id: control_id
+        }];
       }
     } else {
       // Profile doesn't exist yet.
@@ -47,13 +40,10 @@ var includeControl = function includeControl(import_profile, control_id, with_ch
       // if it does lets create a new profile.
       baselineDraft.imports.push({
         href: import_profile,
-        exclude: {},
-        include: {
-          calls: [{
-            control_id: control_id,
-            with_child_controls: with_child_controls
-          }]
-        }
+        include_controls: [{
+          control_id: control_id,
+          statement_ids: statement_ids
+        }]
       });
     }
   };

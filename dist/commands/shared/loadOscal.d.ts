@@ -1,5 +1,5 @@
 import { Catalog, CatalogUniversallyUniqueIdentifier, RoleIdentifier, Role, InformationTypeUniversallyUniqueIdentifier, InformationType, ControlIdentifier, Control, ControlGroup } from "oscal";
-import { ProfileUniversallyUniqueIdentifier, Profile, GroupIdentifier } from "oscal/dist/profile";
+import { ProfileUniversallyUniqueIdentifier, Profile, GroupIdentifier } from "oscal";
 interface OscalDirectoryLayout {
     catalog: Record<CatalogUniversallyUniqueIdentifier, Catalog>;
     role: Record<RoleIdentifier, Role>;

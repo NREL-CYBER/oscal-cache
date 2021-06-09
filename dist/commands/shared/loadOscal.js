@@ -7,13 +7,13 @@ exports.load_oscal = void 0;
 
 var _oscal = require("oscal");
 
-var _NIST_SP80053_rev5_HIGHBaseline_profile = _interopRequireDefault(require("oscal/src/content/baseline-profile/NIST_SP-800-53_rev5_HIGH-baseline_profile.json"));
+var _NIST_SP80053_rev5_HIGHBaseline_profile = _interopRequireDefault(require("oscal/src/content/profile/NIST_SP-800-53_rev5_HIGH-baseline_profile.json"));
 
-var _NIST_SP80053_rev5_LOWBaseline_profile = _interopRequireDefault(require("oscal/src/content/baseline-profile/NIST_SP-800-53_rev5_LOW-baseline_profile.json"));
+var _NIST_SP80053_rev5_LOWBaseline_profile = _interopRequireDefault(require("oscal/src/content/profile/NIST_SP-800-53_rev5_LOW-baseline_profile.json"));
 
-var _NIST_SP80053_rev5_MODERATEBaseline_profile = _interopRequireDefault(require("oscal/src/content/baseline-profile/NIST_SP-800-53_rev5_MODERATE-baseline_profile.json"));
+var _NIST_SP80053_rev5_MODERATEBaseline_profile = _interopRequireDefault(require("oscal/src/content/profile/NIST_SP-800-53_rev5_MODERATE-baseline_profile.json"));
 
-var _NIST_SP80053_rev5_PRIVACYBaseline_profile = _interopRequireDefault(require("oscal/src/content/baseline-profile/NIST_SP-800-53_rev5_PRIVACY-baseline_profile.json"));
+var _NIST_SP80053_rev5_PRIVACYBaseline_profile = _interopRequireDefault(require("oscal/src/content/profile/NIST_SP-800-53_rev5_PRIVACY-baseline_profile.json"));
 
 var _NIST_SP80053_rev5_catalog = _interopRequireDefault(require("oscal/src/content/catalog/NIST_SP-800-53_rev5_catalog.json"));
 

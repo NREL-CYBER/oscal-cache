@@ -1,8 +1,8 @@
 import { Draft } from "immer";
-import { SecurityAssessmentPlan, UUIDReference } from "oscal";
+import { SecurityAssessmentPlan, SubjectUniversallyUniqueIdentifierReference } from "oscal";
 
 export type includeOrExclude = "include" | "exclude"
-export const modifyAssessmentSubject = (type: string, uuid: UUIDReference, selection: includeOrExclude[]) => (sapDraft: Draft<SecurityAssessmentPlan>) => {
+export const modifyAssessmentSubject = (type: string, subject_uuid: SubjectUniversallyUniqueIdentifierReference, selection: includeOrExclude[]) => (sapDraft: Draft<SecurityAssessmentPlan>) => {
     const assessment_subjects = sapDraft.assessment_subjects || []
     let subject_index = assessment_subjects?.findIndex(x => x.type === type)
     if (subject_index === -1) {
@@ -13,17 +13,17 @@ export const modifyAssessmentSubject = (type: string, uuid: UUIDReference, selec
     let { exclude_subjects, include_subjects } = subject!;
     if (selection.includes("include")) {
         exclude_subjects = exclude_subjects ? exclude_subjects!
-            .filter(ex => ex.uuid_ref !== uuid) : [];
+            .filter(ex => ex.subject_uuid !== subject_uuid) : [];
         include_subjects = include_subjects ? include_subjects!
-            .filter(x => x.uuid_ref !== uuid) : [];
-        include_subjects.push({ uuid_ref: uuid });
+            .filter(x => x.subject_uuid !== subject_uuid) : [];
+        include_subjects.push({ subject_uuid, type });
     }
     if (selection.includes("exclude")) {
         exclude_subjects = exclude_subjects ? exclude_subjects!
-            .filter(x => x.uuid_ref !== uuid) : [];
+            .filter(x => x.subject_uuid !== subject_uuid) : [];
         include_subjects = include_subjects ? include_subjects!
-            .filter(x => x.uuid_ref !== uuid) : [];
-        exclude_subjects.push({ uuid_ref: uuid });
+            .filter(x => x.subject_uuid !== subject_uuid) : [];
+        exclude_subjects.push({ subject_uuid, type });
     }
     assessment_subjects[subject_index].exclude_subjects = exclude_subjects;
     assessment_subjects[subject_index].include_subjects = include_subjects;

@@ -4,6 +4,6 @@ import { Profile } from "oscal";
  * @param baseline
  */
 export declare const profileModifications: (baseline: Profile) => (string | undefined)[];
-export declare const profileAlterations: (baseline: Profile) => import("oscal/dist/profile").Alteration[];
+export declare const profileAlterations: (baseline: Profile) => import("oscal").Alteration[];
 export declare const profileInclusions: (baseline: Profile) => string[];
 export declare const profileExclusions: (baseline: Profile) => string[];

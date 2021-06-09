@@ -25,39 +25,39 @@ var excludeControl = function excludeControl(import_profile, control_id, with_ch
     }
 
     if (profile) {
-      var _include$calls;
-
       var _ref2 = profile || {
         include: {
           calls: []
         }
       },
-          include = _ref2.include;
+          exclude_controls = _ref2.exclude_controls,
+          include_all = _ref2.include_all,
+          include_controls = _ref2.include_controls;
 
-      var control_ids = include === null || include === void 0 ? void 0 : (_include$calls = include.calls) === null || _include$calls === void 0 ? void 0 : _include$calls.map(function (x) {
+      var control_ids = include_controls === null || include_controls === void 0 ? void 0 : include_controls.map(function (x) {
         return x ? x.control_id : "";
       });
 
       if (control_ids !== null && control_ids !== void 0 && control_ids.includes(control_id)) {
-        var _calls;
+        var _baselineDraft$import;
 
-        var calls = ((_calls = baselineDraft.imports[profileIndex].include.calls) === null || _calls === void 0 ? void 0 : _calls.filter(function (x) {
+        var calls = ((_baselineDraft$import = baselineDraft.imports[profileIndex].include_controls) === null || _baselineDraft$import === void 0 ? void 0 : _baselineDraft$import.filter(function (x) {
           return x.control_id && x.control_id === control_id;
         })) || [];
 
         if ((calls === null || calls === void 0 ? void 0 : calls.length) > 0) {
-          var _baselineDraft$import, _baselineDraft$import2;
+          var _baselineDraft$import2;
 
           calls.forEach(function (call) {
-            var index = baselineDraft.imports[profileIndex].include.calls.findIndex(function (x) {
+            var index = baselineDraft.imports[profileIndex].include_controls.findIndex(function (x) {
               return x.control_id === call.control_id;
             });
 
             if (index !== -1) {
-              delete baselineDraft.imports[profileIndex].include.calls[index];
+              delete baselineDraft.imports[profileIndex].include_controls[index];
             }
           });
-          baselineDraft.imports[profileIndex].include.calls = (_baselineDraft$import = baselineDraft.imports[profileIndex].include) === null || _baselineDraft$import === void 0 ? void 0 : (_baselineDraft$import2 = _baselineDraft$import.calls) === null || _baselineDraft$import2 === void 0 ? void 0 : _baselineDraft$import2.filter(function (x) {
+          baselineDraft.imports[profileIndex].include_controls = (_baselineDraft$import2 = baselineDraft.imports[profileIndex].include_controls) === null || _baselineDraft$import2 === void 0 ? void 0 : _baselineDraft$import2.filter(function (x) {
             return x !== null;
           });
         }
