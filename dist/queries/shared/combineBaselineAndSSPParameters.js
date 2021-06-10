@@ -17,9 +17,11 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToAr
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-var combineBaslineAndSSPParameters = function combineBaslineAndSSPParameters(baseline, ssp) {
+var combineBaslineAndSSPParameters = function combineBaslineAndSSPParameters() {
   var _baseline$modify, _baseline$modify$set_, _ssp$control_implemen;
 
+  var baseline = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var ssp = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
   return [].concat(_toConsumableArray((baseline === null || baseline === void 0 ? void 0 : (_baseline$modify = baseline.modify) === null || _baseline$modify === void 0 ? void 0 : (_baseline$modify$set_ = _baseline$modify.set_parameters) === null || _baseline$modify$set_ === void 0 ? void 0 : _baseline$modify$set_.map(function (_ref) {
     var values = _ref.values,
         param_id = _ref.param_id;

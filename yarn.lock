@@ -2281,8 +2281,8 @@ once@^1.3.0:
     wrappy "1"
 
 "oscal@git+ssh://git@github.com/NREL-CYBER/oscal.git":
-  version "1.8.4"
-  resolved "git+ssh://git@github.com/NREL-CYBER/oscal.git#630e9ab14c55426176171bb11d64829799d195b9"
+  version "1.8.9"
+  resolved "git+ssh://git@github.com/NREL-CYBER/oscal.git#dc2fa691e69283be61dc655f88510230df7b96ee"
   dependencies:
     "@babel/cli" "^7.14.3"
     "@babel/core" "^7.14.3"

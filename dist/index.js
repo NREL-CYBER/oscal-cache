@@ -16,7 +16,7 @@ Object.defineProperty(exports, "OscalCachedDefinition", {
 });
 exports["default"] = void 0;
 
-var _oscalCache = _interopRequireWildcard(require("./oscalCache"));
+var _oscalCache = _interopRequireWildcard(require("./oscal-cache"));
 
 var _commands = require("./commands/");
 

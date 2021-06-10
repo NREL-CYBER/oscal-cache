@@ -1,15 +1,24 @@
 import {
-    AssessmentPlatform, Capability, Catalog, SystemComponent,
+    AssessmentPlatform, Catalog,
     ComponentDefinition, Control, ControlBasedRequirement, ControlGroup, IdentifiedRisk, InformationType, InventoryItem,
-    Observation, OrganizationSecurityPolicy, Party, PlanOfActionAndMilestones,
-    Profile, Resource, Role, SecurityAssessmentPlan, SecurityAssessmentResults,
-    SystemSecurityPlan,
-    LeveragedAuthorization
+
+
+
+    LeveragedAuthorization, Observation,
+
+
+
+    OrganizationMissionStatement, Party, PlanOfActionAndMilestones,
+    Profile, Resource, Role, SecurityAssessmentPlan, SecurityAssessmentResults, SystemComponent,
+
+
+
+    SystemSecurityPlan
 } from "oscal"
 import schema from "oscal/src/schemas/oscal_complete_schema.json"
 import { composeStore, Store } from "store"
-import { UseStore } from "zustand"
 import { v4 } from "uuid"
+import { UseStore } from "zustand"
 
 
 export type OscalCache = {
@@ -17,7 +26,7 @@ export type OscalCache = {
     assessment_platform: UseStore<Store<AssessmentPlatform>>
     ssp: UseStore<Store<SystemSecurityPlan>>
     information_type: UseStore<Store<InformationType>>
-    osp: UseStore<Store<OrganizationSecurityPolicy>>
+    oms: UseStore<Store<OrganizationMissionStatement>>
     poam: UseStore<Store<PlanOfActionAndMilestones>>
     sar: UseStore<Store<SecurityAssessmentResults>>
     sap: UseStore<Store<SecurityAssessmentPlan>>
@@ -39,7 +48,7 @@ export type OscalCache = {
 export type OscalCachedDefinition =
     "leveraged_authentication" |
     "system_security_plan" |
-    "organization_security_policy" |
+    "oms" |
     "plan_of_action_and_milestones" |
     "assessment_results" |
     "assessment_plan" |
@@ -81,8 +90,8 @@ const oscal: OscalCache = {
     information_type: composeStore<InformationType>({
         schema, definition: "information_type"
     }),
-    osp: composeStore<OrganizationSecurityPolicy>({
-        schema, definition: "organization_security_policy",
+    oms: composeStore<OrganizationMissionStatement>({
+        schema, definition: "organizationMissionStatement",
         workspaceGenerationMap: { uuid: v4 }
     }),
     poam: composeStore<PlanOfActionAndMilestones>({
