@@ -7,4 +7,4 @@ export * from "./shared/propertyQueries"
 export * from "./catalog/flattenControlTree"
 export * from "./catalog/flattenPartTree"
 export * from "./shared/responsiblePartiesForRole"
-
+export * from "./shared/combineBaselineAndSSPParameters"

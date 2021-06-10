@@ -146,3 +146,29 @@ Object.keys(_removeResource).forEach(function (key) {
     }
   });
 });
+
+var _insertControlParameter = require("./implement/insertControlParameter");
+
+Object.keys(_insertControlParameter).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _insertControlParameter[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _insertControlParameter[key];
+    }
+  });
+});
+
+var _insertImplementation = require("./implement/insertImplementation");
+
+Object.keys(_insertImplementation).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _insertImplementation[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _insertImplementation[key];
+    }
+  });
+});
