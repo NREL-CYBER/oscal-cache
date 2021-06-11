@@ -1,7 +1,7 @@
 import { Draft } from "immer";
 import { Profile } from "oscal";
 import { CatalogOrProfileReference, ControlIdentifier } from "oscal";
-import { profileInclusions } from "src/queries";
+import { profileInclusions } from "../../queries";
 
 export const excludeControl = (import_profile: CatalogOrProfileReference, control_id: ControlIdentifier, with_child_controls?: "yes" | "no" | undefined) => {
     return (baselineDraft: Draft<Profile>) => {

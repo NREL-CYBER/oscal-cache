@@ -1,6 +1,6 @@
 import { Draft } from "immer";
 import { CatalogOrProfileReference, ControlIdentifier, Profile } from "oscal";
-import { profileInclusions } from "src/queries";
+import { profileInclusions } from "../../queries";
 
 export const includeControl = (import_profile: CatalogOrProfileReference, control_id: ControlIdentifier, statement_ids?: string[]) => {
     return (baselineDraft: Draft<Profile>) => {
