@@ -13,11 +13,11 @@ export const profileAlterations = (baseline: Profile) => {
     return alterations?.filter(Boolean) || [];
 }
 export const profileInclusions = (baseline: Profile) => {
-    const inclusions = baseline.imports.flatMap(({ include_controls }) => include_controls?.map(x => x ? x.control_id : "")).filter(Boolean);
-    return (inclusions || []) as string[];
+    const calls = baseline.imports.flatMap(x => x.include_controls?.flatMap(x => x.with_ids || [])) as string[];
+    return (calls || []) as string[];
 }
 export const profileExclusions = (baseline: Profile) => {
-    const exclusions = baseline.imports.flatMap(({ exclude_controls }) => exclude_controls?.map(x => x ? x.control_id : "")).filter(Boolean);
-    return (exclusions || []) as string[];
+    const calls = baseline.imports.flatMap(x => x.exclude_controls?.flatMap(x => x.with_ids || [])) as string[];
+    return (calls || []) as string[];
 }
 

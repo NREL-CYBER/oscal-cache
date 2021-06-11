@@ -28,25 +28,27 @@ var profileAlterations = function profileAlterations(baseline) {
 exports.profileAlterations = profileAlterations;
 
 var profileInclusions = function profileInclusions(baseline) {
-  var inclusions = baseline.imports.flatMap(function (_ref) {
-    var include_controls = _ref.include_controls;
-    return include_controls === null || include_controls === void 0 ? void 0 : include_controls.map(function (x) {
-      return x ? x.control_id : "";
+  var calls = baseline.imports.flatMap(function (x) {
+    var _x$include_controls;
+
+    return (_x$include_controls = x.include_controls) === null || _x$include_controls === void 0 ? void 0 : _x$include_controls.flatMap(function (x) {
+      return x.with_ids || [];
     });
-  }).filter(Boolean);
-  return inclusions || [];
+  });
+  return calls || [];
 };
 
 exports.profileInclusions = profileInclusions;
 
 var profileExclusions = function profileExclusions(baseline) {
-  var exclusions = baseline.imports.flatMap(function (_ref2) {
-    var exclude_controls = _ref2.exclude_controls;
-    return exclude_controls === null || exclude_controls === void 0 ? void 0 : exclude_controls.map(function (x) {
-      return x ? x.control_id : "";
+  var calls = baseline.imports.flatMap(function (x) {
+    var _x$exclude_controls;
+
+    return (_x$exclude_controls = x.exclude_controls) === null || _x$exclude_controls === void 0 ? void 0 : _x$exclude_controls.flatMap(function (x) {
+      return x.with_ids || [];
     });
-  }).filter(Boolean);
-  return exclusions || [];
+  });
+  return calls || [];
 };
 
 exports.profileExclusions = profileExclusions;

@@ -1,6 +1,7 @@
 import { Draft } from "immer";
 import { Profile } from "oscal";
 import { CatalogOrProfileReference, ControlIdentifier } from "oscal";
+import { profileInclusions } from "src/queries";
 
 export const excludeControl = (import_profile: CatalogOrProfileReference, control_id: ControlIdentifier, with_child_controls?: "yes" | "no" | undefined) => {
     return (baselineDraft: Draft<Profile>) => {
@@ -13,18 +14,17 @@ export const excludeControl = (import_profile: CatalogOrProfileReference, contro
         }
 
         if (profile) {
-            const { exclude_controls, include_all, include_controls } = profile || { include: { calls: [] } };
-            const control_ids = include_controls?.map((x) => x ? x.control_id : "");
+            const { exclude_controls, include_all, include_controls } = profile;
+            const control_ids = profileInclusions(baselineDraft);
             if (control_ids?.includes(control_id)) {
-                const calls = baselineDraft.imports[profileIndex].include_controls?.filter(x => x.control_id && x.control_id === control_id) || [];
-                if (calls?.length > 0) {
-                    calls.forEach((call) => {
-                        const index = baselineDraft.imports[profileIndex].include_controls!.findIndex(x => x.control_id === call.control_id);
-                        if (index !== -1) {
-                            delete baselineDraft.imports[profileIndex].include_controls![index];
+                if (include_controls) {
+                    include_controls.forEach((call) => {
+                        const matching_call = include_controls?.find(x => x.with_ids?.includes(control_id));
+                        const with_id_call_index = matching_call && matching_call.with_ids?.findIndex(x => x === control_id) || -1;
+                        if (with_id_call_index !== -1) {
+                            delete matching_call?.with_ids![with_id_call_index];
                         }
                     })
-                    baselineDraft.imports[profileIndex].include_controls = baselineDraft.imports[profileIndex].include_controls?.filter(x => x !== null) as any;
                 }
             }
         }

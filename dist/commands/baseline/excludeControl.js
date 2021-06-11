@@ -5,6 +5,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.excludeControl = void 0;
 
+var _queries = require("src/queries");
+
 var excludeControl = function excludeControl(import_profile, control_id, with_child_controls) {
   return function (baselineDraft) {
     var _baselineDraft$modify, _baselineDraft$modify2;
@@ -25,40 +27,28 @@ var excludeControl = function excludeControl(import_profile, control_id, with_ch
     }
 
     if (profile) {
-      var _ref2 = profile || {
-        include: {
-          calls: []
-        }
-      },
-          exclude_controls = _ref2.exclude_controls,
-          include_all = _ref2.include_all,
-          include_controls = _ref2.include_controls;
-
-      var control_ids = include_controls === null || include_controls === void 0 ? void 0 : include_controls.map(function (x) {
-        return x ? x.control_id : "";
-      });
+      var exclude_controls = profile.exclude_controls,
+          include_all = profile.include_all,
+          include_controls = profile.include_controls;
+      var control_ids = (0, _queries.profileInclusions)(baselineDraft);
 
       if (control_ids !== null && control_ids !== void 0 && control_ids.includes(control_id)) {
-        var _baselineDraft$import;
+        if (include_controls) {
+          include_controls.forEach(function (call) {
+            var _matching_call$with_i;
 
-        var calls = ((_baselineDraft$import = baselineDraft.imports[profileIndex].include_controls) === null || _baselineDraft$import === void 0 ? void 0 : _baselineDraft$import.filter(function (x) {
-          return x.control_id && x.control_id === control_id;
-        })) || [];
+            var matching_call = include_controls === null || include_controls === void 0 ? void 0 : include_controls.find(function (x) {
+              var _x$with_ids;
 
-        if ((calls === null || calls === void 0 ? void 0 : calls.length) > 0) {
-          var _baselineDraft$import2;
-
-          calls.forEach(function (call) {
-            var index = baselineDraft.imports[profileIndex].include_controls.findIndex(function (x) {
-              return x.control_id === call.control_id;
+              return (_x$with_ids = x.with_ids) === null || _x$with_ids === void 0 ? void 0 : _x$with_ids.includes(control_id);
             });
+            var with_id_call_index = matching_call && ((_matching_call$with_i = matching_call.with_ids) === null || _matching_call$with_i === void 0 ? void 0 : _matching_call$with_i.findIndex(function (x) {
+              return x === control_id;
+            })) || -1;
 
-            if (index !== -1) {
-              delete baselineDraft.imports[profileIndex].include_controls[index];
+            if (with_id_call_index !== -1) {
+              matching_call === null || matching_call === void 0 ? true : delete matching_call.with_ids[with_id_call_index];
             }
-          });
-          baselineDraft.imports[profileIndex].include_controls = (_baselineDraft$import2 = baselineDraft.imports[profileIndex].include_controls) === null || _baselineDraft$import2 === void 0 ? void 0 : _baselineDraft$import2.filter(function (x) {
-            return x !== null;
           });
         }
       }
