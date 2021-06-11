@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.includeControl = void 0;
 
-var _queries = require("src/queries");
+var _queries = require("../../queries");
 
 var includeControl = function includeControl(import_profile, control_id, statement_ids) {
   return function (baselineDraft) {

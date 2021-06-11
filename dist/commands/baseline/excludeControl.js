@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.excludeControl = void 0;
 
-var _queries = require("src/queries");
+var _queries = require("../../queries");
 
 var excludeControl = function excludeControl(import_profile, control_id, with_child_controls) {
   return function (baselineDraft) {
