@@ -3,6 +3,7 @@ import { Profile } from "oscal";
 import { CatalogOrProfileReference, ControlIdentifier } from "oscal";
 import { profileInclusions } from "../../queries";
 
+
 export const excludeControl = (import_profile: CatalogOrProfileReference, control_id: ControlIdentifier, with_child_controls?: "yes" | "no" | undefined) => {
     return (baselineDraft: Draft<Profile>) => {
         const profileIndex = baselineDraft.imports.findIndex(({ href }) => href === import_profile);
@@ -14,17 +15,15 @@ export const excludeControl = (import_profile: CatalogOrProfileReference, contro
         }
 
         if (profile) {
-            const { exclude_controls, include_all, include_controls } = profile;
-            const control_ids = profileInclusions(baselineDraft);
+            const control_ids = profileInclusions(baselineDraft).filter(Boolean);
             if (control_ids?.includes(control_id)) {
+                let { include_controls } = profile;
                 if (include_controls) {
-                    include_controls.forEach((call) => {
-                        const matching_call = include_controls?.find(x => x.with_ids?.includes(control_id));
-                        const with_id_call_index = matching_call && matching_call.with_ids?.findIndex(x => x === control_id) || -1;
-                        if (with_id_call_index !== -1) {
-                            delete matching_call?.with_ids![with_id_call_index];
-                        }
+                    include_controls = include_controls.map(({ with_ids, matching, with_child_controls }, i) => {
+                        with_ids = with_ids?.filter(x => x !== control_id)
+                        return { with_child_controls, with_ids, matching }
                     })
+                    baselineDraft.imports[profileIndex].include_controls = include_controls;
                 }
             }
         }

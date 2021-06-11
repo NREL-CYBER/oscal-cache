@@ -27,29 +27,28 @@ var excludeControl = function excludeControl(import_profile, control_id, with_ch
     }
 
     if (profile) {
-      var exclude_controls = profile.exclude_controls,
-          include_all = profile.include_all,
-          include_controls = profile.include_controls;
-      var control_ids = (0, _queries.profileInclusions)(baselineDraft);
+      var control_ids = (0, _queries.profileInclusions)(baselineDraft).filter(Boolean);
 
       if (control_ids !== null && control_ids !== void 0 && control_ids.includes(control_id)) {
+        var include_controls = profile.include_controls;
+
         if (include_controls) {
-          include_controls.forEach(function (call) {
-            var _matching_call$with_i;
+          include_controls = include_controls.map(function (_ref2, i) {
+            var _with_ids;
 
-            var matching_call = include_controls === null || include_controls === void 0 ? void 0 : include_controls.find(function (x) {
-              var _x$with_ids;
-
-              return (_x$with_ids = x.with_ids) === null || _x$with_ids === void 0 ? void 0 : _x$with_ids.includes(control_id);
+            var with_ids = _ref2.with_ids,
+                matching = _ref2.matching,
+                with_child_controls = _ref2.with_child_controls;
+            with_ids = (_with_ids = with_ids) === null || _with_ids === void 0 ? void 0 : _with_ids.filter(function (x) {
+              return x !== control_id;
             });
-            var with_id_call_index = matching_call && ((_matching_call$with_i = matching_call.with_ids) === null || _matching_call$with_i === void 0 ? void 0 : _matching_call$with_i.findIndex(function (x) {
-              return x === control_id;
-            })) || -1;
-
-            if (with_id_call_index !== -1) {
-              matching_call === null || matching_call === void 0 ? true : delete matching_call.with_ids[with_id_call_index];
-            }
+            return {
+              with_child_controls: with_child_controls,
+              with_ids: with_ids,
+              matching: matching
+            };
           });
+          baselineDraft.imports[profileIndex].include_controls = include_controls;
         }
       }
     }
