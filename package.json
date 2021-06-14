@@ -1,6 +1,6 @@
 {
   "name": "oscal-cache",
-  "version": "1.6.1",
+  "version": "1.6.2",
   "description": "Oscal Storage Container",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -29,6 +29,9 @@
     "typescript": "^4.2.3",
     "uuid": "^8.3.2",
     "validator": "git+ssh://git@github.com/NREL-CYBER/validator.git"
+  },
+  "resolutions": {
+    "glob-parent": "5.1.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.14.3",
