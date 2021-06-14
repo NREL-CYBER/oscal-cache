@@ -147,6 +147,19 @@ Object.keys(_removeResource).forEach(function (key) {
   });
 });
 
+var _incrementVersion = require("./shared/incrementVersion");
+
+Object.keys(_incrementVersion).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _incrementVersion[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _incrementVersion[key];
+    }
+  });
+});
+
 var _insertControlParameter = require("./implement/insertControlParameter");
 
 Object.keys(_insertControlParameter).forEach(function (key) {

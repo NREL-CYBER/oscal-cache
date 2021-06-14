@@ -9,5 +9,6 @@ export * from "./shared/modifyProperty";
 export * from "./baseline/setBaselineParameter";
 export * from "./shared/insertResource";
 export * from "./shared/removeResource";
+export * from "./shared/incrementVersion";
 export * from "./implement/insertControlParameter";
 export * from "./implement/insertImplementation";
