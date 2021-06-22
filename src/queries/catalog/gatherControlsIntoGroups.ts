@@ -6,8 +6,8 @@ import { Control, ControlGroup } from "oscal";
  * @param control 
  */
 export const gatherControlsIntoGroups = (groups: ControlGroup[], controls: Control[]) => {
-    const control_ids = controls.map(x => x.id);
-    const matching_groups = groups.map(group => {
+    const control_ids = controls.map(x => x && x.id).filter(Boolean);
+    const matching_groups = groups.filter(Boolean).map(group => {
         const matching_controls = group.controls!.filter(control => control_ids.includes(control.id)) || [];
         const controls = matching_controls.sort((x, y) =>
             Number(x.id.replace(group.id! + "-", "")) - Number(y.id.replace(group.id! + "-", ""))

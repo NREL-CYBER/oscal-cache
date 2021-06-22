@@ -18,9 +18,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
  */
 var gatherControlsIntoGroups = function gatherControlsIntoGroups(groups, controls) {
   var control_ids = controls.map(function (x) {
-    return x.id;
-  });
-  var matching_groups = groups.map(function (group) {
+    return x && x.id;
+  }).filter(Boolean);
+  var matching_groups = groups.filter(Boolean).map(function (group) {
     var matching_controls = group.controls.filter(function (control) {
       return control_ids.includes(control.id);
     }) || [];
