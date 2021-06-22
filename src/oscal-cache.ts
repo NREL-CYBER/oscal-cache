@@ -1,18 +1,14 @@
 import {
     AssessmentPlatform, Catalog,
-    ComponentDefinition, Control, ControlBasedRequirement, ControlGroup, IdentifiedRisk, InformationType, InventoryItem,
-
-
-
+    ComponentDefinition, Control,
+    ControlBasedRequirement, ControlGroup,
+    IdentifiedRisk, InformationType, InventoryItem,
     LeveragedAuthorization, Observation,
-
-
-
-    OrganizationMissionStatement, Party, PlanOfActionAndMilestones,
-    Profile, Resource, Role, SecurityAssessmentPlan, SecurityAssessmentResults, SystemComponent,
-
-
-
+    OrganizationMissionStatement, Party,
+    PlanOfActionAndMilestones,
+    Profile, Resource, Role,
+    SecurityAssessmentPlan,
+    SecurityAssessmentResults, SystemComponent,
     SystemSecurityPlan
 } from "oscal"
 import schema from "oscal/src/schemas/oscal_complete_schema.json"
