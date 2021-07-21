@@ -81,30 +81,69 @@ const oscal: OscalCache = {
     }),
     ssp: composeStore<SystemSecurityPlan>({
         schema, definition: "system_security_plan",
-        workspaceGenerationMap: { uuid: v4 }
+        workspace:
+        {
+            "uuid": v4(),
+            "metadata": {
+                "title": "",
+                "last_modified": "",
+                "version": "",
+                "oscal_version": ""
+            },
+            "import_profile": {
+                "href": ""
+            },
+            "system_characteristics": {
+                "system_ids": [],
+                "system_name": "",
+                "description": "",
+                "security_sensitivity_level": "",
+                "system_information": {
+                    "information_types": []
+                },
+                "security_impact_level": {
+                    "security_objective_confidentiality": "",
+                    "security_objective_integrity": "",
+                    "security_objective_availability": ""
+                },
+                "status": {
+                    "state": ""
+                },
+                "authorization_boundary": {
+                    "description": ""
+                }
+            },
+            "system_implementation": {
+                "users": [],
+                "components": []
+            },
+            "control_implementation": {
+                "description": "",
+                "implemented_requirements": []
+            },
+            "back_matter": {
+                "resources": [
+                ]
+            }
+        }
     }),
     information_type: composeStore<InformationType>({
         schema, definition: "information_type"
     }),
     oms: composeStore<OrganizationMissionStatement>({
         schema, definition: "organizationMissionStatement",
-        workspaceGenerationMap: { uuid: v4 }
     }),
     poam: composeStore<PlanOfActionAndMilestones>({
         schema, definition: "plan_of_action_and_milestones",
-        workspaceGenerationMap: { uuid: v4 }
     }),
     sar: composeStore<SecurityAssessmentResults>({
         schema, definition: "assessment_results",
-        workspaceGenerationMap: { uuid: v4 }
     }),
     sap: composeStore<SecurityAssessmentPlan>({
         schema, definition: "assessment_plan",
-        workspaceGenerationMap: { uuid: v4 }
     }),
     profile: composeStore<Profile>({
         schema, definition: "profile",
-        workspaceGenerationMap: { uuid: v4 }
     }),
     catalog: composeStore<Catalog>({
         schema, definition: "catalog"

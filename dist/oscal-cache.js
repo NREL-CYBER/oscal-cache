@@ -32,8 +32,48 @@ var oscal = {
   ssp: (0, _store.composeStore)({
     schema: _oscal_complete_schema["default"],
     definition: "system_security_plan",
-    workspaceGenerationMap: {
-      uuid: _uuid.v4
+    workspace: {
+      "uuid": (0, _uuid.v4)(),
+      "metadata": {
+        "title": "",
+        "last_modified": "",
+        "version": "",
+        "oscal_version": ""
+      },
+      "import_profile": {
+        "href": ""
+      },
+      "system_characteristics": {
+        "system_ids": [],
+        "system_name": "",
+        "description": "",
+        "security_sensitivity_level": "",
+        "system_information": {
+          "information_types": []
+        },
+        "security_impact_level": {
+          "security_objective_confidentiality": "",
+          "security_objective_integrity": "",
+          "security_objective_availability": ""
+        },
+        "status": {
+          "state": ""
+        },
+        "authorization_boundary": {
+          "description": ""
+        }
+      },
+      "system_implementation": {
+        "users": [],
+        "components": []
+      },
+      "control_implementation": {
+        "description": "",
+        "implemented_requirements": []
+      },
+      "back_matter": {
+        "resources": []
+      }
     }
   }),
   information_type: (0, _store.composeStore)({
@@ -42,38 +82,23 @@ var oscal = {
   }),
   oms: (0, _store.composeStore)({
     schema: _oscal_complete_schema["default"],
-    definition: "organizationMissionStatement",
-    workspaceGenerationMap: {
-      uuid: _uuid.v4
-    }
+    definition: "organizationMissionStatement"
   }),
   poam: (0, _store.composeStore)({
     schema: _oscal_complete_schema["default"],
-    definition: "plan_of_action_and_milestones",
-    workspaceGenerationMap: {
-      uuid: _uuid.v4
-    }
+    definition: "plan_of_action_and_milestones"
   }),
   sar: (0, _store.composeStore)({
     schema: _oscal_complete_schema["default"],
-    definition: "assessment_results",
-    workspaceGenerationMap: {
-      uuid: _uuid.v4
-    }
+    definition: "assessment_results"
   }),
   sap: (0, _store.composeStore)({
     schema: _oscal_complete_schema["default"],
-    definition: "assessment_plan",
-    workspaceGenerationMap: {
-      uuid: _uuid.v4
-    }
+    definition: "assessment_plan"
   }),
   profile: (0, _store.composeStore)({
     schema: _oscal_complete_schema["default"],
-    definition: "profile",
-    workspaceGenerationMap: {
-      uuid: _uuid.v4
-    }
+    definition: "profile"
   }),
   catalog: (0, _store.composeStore)({
     schema: _oscal_complete_schema["default"],
