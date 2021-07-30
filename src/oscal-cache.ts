@@ -16,6 +16,8 @@ import { composeStore, Store } from "store"
 import { v4 } from "uuid"
 import { UseStore } from "zustand"
 
+const oscal_version = "1.0.0";
+
 
 export type OscalCache = {
     leveraged_authentication: UseStore<Store<LeveragedAuthorization>>
@@ -88,7 +90,7 @@ const oscal: OscalCache = {
                 "title": "",
                 "last_modified": "",
                 "version": "",
-                "oscal_version": ""
+                oscal_version
             },
             "import_profile": {
                 "href": ""
@@ -135,12 +137,48 @@ const oscal: OscalCache = {
     }),
     poam: composeStore<PlanOfActionAndMilestones>({
         schema, definition: "plan_of_action_and_milestones",
+        workspace:
+        {
+            "uuid": v4(),
+            "metadata": {
+                "title": "",
+                "last_modified": "",
+                "version": "",
+                oscal_version
+            }, "poam_items": []
+        }
     }),
     sar: composeStore<SecurityAssessmentResults>({
         schema, definition: "assessment_results",
+        workspace:
+        {
+            "uuid": v4(),
+            "metadata": {
+                "title": "",
+                "last_modified": "",
+                "version": "",
+                oscal_version
+            }, "import_ap": { "href": "" }, "results": []
+        }
     }),
     sap: composeStore<SecurityAssessmentPlan>({
         schema, definition: "assessment_plan",
+        workspace: {
+            "uuid": v4(),
+            "metadata":
+            {
+                "title": "",
+                "last_modified": "",
+                "version": "",
+                oscal_version
+            }, "import_ssp":
+            {
+                "href": ""
+            },
+            "reviewed_controls": {
+                "control_selections": []
+            }
+        }
     }),
     profile: composeStore<Profile>({
         schema, definition: "profile",

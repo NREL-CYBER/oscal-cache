@@ -13,6 +13,8 @@ var _uuid = require("uuid");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
+var oscal_version = "1.0.0";
+
 /**
  *  Global cache hook for oscal data storage for use in react with hooks
  */
@@ -38,7 +40,7 @@ var oscal = {
         "title": "",
         "last_modified": "",
         "version": "",
-        "oscal_version": ""
+        oscal_version: oscal_version
       },
       "import_profile": {
         "href": ""
@@ -86,15 +88,53 @@ var oscal = {
   }),
   poam: (0, _store.composeStore)({
     schema: _oscal_complete_schema["default"],
-    definition: "plan_of_action_and_milestones"
+    definition: "plan_of_action_and_milestones",
+    workspace: {
+      "uuid": (0, _uuid.v4)(),
+      "metadata": {
+        "title": "",
+        "last_modified": "",
+        "version": "",
+        oscal_version: oscal_version
+      },
+      "poam_items": []
+    }
   }),
   sar: (0, _store.composeStore)({
     schema: _oscal_complete_schema["default"],
-    definition: "assessment_results"
+    definition: "assessment_results",
+    workspace: {
+      "uuid": (0, _uuid.v4)(),
+      "metadata": {
+        "title": "",
+        "last_modified": "",
+        "version": "",
+        oscal_version: oscal_version
+      },
+      "import_ap": {
+        "href": ""
+      },
+      "results": []
+    }
   }),
   sap: (0, _store.composeStore)({
     schema: _oscal_complete_schema["default"],
-    definition: "assessment_plan"
+    definition: "assessment_plan",
+    workspace: {
+      "uuid": (0, _uuid.v4)(),
+      "metadata": {
+        "title": "",
+        "last_modified": "",
+        "version": "",
+        oscal_version: oscal_version
+      },
+      "import_ssp": {
+        "href": ""
+      },
+      "reviewed_controls": {
+        "control_selections": []
+      }
+    }
   }),
   profile: (0, _store.composeStore)({
     schema: _oscal_complete_schema["default"],
