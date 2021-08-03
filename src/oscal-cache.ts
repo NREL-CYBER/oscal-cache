@@ -18,7 +18,7 @@ import { UseStore } from "zustand"
 
 const oscal_version = "1.0.0";
 
-
+export type OscalCacheLayout = Record<OscalCachedDefinition, UseStore<Store<unknown>>>
 export type OscalCache = {
     leveraged_authentication: UseStore<Store<LeveragedAuthorization>>
     assessment_platform: UseStore<Store<AssessmentPlatform>>
@@ -46,6 +46,10 @@ export type OscalCache = {
 export type OscalCachedDefinition =
     "leveraged_authentication" |
     "system_security_plan" |
+    "ssp" |
+    "poam" |
+    "sap" |
+    "sar" |
     "oms" |
     "plan_of_action_and_milestones" |
     "assessment_results" |
