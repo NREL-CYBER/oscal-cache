@@ -25,7 +25,7 @@ export const modifyAssessmentSubject = (type: string, subject_uuid: SubjectUnive
             .filter(x => x.subject_uuid !== subject_uuid) : [];
         exclude_subjects.push({ subject_uuid, type });
     }
-    assessment_subjects[subject_index].exclude_subjects = exclude_subjects;
-    assessment_subjects[subject_index].include_subjects = include_subjects;
+    assessment_subjects[subject_index].exclude_subjects = (exclude_subjects?.length || 0) > 0 ? exclude_subjects : undefined;
+    assessment_subjects[subject_index].include_subjects = (include_subjects?.length || 0) > 0 ? include_subjects : undefined;
     sapDraft.assessment_subjects = assessment_subjects;
 }
