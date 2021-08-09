@@ -2235,9 +2235,9 @@ once@^1.3.0:
   dependencies:
     wrappy "1"
 
-"oscal@git+ssh://git@github.com/NREL-CYBER/oscal.git":
-  version "2.0.8"
-  resolved "git+ssh://git@github.com/NREL-CYBER/oscal.git#8667acbaf3f5d6774ad48227417b5d7e0027b571"
+"oscal@https://github.com/NREL-CYBER/oscal":
+  version "2.1.2"
+  resolved "https://github.com/NREL-CYBER/oscal#a491e829b75c1ede7bc6c8979c7281df17343f14"
   dependencies:
     "@babel/cli" "^7.14.3"
     "@babel/core" "^7.14.3"
@@ -2560,15 +2560,15 @@ static-extend@^0.1.1:
     define-property "^0.2.5"
     object-copy "^0.1.0"
 
-"store@git+ssh://git@github.com/NREL-CYBER/store.git":
-  version "1.5.7"
-  resolved "git+ssh://git@github.com/NREL-CYBER/store.git#eba4bf46e83dc885d5bd7fa7acbead2dd6ef852e"
+"store@https://github.com/NREL-CYBER/store":
+  version "1.6.4"
+  resolved "https://github.com/NREL-CYBER/store#f4b87d1c4f3f406689451aa622c66198ec29cfda"
   dependencies:
     ajv "^7.2.1"
     ajv-formats "^1.5.1"
     immer "^8.0.2"
     uuid "^8.3.2"
-    validator "git+ssh://git@github.com/NREL-CYBER/validator.git"
+    validator "https://github.com/NREL-CYBER/validator"
     zustand "^3.5.2"
 
 string_decoder@~1.1.1:
@@ -2751,9 +2751,9 @@ uuid@^8.3.2:
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-8.3.2.tgz#80d5b5ced271bb9af6c445f21a1a04c606cefbe2"
   integrity sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==
 
-"validator@git+ssh://git@github.com/NREL-CYBER/validator.git":
-  version "4.4.0"
-  resolved "git+ssh://git@github.com/NREL-CYBER/validator.git#7f441644a5be3f13b54be2646ed82f68ecb4d27b"
+"validator@https://github.com/NREL-CYBER/validator":
+  version "4.4.1"
+  resolved "https://github.com/NREL-CYBER/validator#07ee7d2a8673b58087ad6ffe1de66768477cc5ad"
   dependencies:
     "@types/uuid" "^8.3.0"
     ajv "^7.2.1"
