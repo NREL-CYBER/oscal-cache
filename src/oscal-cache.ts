@@ -137,50 +137,52 @@ const oscal: OscalCache = {
         schema, definition: "information_type"
     }),
     oms: composeStore<OrganizationMissionStatement>({
-        schema, definition: "organizationMissionStatement",
+        schema, definition: "organization_mission_statement",
     }),
     poam: composeStore<PlanOfActionAndMilestones>({
         schema, definition: "plan_of_action_and_milestones",
         workspace:
         {
-            "uuid": v4(),
-            "metadata": {
-                "title": "",
-                "last_modified": "",
-                "version": "",
+            uuid: v4(),
+            metadata: {
+                title: "Plan of Action & Milestones",
+                last_modified: new Date().toISOString(),
+                version: "0.0.0",
                 oscal_version
-            }, "poam_items": []
+            }, poam_items: []
         }
     }),
     sar: composeStore<SecurityAssessmentResults>({
         schema, definition: "assessment_results",
         workspace:
         {
-            "uuid": v4(),
-            "metadata": {
-                "title": "",
-                "last_modified": "",
-                "version": "",
+            uuid: v4(),
+            metadata: {
+                title: "",
+                last_modified: new Date().toISOString(),
+                version: "0.0.0",
                 oscal_version
-            }, "import_ap": { "href": "" }, "results": []
+            }, import_ap:
+                { href: "" },
+            results: []
         }
     }),
     sap: composeStore<SecurityAssessmentPlan>({
         schema, definition: "assessment_plan",
         workspace: {
-            "uuid": v4(),
-            "metadata":
+            uuid: v4(),
+            metadata:
             {
-                "title": "",
-                "last_modified": "",
-                "version": "",
+                title: "Assessment Plan",
+                last_modified: new Date().toISOString(),
+                version: "0.0.0",
                 oscal_version
-            }, "import_ssp":
+            }, import_ssp:
             {
-                "href": ""
+                href: ""
             },
-            "reviewed_controls": {
-                "control_selections": []
+            reviewed_controls: {
+                control_selections: []
             }
         }
     }),
@@ -202,12 +204,12 @@ const oscal: OscalCache = {
     component_definition: composeStore<ComponentDefinition>({
         schema, definition: "component_definition",
         workspace: {
-            "uuid": v4(),
-            "metadata":
+            uuid: v4(),
+            metadata:
             {
-                "title": "",
-                "last_modified": "",
-                "version": "",
+                title: "Component Definition",
+                last_modified: new Date().toISOString(),
+                version: "0.0.0",
                 oscal_version
             },
         }

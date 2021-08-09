@@ -84,55 +84,55 @@ var oscal = {
   }),
   oms: (0, _store.composeStore)({
     schema: _oscal_complete_schema["default"],
-    definition: "organizationMissionStatement"
+    definition: "organization_mission_statement"
   }),
   poam: (0, _store.composeStore)({
     schema: _oscal_complete_schema["default"],
     definition: "plan_of_action_and_milestones",
     workspace: {
-      "uuid": (0, _uuid.v4)(),
-      "metadata": {
-        "title": "",
-        "last_modified": "",
-        "version": "",
+      uuid: (0, _uuid.v4)(),
+      metadata: {
+        title: "Plan of Action & Milestones",
+        last_modified: new Date().toISOString(),
+        version: "0.0.0",
         oscal_version: oscal_version
       },
-      "poam_items": []
+      poam_items: []
     }
   }),
   sar: (0, _store.composeStore)({
     schema: _oscal_complete_schema["default"],
     definition: "assessment_results",
     workspace: {
-      "uuid": (0, _uuid.v4)(),
-      "metadata": {
-        "title": "",
-        "last_modified": "",
-        "version": "",
+      uuid: (0, _uuid.v4)(),
+      metadata: {
+        title: "",
+        last_modified: new Date().toISOString(),
+        version: "0.0.0",
         oscal_version: oscal_version
       },
-      "import_ap": {
-        "href": ""
+      import_ap: {
+        href: ""
       },
-      "results": []
+      results: []
     }
   }),
   sap: (0, _store.composeStore)({
     schema: _oscal_complete_schema["default"],
     definition: "assessment_plan",
     workspace: {
-      "uuid": (0, _uuid.v4)(),
-      "metadata": {
-        "title": "",
-        "last_modified": "",
-        "version": "",
+      uuid: (0, _uuid.v4)(),
+      metadata: {
+        title: "Assessment Plan",
+        last_modified: new Date().toISOString(),
+        version: "0.0.0",
         oscal_version: oscal_version
       },
-      "import_ssp": {
-        "href": ""
+      import_ssp: {
+        href: ""
       },
-      "reviewed_controls": {
-        "control_selections": []
+      reviewed_controls: {
+        control_selections: []
       }
     }
   }),
@@ -160,11 +160,11 @@ var oscal = {
     schema: _oscal_complete_schema["default"],
     definition: "component_definition",
     workspace: {
-      "uuid": (0, _uuid.v4)(),
-      "metadata": {
-        "title": "",
-        "last_modified": "",
-        "version": "",
+      uuid: (0, _uuid.v4)(),
+      metadata: {
+        title: "Component Definition",
+        last_modified: new Date().toISOString(),
+        version: "0.0.0",
         oscal_version: oscal_version
       }
     }
