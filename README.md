@@ -1,6 +1,5 @@
 # oscal-cache
  Oscal storage container
  
- yarn add git+ssh://git@github.com/NREL-CYBER/oscal-cache.git
+ yarn add https://github.com/NREL-CYBER/oscal-cache
 
-This package really needs some unit tests.

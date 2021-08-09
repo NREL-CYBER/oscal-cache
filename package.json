@@ -1,6 +1,6 @@
 {
   "name": "oscal-cache",
-  "version": "1.6.8",
+  "version": "1.6.9",
   "description": "Oscal Storage Container",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -8,7 +8,7 @@
     "src": "src"
   },
   "scripts": {
-    "update": "yarn add git+ssh://git@github.com/NREL-CYBER/oscal.git git+ssh://git@github.com/NREL-CYBER/store.git git+ssh://git@github.com/NREL-CYBER/validator.git",
+    "update": "yarn add https://github.com/NREL-CYBER/oscal https://github.com/NREL-CYBER/store https://github.com/NREL-CYBER/validator",
     "build": "tsc --emitDeclarationOnly  && babel src --out-dir dist --extensions .ts,.tsx ",
     "docs": "typedoc --out docs src/index.ts"
   },
@@ -23,12 +23,12 @@
     "@types/lodash": "^4.14.168",
     "ajv": "^7.2.1",
     "ajv-formats": "^1.5.1",
-    "oscal": "git+ssh://git@github.com/NREL-CYBER/oscal.git",
+    "oscal": "https://github.com/NREL-CYBER/oscal",
     "react": "^17.0.2",
-    "store": "git+ssh://git@github.com/NREL-CYBER/store.git",
+    "store": "https://github.com/NREL-CYBER/store",
     "typescript": "^4.2.3",
     "uuid": "^8.3.2",
-    "validator": "git+ssh://git@github.com/NREL-CYBER/validator.git"
+    "validator": "https://github.com/NREL-CYBER/validator"
   },
   "resolutions": {
     "glob-parent": "5.1.2"

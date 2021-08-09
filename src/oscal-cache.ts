@@ -200,7 +200,18 @@ const oscal: OscalCache = {
         schema, definition: "system_component"
     }),
     component_definition: composeStore<ComponentDefinition>({
-        schema, definition: "component_definition"
+        schema, definition: "component_definition",
+        workspace: {
+            "uuid": v4(),
+            "metadata":
+            {
+                "title": "",
+                "last_modified": "",
+                "version": "",
+                oscal_version
+            },
+        }
+
     }),
     risk: composeStore<IdentifiedRisk>({
         schema, definition: "risk"

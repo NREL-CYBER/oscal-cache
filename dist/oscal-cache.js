@@ -158,7 +158,16 @@ var oscal = {
   }),
   component_definition: (0, _store.composeStore)({
     schema: _oscal_complete_schema["default"],
-    definition: "component_definition"
+    definition: "component_definition",
+    workspace: {
+      "uuid": (0, _uuid.v4)(),
+      "metadata": {
+        "title": "",
+        "last_modified": "",
+        "version": "",
+        oscal_version: oscal_version
+      }
+    }
   }),
   risk: (0, _store.composeStore)({
     schema: _oscal_complete_schema["default"],
