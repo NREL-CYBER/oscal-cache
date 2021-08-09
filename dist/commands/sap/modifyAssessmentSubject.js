@@ -7,6 +7,8 @@ exports.modifyAssessmentSubject = void 0;
 
 var modifyAssessmentSubject = function modifyAssessmentSubject(type, subject_uuid, selection) {
   return function (sapDraft) {
+    var _exclude_subjects, _include_subjects;
+
     var assessment_subjects = sapDraft.assessment_subjects || [];
     var subject_index = assessment_subjects === null || assessment_subjects === void 0 ? void 0 : assessment_subjects.findIndex(function (x) {
       return x.type === type;
@@ -54,8 +56,8 @@ var modifyAssessmentSubject = function modifyAssessmentSubject(type, subject_uui
       });
     }
 
-    assessment_subjects[subject_index].exclude_subjects = exclude_subjects;
-    assessment_subjects[subject_index].include_subjects = include_subjects;
+    assessment_subjects[subject_index].exclude_subjects = (((_exclude_subjects = exclude_subjects) === null || _exclude_subjects === void 0 ? void 0 : _exclude_subjects.length) || 0) > 0 ? exclude_subjects : undefined;
+    assessment_subjects[subject_index].include_subjects = (((_include_subjects = include_subjects) === null || _include_subjects === void 0 ? void 0 : _include_subjects.length) || 0) > 0 ? include_subjects : undefined;
     sapDraft.assessment_subjects = assessment_subjects;
   };
 };
