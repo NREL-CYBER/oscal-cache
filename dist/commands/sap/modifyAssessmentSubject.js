@@ -58,6 +58,15 @@ var modifyAssessmentSubject = function modifyAssessmentSubject(type, subject_uui
 
     assessment_subjects[subject_index].exclude_subjects = (((_exclude_subjects = exclude_subjects) === null || _exclude_subjects === void 0 ? void 0 : _exclude_subjects.length) || 0) > 0 ? exclude_subjects : undefined;
     assessment_subjects[subject_index].include_subjects = (((_include_subjects = include_subjects) === null || _include_subjects === void 0 ? void 0 : _include_subjects.length) || 0) > 0 ? include_subjects : undefined;
+
+    if (typeof assessment_subjects[subject_index].include_subjects === "undefined") {
+      delete assessment_subjects[subject_index].include_subjects;
+    }
+
+    if (typeof assessment_subjects[subject_index].exclude_subjects === "undefined") {
+      delete assessment_subjects[subject_index].exclude_subjects;
+    }
+
     sapDraft.assessment_subjects = assessment_subjects;
   };
 };
