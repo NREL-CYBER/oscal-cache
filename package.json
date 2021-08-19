@@ -31,7 +31,8 @@
     "validator": "https://github.com/NREL-CYBER/validator"
   },
   "resolutions": {
-    "glob-parent": "5.1.2"
+    "glob-parent": "5.1.2",
+    "path-parse":"1.0.7"
   },
   "devDependencies": {
     "@babel/cli": "^7.14.3",
