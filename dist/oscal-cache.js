@@ -37,9 +37,9 @@ var oscal = {
     workspace: {
       "uuid": (0, _uuid.v4)(),
       "metadata": {
-        "title": "",
-        "last_modified": "",
-        "version": "",
+        title: "System Security Plan",
+        last_modified: new Date().toISOString(),
+        version: "0.0.0",
         oscal_version: oscal_version
       },
       "import_profile": {
@@ -106,7 +106,7 @@ var oscal = {
     workspace: {
       uuid: (0, _uuid.v4)(),
       metadata: {
-        title: "",
+        title: "Assessment Results",
         last_modified: new Date().toISOString(),
         version: "0.0.0",
         oscal_version: oscal_version

@@ -19,7 +19,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 var componentHasPropValue = function componentHasPropValue(name, value) {
   return function (component) {
-    return propsHaveValue(name, value)(component.props);
+    return propsHaveValue(name, value)(component && component.props || []);
   };
 };
 
@@ -27,7 +27,7 @@ exports.componentHasPropValue = componentHasPropValue;
 
 var componentHasProp = function componentHasProp(name) {
   return function (component) {
-    return propExists(name)(component.props);
+    return propExists(name)(component && component.props || []);
   };
 };
 
@@ -35,7 +35,7 @@ exports.componentHasProp = componentHasProp;
 
 var componentHasRelationalLink = function componentHasRelationalLink(rel) {
   return function (component) {
-    return linkHasRelations(rel)(component.links);
+    return linkHasRelations(rel)(component && component.links || []);
   };
 };
 

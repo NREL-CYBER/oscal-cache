@@ -5,17 +5,17 @@ import { SystemComponent, Property, Link } from "oscal"
 
 const componentHasPropValue = (name: string, value: string) => {
     return (component: SystemComponent) => {
-        return propsHaveValue(name, value)(component.props)
+        return propsHaveValue(name, value)(component && component.props || [])
     }
 }
 const componentHasProp = (name: string) => {
     return (component: SystemComponent) => {
-        return propExists(name)(component.props);
+        return propExists(name)(component && component.props || []);
     }
 }
 const componentHasRelationalLink = (rel: string) => {
     return (component: SystemComponent) => {
-        return linkHasRelations(rel)(component.links);
+        return linkHasRelations(rel)(component && component.links || []);
     }
 }
 

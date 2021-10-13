@@ -9,22 +9,18 @@ var _queries = require("../../queries");
 
 var excludeControl = function excludeControl(import_profile, control_id, with_child_controls) {
   return function (baselineDraft) {
-    var _baselineDraft$modify, _baselineDraft$modify2;
-
     var profileIndex = baselineDraft.imports.findIndex(function (_ref) {
       var href = _ref.href;
       return href === import_profile;
     });
     var profile = baselineDraft.imports[profileIndex];
-    var alteration = (_baselineDraft$modify = baselineDraft.modify) === null || _baselineDraft$modify === void 0 ? void 0 : (_baselineDraft$modify2 = _baselineDraft$modify.alters) === null || _baselineDraft$modify2 === void 0 ? void 0 : _baselineDraft$modify2.find(function (alter) {
-      return alter.control_id && alter.control_id === control_id;
+    baselineDraft.modify.alters = baselineDraft.modify.alters.filter(function (alter) {
+      if (alter.control_id && alter.control_id.includes(control_id) && with_child_controls === "yes") {
+        return false;
+      } else if (alter.control_id && alter.control_id === control_id) return false;else {
+        return true;
+      }
     });
-
-    if (alteration) {
-      baselineDraft.modify.alters = baselineDraft.modify.alters.filter(function (alter) {
-        return alter.control_id && alter.control_id !== control_id;
-      });
-    }
 
     if (profile) {
       var control_ids = (0, _queries.profileInclusions)(baselineDraft).filter(Boolean);
