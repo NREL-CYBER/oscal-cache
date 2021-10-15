@@ -20,6 +20,7 @@
         "noEmitOnError": true,
         "baseUrl": ".",
         "resolveJsonModule": true,
-        "outDir": "dist"
+        "outDir": "dist",
+        "typeRoots": ["src/@types", "node_modules/@types"]
     },
 }

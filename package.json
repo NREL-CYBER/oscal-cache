@@ -10,7 +10,8 @@
   "scripts": {
     "update": "yarn add https://github.com/NREL-CYBER/oscal https://github.com/NREL-CYBER/store https://github.com/NREL-CYBER/validator",
     "build": "tsc --emitDeclarationOnly  && babel src --out-dir dist --extensions .ts,.tsx ",
-    "docs": "typedoc --out docs src/index.ts"
+    "docs": "typedoc --out docs src/index.ts",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -20,19 +21,26 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/jest": "^27.0.2",
     "@types/lodash": "^4.14.168",
     "ajv": "^7.2.1",
     "ajv-formats": "^1.5.1",
+    "fast-xml-parser": "^3.20.3",
+    "jest": "^27.2.5",
     "oscal": "https://github.com/NREL-CYBER/oscal",
     "react": "^17.0.2",
+    "regenerator-runtime": "^0.13.9",
     "store": "https://github.com/NREL-CYBER/store",
+    "ts-jest": "^27.0.5",
     "typescript": "^4.2.3",
     "uuid": "^8.3.2",
-    "validator": "https://github.com/NREL-CYBER/validator"
+    "validator": "https://github.com/NREL-CYBER/validator",
+    "xml-js": "^1.6.11",
+    "xml2js": "^0.4.23"
   },
   "resolutions": {
     "glob-parent": "5.1.2",
-    "path-parse":"1.0.7"
+    "path-parse": "1.0.7"
   },
   "devDependencies": {
     "@babel/cli": "^7.14.3",

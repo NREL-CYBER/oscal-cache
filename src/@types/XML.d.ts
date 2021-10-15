@@ -1,0 +1,5 @@
+import {SystemSecurityPlan} from "oscal";
+declare module "*.xml" {
+	const doc: 	string; // Change this to an actual XML type
+	export default doc;
+}
