@@ -1,6 +1,6 @@
 import {
     AssessmentPlatform, Catalog,
-    ComponentDefinition, Control,
+    ComponentDefinition, ComponentTypeInfo, Control,
     ControlBasedRequirement, ControlGroup,
     IdentifiedRisk, InformationType, InventoryItem,
     LeveragedAuthorization, Observation,
@@ -23,6 +23,7 @@ export type OscalCache = {
     leveraged_authentication: UseStore<Store<LeveragedAuthorization>>
     assessment_platform: UseStore<Store<AssessmentPlatform>>
     ssp: UseStore<Store<SystemSecurityPlan>>
+    component_type_info: UseStore<Store<ComponentTypeInfo>>
     information_type: UseStore<Store<InformationType>>
     oms: UseStore<Store<OrganizationMissionStatement>>
     poam: UseStore<Store<PlanOfActionAndMilestones>>
@@ -46,6 +47,7 @@ export type OscalCache = {
 export type OscalCachedDefinition =
     "leveraged_authentication" |
     "system_security_plan" |
+    "component_type_info" |
     "ssp" |
     "poam" |
     "sap" |
@@ -75,6 +77,9 @@ export type OscalCachedDefinition =
  *  Global cache hook for oscal data storage for use in react with hooks
  */
 const oscal: OscalCache = {
+    component_type_info: composeStore<ComponentTypeInfo>({
+        schema, definition: "component_type_info"
+    }),
     leveraged_authentication: composeStore<LeveragedAuthorization>({
         schema, definition: "leveraged_authentication"
     }),

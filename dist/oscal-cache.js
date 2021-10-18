@@ -19,6 +19,10 @@ var oscal_version = "1.0.0";
  *  Global cache hook for oscal data storage for use in react with hooks
  */
 var oscal = {
+  component_type_info: (0, _store.composeStore)({
+    schema: _oscal_complete_schema["default"],
+    definition: "component_type_info"
+  }),
   leveraged_authentication: (0, _store.composeStore)({
     schema: _oscal_complete_schema["default"],
     definition: "leveraged_authentication"

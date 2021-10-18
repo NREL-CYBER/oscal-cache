@@ -2236,8 +2236,8 @@ once@^1.3.0:
     wrappy "1"
 
 "oscal@https://github.com/NREL-CYBER/oscal":
-  version "2.1.2"
-  resolved "https://github.com/NREL-CYBER/oscal#a491e829b75c1ede7bc6c8979c7281df17343f14"
+  version "2.2.2"
+  resolved "https://github.com/NREL-CYBER/oscal#3449922cb0f7fe04bff519e123339e29f4b729a5"
   dependencies:
     "@babel/cli" "^7.14.3"
     "@babel/core" "^7.14.3"
@@ -2561,8 +2561,8 @@ static-extend@^0.1.1:
     object-copy "^0.1.0"
 
 "store@https://github.com/NREL-CYBER/store":
-  version "1.6.4"
-  resolved "https://github.com/NREL-CYBER/store#f4b87d1c4f3f406689451aa622c66198ec29cfda"
+  version "1.6.6"
+  resolved "https://github.com/NREL-CYBER/store#a452de938242bc5945e368b98bad41cd05d89426"
   dependencies:
     ajv "^7.2.1"
     ajv-formats "^1.5.1"
@@ -2752,8 +2752,8 @@ uuid@^8.3.2:
   integrity sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==
 
 "validator@https://github.com/NREL-CYBER/validator":
-  version "4.4.1"
-  resolved "https://github.com/NREL-CYBER/validator#07ee7d2a8673b58087ad6ffe1de66768477cc5ad"
+  version "4.4.2"
+  resolved "https://github.com/NREL-CYBER/validator#848cd588a3f485d5611d54bcec27151fe07eb92f"
   dependencies:
     "@types/uuid" "^8.3.0"
     ajv "^7.2.1"
