@@ -9,6 +9,7 @@ import {
     Profile, Resource, Role,
     SecurityAssessmentPlan,
     SecurityAssessmentResults, SystemComponent,
+    SystemComponentTypes,
     SystemSecurityPlan
 } from "oscal"
 import schema from "oscal/src/schemas/oscal_complete_schema.json"
@@ -79,6 +80,11 @@ export type OscalCachedDefinition =
 const oscal: OscalCache = {
     component_type_info: composeStore<ComponentTypeInfo>({
         schema, definition: "component_type_info"
+        , initial: SystemComponentTypes.map((title) => ({
+            title, uuid: v4()
+        })).reduce((a, b) =>
+            ({ ...a, [b.uuid]: { title: b.title, uuid: b.uuid } }),
+            {})
     }),
     leveraged_authentication: composeStore<LeveragedAuthorization>({
         schema, definition: "leveraged_authentication"

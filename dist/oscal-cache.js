@@ -5,6 +5,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 
+var _oscal = require("oscal");
+
 var _oscal_complete_schema = _interopRequireDefault(require("oscal/src/schemas/oscal_complete_schema.json"));
 
 var _store = require("store");
@@ -12,6 +14,12 @@ var _store = require("store");
 var _uuid = require("uuid");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var oscal_version = "1.0.0";
 
@@ -21,7 +29,18 @@ var oscal_version = "1.0.0";
 var oscal = {
   component_type_info: (0, _store.composeStore)({
     schema: _oscal_complete_schema["default"],
-    definition: "component_type_info"
+    definition: "component_type_info",
+    initial: _oscal.SystemComponentTypes.map(function (title) {
+      return {
+        title: title,
+        uuid: (0, _uuid.v4)()
+      };
+    }).reduce(function (a, b) {
+      return _objectSpread(_objectSpread({}, a), {}, _defineProperty({}, b.uuid, {
+        title: b.title,
+        uuid: b.uuid
+      }));
+    }, {})
   }),
   leveraged_authentication: (0, _store.composeStore)({
     schema: _oscal_complete_schema["default"],
