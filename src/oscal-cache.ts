@@ -13,7 +13,7 @@ import {
     SystemSecurityPlan
 } from "oscal"
 import schema from "oscal/src/schemas/oscal_complete_schema.json"
-import { composeStore, Store } from "store"
+import { composeStore, composeVirtualStore, Store, VirtualStore } from "store"
 import { v4 } from "uuid"
 import { UseStore } from "zustand"
 
@@ -21,7 +21,6 @@ const oscal_version = "1.0.0";
 
 export type OscalCacheLayout = Record<OscalCachedDefinition, UseStore<Store<unknown>>>
 export type OscalCache = {
-    leveraged_authentication: UseStore<Store<LeveragedAuthorization>>
     assessment_platform: UseStore<Store<AssessmentPlatform>>
     ssp: UseStore<Store<SystemSecurityPlan>>
     component_type_info: UseStore<Store<ComponentTypeInfo>>
@@ -38,15 +37,14 @@ export type OscalCache = {
     component_definition: UseStore<Store<ComponentDefinition>>
     risk: UseStore<Store<IdentifiedRisk>>
     resource: UseStore<Store<Resource>>
-    inventory_item: UseStore<Store<InventoryItem>>
-    control: UseStore<Store<Control>>
-    group: UseStore<Store<ControlGroup>>
-    implemented_requirement: UseStore<Store<ControlBasedRequirement>>
+    inventory_item: UseStore<VirtualStore<InventoryItem>>
+    control: UseStore<VirtualStore<Control>>
+    group: UseStore<VirtualStore<ControlGroup>>
+    implemented_requirement: UseStore<VirtualStore<ControlBasedRequirement>>
     observation: UseStore<Store<Observation>>
 }
 
 export type OscalCachedDefinition =
-    "leveraged_authentication" |
     "system_security_plan" |
     "component_type_info" |
     "ssp" |
@@ -85,9 +83,6 @@ const oscal: OscalCache = {
         })).reduce((a, b) =>
             ({ ...a, [b.uuid]: { title: b.title, uuid: b.uuid } }),
             {})
-    }),
-    leveraged_authentication: composeStore<LeveragedAuthorization>({
-        schema, definition: "leveraged_authentication"
     }),
     observation: composeStore<Observation>({
         schema, definition: "observation"
@@ -232,17 +227,46 @@ const oscal: OscalCache = {
     resource: composeStore<Resource>({
         schema, definition: "resource",
     }),
-    inventory_item: composeStore<InventoryItem>({
-        schema, definition: "inventory_item"
+    inventory_item: composeVirtualStore<InventoryItem>({
+        fetch: () => {
+            const inventory = oscal.ssp.getState().workspace?.system_implementation.inventory_items || []
+            return inventory.reduce((a, b) => ({ ...a, [b.uuid]: b }), {})
+        }, synchronize: (inventoryRecords) => {
+            return oscal.ssp.getState().updateWorkspace((ssp) => {
+                ssp.system_implementation.inventory_items = Object.values(inventoryRecords)
+            })
+        }
     }),
-    control: composeStore<Control>({
-        schema, definition: "control"
+    control: composeVirtualStore<Control>({
+        fetch: () => {
+            const groups = (oscal.catalog.getState().activeInstance()?.groups || []).flatMap(x => x.groups).flatMap(x => x?.groups).flatMap(x => x?.groups)
+            const controls: Control[] = groups.flatMap(x => x?.controls).flatMap(x => x?.controls).flatMap(x => x?.controls).filter(Boolean) as Control[];
+            return controls.reduce((a, b) => ({ ...a, [b.id]: b }), {})
+        }, synchronize: () => {
+            return new Promise((resolve, reject) => {
+                reject("This store is read only")
+            })
+        }
     }),
-    group: composeStore<ControlGroup>({
-        schema, definition: "group"
+    group: composeVirtualStore<ControlGroup>({
+        fetch: () => {
+            const groups = (oscal.catalog.getState().activeInstance()?.groups || []).flatMap(x => x.groups).flatMap(x => x?.groups).flatMap(x => x?.groups).filter(Boolean) as ControlGroup[]
+            return groups.reduce((a, b) => ({ ...a, [b.id || b.title]: b }), {})
+        }, synchronize: () => {
+            return new Promise((resolve, reject) => {
+                reject("This store is read only")
+            })
+        }
     }),
-    implemented_requirement: composeStore<ControlBasedRequirement>({
-        schema, definition: "implemented_requirement"
+    implemented_requirement: composeVirtualStore<ControlBasedRequirement>({
+        fetch: () => {
+            const implemented_requirements = oscal.ssp.getState().workspace?.control_implementation.implemented_requirements || []
+            return implemented_requirements.reduce((a, b) => ({ ...a, [b.control_id]: b }), {})
+        }, synchronize: (inventoryRecords) => {
+            return oscal.ssp.getState().updateWorkspace((ssp) => {
+                ssp.control_implementation.implemented_requirements = Object.values(inventoryRecords)
+            })
+        }
     }),
 };
 

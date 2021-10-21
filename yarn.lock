@@ -2237,7 +2237,7 @@ once@^1.3.0:
 
 "oscal@https://github.com/NREL-CYBER/oscal":
   version "2.2.2"
-  resolved "https://github.com/NREL-CYBER/oscal#3449922cb0f7fe04bff519e123339e29f4b729a5"
+  resolved "https://github.com/NREL-CYBER/oscal#b1c990fdd115921270696b20ec20bf825c7de00c"
   dependencies:
     "@babel/cli" "^7.14.3"
     "@babel/core" "^7.14.3"
@@ -2562,7 +2562,7 @@ static-extend@^0.1.1:
 
 "store@https://github.com/NREL-CYBER/store":
   version "1.6.6"
-  resolved "https://github.com/NREL-CYBER/store#a452de938242bc5945e368b98bad41cd05d89426"
+  resolved "https://github.com/NREL-CYBER/store#0cae60ccfb64dc29106dfd4ae2e9b40dd79e4328"
   dependencies:
     ajv "^7.2.1"
     ajv-formats "^1.5.1"
