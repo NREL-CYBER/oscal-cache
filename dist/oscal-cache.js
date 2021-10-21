@@ -234,6 +234,7 @@ exports.useActiveControls = useActiveControls;
 var useActiveControlGroups = (0, _store.composeVirtualStore)({
   fetch: function fetch() {
     var catalog = oscal.catalog.getState().activeInstance();
+    console.log(catalog);
     var groups = catalog && catalog.groups ? catalog.groups : [];
     return groups.flatMap(function (x) {
       return x.groups;
