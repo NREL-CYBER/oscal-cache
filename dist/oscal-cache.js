@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = exports.useWorkspaceSSPImplementedRequirements = exports.useActiveControlGroups = exports.useActiveControls = exports.useSSPInventoryitems = void 0;
+exports["default"] = exports.useImplementations = exports.useActiveControlGroups = exports.useActiveControls = exports.useSSPInventoryitems = void 0;
 
 var _oscal = require("oscal");
 
@@ -211,9 +211,8 @@ var oscal = {
 };
 var useSSPInventoryitems = (0, _store.composeVirtualStore)({
   fetch: function fetch() {
-    var _oscal$ssp$getState$w;
-
-    var inventory = ((_oscal$ssp$getState$w = oscal.ssp.getState().workspace) === null || _oscal$ssp$getState$w === void 0 ? void 0 : _oscal$ssp$getState$w.system_implementation.inventory_items) || [];
+    var ssp = oscal.ssp.getState().workspace;
+    var inventory = ssp && ssp.system_implementation.inventory_items ? ssp.system_implementation.inventory_items : [];
     return inventory;
   },
   index: "uuid",
@@ -255,20 +254,19 @@ var useActiveControlGroups = (0, _store.composeVirtualStore)({
   }
 });
 exports.useActiveControlGroups = useActiveControlGroups;
-var useWorkspaceSSPImplementedRequirements = (0, _store.composeVirtualStore)({
+var useImplementations = (0, _store.composeVirtualStore)({
   fetch: function fetch() {
-    var _oscal$ssp$getState$w2;
-
-    var implemented_requirements = ((_oscal$ssp$getState$w2 = oscal.ssp.getState().workspace) === null || _oscal$ssp$getState$w2 === void 0 ? void 0 : _oscal$ssp$getState$w2.control_implementation.implemented_requirements) || [];
-    return implemented_requirements;
+    var ssp = oscal.ssp.getState().workspace;
+    var implementations = ssp && ssp.control_implementation ? ssp.control_implementation.implemented_requirements : [];
+    return implementations;
   },
   index: "control_id",
-  synchronize: function synchronize(inventoryRecords) {
+  synchronize: function synchronize(implementations) {
     return oscal.ssp.getState().updateWorkspace(function (ssp) {
-      ssp.control_implementation.implemented_requirements = inventoryRecords;
+      ssp.control_implementation.implemented_requirements = implementations;
     });
   }
 });
-exports.useWorkspaceSSPImplementedRequirements = useWorkspaceSSPImplementedRequirements;
+exports.useImplementations = useImplementations;
 var _default = oscal;
 exports["default"] = _default;

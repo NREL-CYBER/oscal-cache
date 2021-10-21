@@ -10,7 +10,7 @@ var _exportNames = {
   useActiveControlGroups: true,
   useActiveControls: true,
   useSSPInventoryitems: true,
-  useWorkspaceSSPImplementedRequirements: true
+  useImplementations: true
 };
 Object.defineProperty(exports, "OscalCachedDefinition", {
   enumerable: true,
@@ -36,10 +36,10 @@ Object.defineProperty(exports, "useSSPInventoryitems", {
     return _oscalCache.useSSPInventoryitems;
   }
 });
-Object.defineProperty(exports, "useWorkspaceSSPImplementedRequirements", {
+Object.defineProperty(exports, "useImplementations", {
   enumerable: true,
   get: function get() {
-    return _oscalCache.useWorkspaceSSPImplementedRequirements;
+    return _oscalCache.useImplementations;
   }
 });
 exports["default"] = void 0;

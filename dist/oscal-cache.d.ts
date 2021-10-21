@@ -29,5 +29,5 @@ declare const oscal: OscalCache;
 export declare const useSSPInventoryitems: UseStore<VirtualStore<InventoryItem>>;
 export declare const useActiveControls: UseStore<VirtualStore<Control>>;
 export declare const useActiveControlGroups: UseStore<VirtualStore<ControlGroup>>;
-export declare const useWorkspaceSSPImplementedRequirements: UseStore<VirtualStore<ControlBasedRequirement>>;
+export declare const useImplementations: UseStore<VirtualStore<ControlBasedRequirement>>;
 export default oscal;

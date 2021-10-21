@@ -228,7 +228,8 @@ const oscal: OscalCache = {
 
 export const useSSPInventoryitems = composeVirtualStore<InventoryItem>({
     fetch: () => {
-        const inventory = oscal.ssp.getState().workspace?.system_implementation.inventory_items || []
+        const ssp = oscal.ssp.getState().workspace
+        const inventory = ssp && ssp.system_implementation.inventory_items ? ssp.system_implementation.inventory_items : []
         return inventory
     }, index: "uuid", synchronize: (inventoryRecords) => {
         return oscal.ssp.getState().updateWorkspace((ssp) => {
@@ -261,14 +262,15 @@ export const useActiveControlGroups = composeVirtualStore<ControlGroup>({
         })
     }
 })
-export const useWorkspaceSSPImplementedRequirements = composeVirtualStore<ControlBasedRequirement>({
+export const useImplementations = composeVirtualStore<ControlBasedRequirement>({
     fetch: () => {
-        const implemented_requirements = oscal.ssp.getState().workspace?.control_implementation.implemented_requirements || []
-        return implemented_requirements
+        const ssp = oscal.ssp.getState().workspace
+        const implementations = ssp && ssp.control_implementation ? ssp.control_implementation.implemented_requirements : []
+        return implementations
     }, index: "control_id"
-    , synchronize: (inventoryRecords) => {
+    , synchronize: (implementations) => {
         return oscal.ssp.getState().updateWorkspace((ssp) => {
-            ssp.control_implementation.implemented_requirements = inventoryRecords
+            ssp.control_implementation.implemented_requirements = implementations
         })
     }
 })
