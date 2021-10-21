@@ -8,8 +8,10 @@ export const excludeControl = (import_profile: CatalogOrProfileReference, contro
     return (baselineDraft: Draft<Profile>) => {
         const profileIndex = baselineDraft.imports.findIndex(({ href }) => href === import_profile);
         const profile = baselineDraft.imports[profileIndex];
-
-        baselineDraft.modify!.alters = baselineDraft.modify!.alters!.filter(alter => {
+        if (typeof baselineDraft.modify === 'undefined') {
+            baselineDraft.modify = {}
+        }
+        baselineDraft.modify.alters = baselineDraft?.modify?.alters?.filter(alter => {
             if (alter.control_id && alter.control_id.includes(control_id) && with_child_controls === "yes") {
                 return false
             } else if (alter.control_id && alter.control_id === control_id)

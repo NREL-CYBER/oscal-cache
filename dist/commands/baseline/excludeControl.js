@@ -9,12 +9,19 @@ var _queries = require("../../queries");
 
 var excludeControl = function excludeControl(import_profile, control_id, with_child_controls) {
   return function (baselineDraft) {
+    var _baselineDraft$modify, _baselineDraft$modify2;
+
     var profileIndex = baselineDraft.imports.findIndex(function (_ref) {
       var href = _ref.href;
       return href === import_profile;
     });
     var profile = baselineDraft.imports[profileIndex];
-    baselineDraft.modify.alters = baselineDraft.modify.alters.filter(function (alter) {
+
+    if (typeof baselineDraft.modify === 'undefined') {
+      baselineDraft.modify = {};
+    }
+
+    baselineDraft.modify.alters = baselineDraft === null || baselineDraft === void 0 ? void 0 : (_baselineDraft$modify = baselineDraft.modify) === null || _baselineDraft$modify === void 0 ? void 0 : (_baselineDraft$modify2 = _baselineDraft$modify.alters) === null || _baselineDraft$modify2 === void 0 ? void 0 : _baselineDraft$modify2.filter(function (alter) {
       if (alter.control_id && alter.control_id.includes(control_id) && with_child_controls === "yes") {
         return false;
       } else if (alter.control_id && alter.control_id === control_id) return false;else {
