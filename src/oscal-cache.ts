@@ -265,7 +265,8 @@ export const useActiveControlGroups = composeVirtualStore<ControlGroup>({
 export const useImplementations = composeVirtualStore<ControlBasedRequirement>({
     fetch: () => {
         const ssp = oscal.ssp.getState().workspace
-        const implementations = ssp && ssp.control_implementation ? ssp.control_implementation.implemented_requirements : []
+        const implementations = ssp && ssp.control_implementation ?
+            ssp.control_implementation.implemented_requirements : []
         return implementations
     }, index: "control_id"
     , synchronize: (implementations) => {
