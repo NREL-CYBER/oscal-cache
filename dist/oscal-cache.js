@@ -15,6 +15,18 @@ var _uuid = require("uuid");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -214,13 +226,13 @@ var useSSPInventoryitems = (0, _store.composeVirtualStore)({
 exports.useSSPInventoryitems = useSSPInventoryitems;
 var useActiveControls = (0, _store.composeVirtualStore)({
   fetch: function fetch() {
-    var catalog = oscal.catalog.getState().activeInstance();
-    var groups = catalog && catalog.groups ? catalog.groups : [];
+    var catalog = oscal.catalog(function (x) {
+      return x.activeInstance();
+    });
+    var groups = catalog && typeof catalog.groups !== "undefined" ? catalog.groups : [];
     var controls = groups.flatMap(function (x) {
-      return x.controls ? x.controls : [];
-    }).flatMap(function (x) {
-      return x.controls ? x.controls : [];
-    }).filter(Boolean);
+      return x.controls ? _toConsumableArray(x.controls) : [];
+    });
     return controls;
   },
   index: "id",
@@ -233,12 +245,11 @@ var useActiveControls = (0, _store.composeVirtualStore)({
 exports.useActiveControls = useActiveControls;
 var useActiveControlGroups = (0, _store.composeVirtualStore)({
   fetch: function fetch() {
-    var catalog = oscal.catalog.getState().activeInstance();
-    console.log(catalog);
-    var groups = catalog && catalog.groups ? catalog.groups : [];
-    return groups.flatMap(function (x) {
-      return x.groups;
-    }).filter(Boolean);
+    var catalog = oscal.catalog(function (x) {
+      return x.activeInstance();
+    });
+    var groups = catalog && typeof catalog.groups !== "undefined" ? catalog.groups : [];
+    return groups;
   },
   index: "uuid",
   synchronize: function synchronize() {
