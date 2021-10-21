@@ -229,19 +229,21 @@ const oscal: OscalCache = {
 export const useSSPInventoryitems = composeVirtualStore<InventoryItem>({
     fetch: () => {
         const inventory = oscal.ssp.getState().workspace?.system_implementation.inventory_items || []
-        return inventory.reduce((a, b) => ({ ...a, [b.uuid]: b }), {})
-    }, synchronize: (inventoryRecords) => {
+        return inventory
+    }, index: "uuid", synchronize: (inventoryRecords) => {
         return oscal.ssp.getState().updateWorkspace((ssp) => {
-            ssp.system_implementation.inventory_items = Object.values(inventoryRecords)
+            ssp.system_implementation.inventory_items = inventoryRecords
         })
     }
 })
 export const useActiveControls = composeVirtualStore<Control>({
     fetch: () => {
-        const groups = (oscal.catalog.getState().activeInstance()?.groups || []).flatMap(x => x.groups).flatMap(x => x?.groups).flatMap(x => x?.groups)
+        const catalog = oscal.catalog.getState().activeInstance() || { groups: [] }
+        const groups = catalog.groups ? catalog.groups : []
         const controls: Control[] = groups.flatMap(x => x?.controls).flatMap(x => x?.controls).flatMap(x => x?.controls).filter(Boolean) as Control[];
-        return controls.reduce((a, b) => ({ ...a, [b.id]: b }), {})
-    }, synchronize: () => {
+        return controls;
+    }, index: "id",
+    synchronize: () => {
         return new Promise((resolve, reject) => {
             reject("This store is read only")
         })
@@ -250,8 +252,9 @@ export const useActiveControls = composeVirtualStore<Control>({
 export const useActiveControlGroups = composeVirtualStore<ControlGroup>({
     fetch: () => {
         const groups = (oscal.catalog.getState().activeInstance()?.groups || []).flatMap(x => x.groups).flatMap(x => x?.groups).flatMap(x => x?.groups).filter(Boolean) as ControlGroup[]
-        return groups.reduce((a, b) => ({ ...a, [b.id || b.title]: b }), {})
-    }, synchronize: () => {
+        return groups;
+    }, index: "uuid",
+    synchronize: () => {
         return new Promise((resolve, reject) => {
             reject("This store is read only")
         })
@@ -260,10 +263,11 @@ export const useActiveControlGroups = composeVirtualStore<ControlGroup>({
 export const useWorkspaceSSPImplementedRequirements = composeVirtualStore<ControlBasedRequirement>({
     fetch: () => {
         const implemented_requirements = oscal.ssp.getState().workspace?.control_implementation.implemented_requirements || []
-        return implemented_requirements.reduce((a, b) => ({ ...a, [b.control_id]: b }), {})
-    }, synchronize: (inventoryRecords) => {
+        return implemented_requirements
+    }, index: "control_id"
+    , synchronize: (inventoryRecords) => {
         return oscal.ssp.getState().updateWorkspace((ssp) => {
-            ssp.control_implementation.implemented_requirements = Object.values(inventoryRecords)
+            ssp.control_implementation.implemented_requirements = inventoryRecords
         })
     }
 })

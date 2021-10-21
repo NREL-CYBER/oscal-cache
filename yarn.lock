@@ -2561,8 +2561,8 @@ static-extend@^0.1.1:
     object-copy "^0.1.0"
 
 "store@https://github.com/NREL-CYBER/store":
-  version "1.6.6"
-  resolved "https://github.com/NREL-CYBER/store#0cae60ccfb64dc29106dfd4ae2e9b40dd79e4328"
+  version "1.7.6"
+  resolved "https://github.com/NREL-CYBER/store#8ca232418d0712e53c33d304b699c13af02524d9"
   dependencies:
     ajv "^7.2.1"
     ajv-formats "^1.5.1"
