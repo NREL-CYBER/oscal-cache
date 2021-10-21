@@ -16,6 +16,7 @@ import schema from "oscal/src/schemas/oscal_complete_schema.json"
 import { composeStore, composeVirtualStore, Store, VirtualStore } from "store"
 import { v4 } from "uuid"
 import { UseStore } from "zustand"
+import { flattenControlTree } from "./queries"
 
 const oscal_version = "1.0.0";
 
@@ -233,7 +234,7 @@ export const useSSPInventoryitems = composeVirtualStore<InventoryItem>({
         return inventory
     }, index: "uuid", synchronize: (inventoryRecords) => {
         return oscal.ssp.getState().updateWorkspace((ssp) => {
-            ssp.system_implementation.inventory_items = inventoryRecords
+            ssp.system_implementation.inventory_items = [...inventoryRecords]
         })
     }
 })
@@ -242,7 +243,7 @@ export const useActiveControls = composeVirtualStore<Control>({
         const catalog = oscal.catalog.getState().activeInstance();
         const groups = catalog && typeof catalog.groups !== "undefined" ? catalog.groups : []
         const controls: Control[] = groups.flatMap(x => x.controls ? [...x.controls] : []);
-        return controls;
+        return flattenControlTree(controls);
     }, index: "id",
     synchronize: () => {
         return new Promise((resolve, reject) => {
@@ -271,7 +272,7 @@ export const useImplementations = composeVirtualStore<ControlBasedRequirement>({
     }, index: "control_id"
     , synchronize: (implementations) => {
         return oscal.ssp.getState().updateWorkspace((ssp) => {
-            ssp.control_implementation.implemented_requirements = implementations
+            ssp.control_implementation.implemented_requirements = [...implementations]
         })
     }
 })

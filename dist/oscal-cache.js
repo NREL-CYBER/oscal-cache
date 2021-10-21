@@ -13,6 +13,8 @@ var _store = require("store");
 
 var _uuid = require("uuid");
 
+var _queries = require("./queries");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
@@ -218,7 +220,7 @@ var useSSPInventoryitems = (0, _store.composeVirtualStore)({
   index: "uuid",
   synchronize: function synchronize(inventoryRecords) {
     return oscal.ssp.getState().updateWorkspace(function (ssp) {
-      ssp.system_implementation.inventory_items = inventoryRecords;
+      ssp.system_implementation.inventory_items = _toConsumableArray(inventoryRecords);
     });
   }
 });
@@ -230,7 +232,7 @@ var useActiveControls = (0, _store.composeVirtualStore)({
     var controls = groups.flatMap(function (x) {
       return x.controls ? _toConsumableArray(x.controls) : [];
     });
-    return controls;
+    return (0, _queries.flattenControlTree)(controls);
   },
   index: "id",
   synchronize: function synchronize() {
@@ -263,7 +265,7 @@ var useImplementations = (0, _store.composeVirtualStore)({
   index: "control_id",
   synchronize: function synchronize(implementations) {
     return oscal.ssp.getState().updateWorkspace(function (ssp) {
-      ssp.control_implementation.implemented_requirements = implementations;
+      ssp.control_implementation.implemented_requirements = _toConsumableArray(implementations);
     });
   }
 });
