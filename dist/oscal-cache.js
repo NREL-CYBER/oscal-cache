@@ -214,16 +214,12 @@ var useSSPInventoryitems = (0, _store.composeVirtualStore)({
 exports.useSSPInventoryitems = useSSPInventoryitems;
 var useActiveControls = (0, _store.composeVirtualStore)({
   fetch: function fetch() {
-    var catalog = oscal.catalog.getState().activeInstance() || {
-      groups: []
-    };
-    var groups = catalog.groups ? catalog.groups : [];
+    var catalog = oscal.catalog.getState().activeInstance();
+    var groups = catalog && catalog.groups ? catalog.groups : [];
     var controls = groups.flatMap(function (x) {
-      return x === null || x === void 0 ? void 0 : x.controls;
+      return x.controls ? x.controls : [];
     }).flatMap(function (x) {
-      return x === null || x === void 0 ? void 0 : x.controls;
-    }).flatMap(function (x) {
-      return x === null || x === void 0 ? void 0 : x.controls;
+      return x.controls ? x.controls : [];
     }).filter(Boolean);
     return controls;
   },
@@ -237,16 +233,11 @@ var useActiveControls = (0, _store.composeVirtualStore)({
 exports.useActiveControls = useActiveControls;
 var useActiveControlGroups = (0, _store.composeVirtualStore)({
   fetch: function fetch() {
-    var _oscal$catalog$getSta;
-
-    var groups = (((_oscal$catalog$getSta = oscal.catalog.getState().activeInstance()) === null || _oscal$catalog$getSta === void 0 ? void 0 : _oscal$catalog$getSta.groups) || []).flatMap(function (x) {
+    var catalog = oscal.catalog.getState().activeInstance();
+    var groups = catalog && catalog.groups ? catalog.groups : [];
+    return groups.flatMap(function (x) {
       return x.groups;
-    }).flatMap(function (x) {
-      return x === null || x === void 0 ? void 0 : x.groups;
-    }).flatMap(function (x) {
-      return x === null || x === void 0 ? void 0 : x.groups;
     }).filter(Boolean);
-    return groups;
   },
   index: "uuid",
   synchronize: function synchronize() {

@@ -238,9 +238,9 @@ export const useSSPInventoryitems = composeVirtualStore<InventoryItem>({
 })
 export const useActiveControls = composeVirtualStore<Control>({
     fetch: () => {
-        const catalog = oscal.catalog.getState().activeInstance() || { groups: [] }
-        const groups = catalog.groups ? catalog.groups : []
-        const controls: Control[] = groups.flatMap(x => x?.controls).flatMap(x => x?.controls).filter(Boolean) as Control[];
+        const catalog = oscal.catalog.getState().activeInstance();
+        const groups = catalog && catalog.groups ? catalog.groups : []
+        const controls: Control[] = groups.flatMap(x => x.controls ? x.controls : []).flatMap(x => x.controls ? x.controls : []).filter(Boolean) as Control[];
         return controls;
     }, index: "id",
     synchronize: () => {
@@ -251,8 +251,9 @@ export const useActiveControls = composeVirtualStore<Control>({
 })
 export const useActiveControlGroups = composeVirtualStore<ControlGroup>({
     fetch: () => {
-        const catalog = oscal.catalog.getState().activeInstance() || { groups: [] }
-        const groups = catalog.groups ? catalog.groups : []
+        const catalog = oscal.catalog.getState().activeInstance();
+        console.log(catalog);
+        const groups = catalog && catalog.groups ? catalog.groups : []
         return groups.flatMap(x => x.groups).filter(Boolean) as ControlGroup[];
     }, index: "uuid",
     synchronize: () => {
