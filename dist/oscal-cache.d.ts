@@ -19,10 +19,6 @@ export declare type OscalCache = {
     component_definition: UseStore<Store<ComponentDefinition>>;
     risk: UseStore<Store<IdentifiedRisk>>;
     resource: UseStore<Store<Resource>>;
-    inventory_item: UseStore<VirtualStore<InventoryItem>>;
-    control: UseStore<VirtualStore<Control>>;
-    group: UseStore<VirtualStore<ControlGroup>>;
-    implemented_requirement: UseStore<VirtualStore<ControlBasedRequirement>>;
     observation: UseStore<Store<Observation>>;
 };
 export declare type OscalCachedDefinition = "system_security_plan" | "component_type_info" | "ssp" | "poam" | "sap" | "sar" | "oms" | "plan_of_action_and_milestones" | "assessment_results" | "assessment_plan" | "profile" | "catalog" | "party" | "role" | "inventory_item" | "system_component" | "risk" | "resource" | "authorization_boundary" | "system_characteristics" | "authorization_boundary" | "control" | "group" | "implemented_requirement" | "assessment_platform" | "observation";
@@ -30,4 +26,8 @@ export declare type OscalCachedDefinition = "system_security_plan" | "component_
  *  Global cache hook for oscal data storage for use in react with hooks
  */
 declare const oscal: OscalCache;
+export declare const useSSPInventoryitems: UseStore<VirtualStore<InventoryItem>>;
+export declare const useActiveControls: UseStore<VirtualStore<Control>>;
+export declare const useActiveControlGroups: UseStore<VirtualStore<ControlGroup>>;
+export declare const useWorkspaceSSPImplementedRequirements: UseStore<VirtualStore<ControlBasedRequirement>>;
 export default oscal;

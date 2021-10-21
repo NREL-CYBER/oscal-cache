@@ -6,12 +6,40 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var _exportNames = {
-  OscalCachedDefinition: true
+  OscalCachedDefinition: true,
+  useActiveControlGroups: true,
+  useActiveControls: true,
+  useSSPInventoryitems: true,
+  useWorkspaceSSPImplementedRequirements: true
 };
 Object.defineProperty(exports, "OscalCachedDefinition", {
   enumerable: true,
   get: function get() {
     return _oscalCache.OscalCachedDefinition;
+  }
+});
+Object.defineProperty(exports, "useActiveControlGroups", {
+  enumerable: true,
+  get: function get() {
+    return _oscalCache.useActiveControlGroups;
+  }
+});
+Object.defineProperty(exports, "useActiveControls", {
+  enumerable: true,
+  get: function get() {
+    return _oscalCache.useActiveControls;
+  }
+});
+Object.defineProperty(exports, "useSSPInventoryitems", {
+  enumerable: true,
+  get: function get() {
+    return _oscalCache.useSSPInventoryitems;
+  }
+});
+Object.defineProperty(exports, "useWorkspaceSSPImplementedRequirements", {
+  enumerable: true,
+  get: function get() {
+    return _oscalCache.useWorkspaceSSPImplementedRequirements;
   }
 });
 exports["default"] = void 0;

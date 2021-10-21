@@ -37,12 +37,9 @@ export type OscalCache = {
     component_definition: UseStore<Store<ComponentDefinition>>
     risk: UseStore<Store<IdentifiedRisk>>
     resource: UseStore<Store<Resource>>
-    inventory_item: UseStore<VirtualStore<InventoryItem>>
-    control: UseStore<VirtualStore<Control>>
-    group: UseStore<VirtualStore<ControlGroup>>
-    implemented_requirement: UseStore<VirtualStore<ControlBasedRequirement>>
     observation: UseStore<Store<Observation>>
 }
+
 
 export type OscalCachedDefinition =
     "system_security_plan" |
@@ -227,48 +224,50 @@ const oscal: OscalCache = {
     resource: composeStore<Resource>({
         schema, definition: "resource",
     }),
-    inventory_item: composeVirtualStore<InventoryItem>({
-        fetch: () => {
-            const inventory = oscal.ssp.getState().workspace?.system_implementation.inventory_items || []
-            return inventory.reduce((a, b) => ({ ...a, [b.uuid]: b }), {})
-        }, synchronize: (inventoryRecords) => {
-            return oscal.ssp.getState().updateWorkspace((ssp) => {
-                ssp.system_implementation.inventory_items = Object.values(inventoryRecords)
-            })
-        }
-    }),
-    control: composeVirtualStore<Control>({
-        fetch: () => {
-            const groups = (oscal.catalog.getState().activeInstance()?.groups || []).flatMap(x => x.groups).flatMap(x => x?.groups).flatMap(x => x?.groups)
-            const controls: Control[] = groups.flatMap(x => x?.controls).flatMap(x => x?.controls).flatMap(x => x?.controls).filter(Boolean) as Control[];
-            return controls.reduce((a, b) => ({ ...a, [b.id]: b }), {})
-        }, synchronize: () => {
-            return new Promise((resolve, reject) => {
-                reject("This store is read only")
-            })
-        }
-    }),
-    group: composeVirtualStore<ControlGroup>({
-        fetch: () => {
-            const groups = (oscal.catalog.getState().activeInstance()?.groups || []).flatMap(x => x.groups).flatMap(x => x?.groups).flatMap(x => x?.groups).filter(Boolean) as ControlGroup[]
-            return groups.reduce((a, b) => ({ ...a, [b.id || b.title]: b }), {})
-        }, synchronize: () => {
-            return new Promise((resolve, reject) => {
-                reject("This store is read only")
-            })
-        }
-    }),
-    implemented_requirement: composeVirtualStore<ControlBasedRequirement>({
-        fetch: () => {
-            const implemented_requirements = oscal.ssp.getState().workspace?.control_implementation.implemented_requirements || []
-            return implemented_requirements.reduce((a, b) => ({ ...a, [b.control_id]: b }), {})
-        }, synchronize: (inventoryRecords) => {
-            return oscal.ssp.getState().updateWorkspace((ssp) => {
-                ssp.control_implementation.implemented_requirements = Object.values(inventoryRecords)
-            })
-        }
-    }),
 };
+
+export const useSSPInventoryitems = composeVirtualStore<InventoryItem>({
+    fetch: () => {
+        const inventory = oscal.ssp.getState().workspace?.system_implementation.inventory_items || []
+        return inventory.reduce((a, b) => ({ ...a, [b.uuid]: b }), {})
+    }, synchronize: (inventoryRecords) => {
+        return oscal.ssp.getState().updateWorkspace((ssp) => {
+            ssp.system_implementation.inventory_items = Object.values(inventoryRecords)
+        })
+    }
+})
+export const useActiveControls = composeVirtualStore<Control>({
+    fetch: () => {
+        const groups = (oscal.catalog.getState().activeInstance()?.groups || []).flatMap(x => x.groups).flatMap(x => x?.groups).flatMap(x => x?.groups)
+        const controls: Control[] = groups.flatMap(x => x?.controls).flatMap(x => x?.controls).flatMap(x => x?.controls).filter(Boolean) as Control[];
+        return controls.reduce((a, b) => ({ ...a, [b.id]: b }), {})
+    }, synchronize: () => {
+        return new Promise((resolve, reject) => {
+            reject("This store is read only")
+        })
+    }
+})
+export const useActiveControlGroups = composeVirtualStore<ControlGroup>({
+    fetch: () => {
+        const groups = (oscal.catalog.getState().activeInstance()?.groups || []).flatMap(x => x.groups).flatMap(x => x?.groups).flatMap(x => x?.groups).filter(Boolean) as ControlGroup[]
+        return groups.reduce((a, b) => ({ ...a, [b.id || b.title]: b }), {})
+    }, synchronize: () => {
+        return new Promise((resolve, reject) => {
+            reject("This store is read only")
+        })
+    }
+})
+export const useWorkspaceSSPImplementedRequirements = composeVirtualStore<ControlBasedRequirement>({
+    fetch: () => {
+        const implemented_requirements = oscal.ssp.getState().workspace?.control_implementation.implemented_requirements || []
+        return implemented_requirements.reduce((a, b) => ({ ...a, [b.control_id]: b }), {})
+    }, synchronize: (inventoryRecords) => {
+        return oscal.ssp.getState().updateWorkspace((ssp) => {
+            ssp.control_implementation.implemented_requirements = Object.values(inventoryRecords)
+        })
+    }
+})
+
 
 export default oscal;
 

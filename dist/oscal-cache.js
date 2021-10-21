@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports["default"] = exports.useWorkspaceSSPImplementedRequirements = exports.useActiveControlGroups = exports.useActiveControls = exports.useSSPInventoryitems = void 0;
 
 var _oscal = require("oscal");
 
@@ -195,86 +195,90 @@ var oscal = {
   resource: (0, _store.composeStore)({
     schema: _oscal_complete_schema["default"],
     definition: "resource"
-  }),
-  inventory_item: (0, _store.composeVirtualStore)({
-    fetch: function fetch() {
-      var _oscal$ssp$getState$w;
-
-      var inventory = ((_oscal$ssp$getState$w = oscal.ssp.getState().workspace) === null || _oscal$ssp$getState$w === void 0 ? void 0 : _oscal$ssp$getState$w.system_implementation.inventory_items) || [];
-      return inventory.reduce(function (a, b) {
-        return _objectSpread(_objectSpread({}, a), {}, _defineProperty({}, b.uuid, b));
-      }, {});
-    },
-    synchronize: function synchronize(inventoryRecords) {
-      return oscal.ssp.getState().updateWorkspace(function (ssp) {
-        ssp.system_implementation.inventory_items = Object.values(inventoryRecords);
-      });
-    }
-  }),
-  control: (0, _store.composeVirtualStore)({
-    fetch: function fetch() {
-      var _oscal$catalog$getSta;
-
-      var groups = (((_oscal$catalog$getSta = oscal.catalog.getState().activeInstance()) === null || _oscal$catalog$getSta === void 0 ? void 0 : _oscal$catalog$getSta.groups) || []).flatMap(function (x) {
-        return x.groups;
-      }).flatMap(function (x) {
-        return x === null || x === void 0 ? void 0 : x.groups;
-      }).flatMap(function (x) {
-        return x === null || x === void 0 ? void 0 : x.groups;
-      });
-      var controls = groups.flatMap(function (x) {
-        return x === null || x === void 0 ? void 0 : x.controls;
-      }).flatMap(function (x) {
-        return x === null || x === void 0 ? void 0 : x.controls;
-      }).flatMap(function (x) {
-        return x === null || x === void 0 ? void 0 : x.controls;
-      }).filter(Boolean);
-      return controls.reduce(function (a, b) {
-        return _objectSpread(_objectSpread({}, a), {}, _defineProperty({}, b.id, b));
-      }, {});
-    },
-    synchronize: function synchronize() {
-      return new Promise(function (resolve, reject) {
-        reject("This store is read only");
-      });
-    }
-  }),
-  group: (0, _store.composeVirtualStore)({
-    fetch: function fetch() {
-      var _oscal$catalog$getSta2;
-
-      var groups = (((_oscal$catalog$getSta2 = oscal.catalog.getState().activeInstance()) === null || _oscal$catalog$getSta2 === void 0 ? void 0 : _oscal$catalog$getSta2.groups) || []).flatMap(function (x) {
-        return x.groups;
-      }).flatMap(function (x) {
-        return x === null || x === void 0 ? void 0 : x.groups;
-      }).flatMap(function (x) {
-        return x === null || x === void 0 ? void 0 : x.groups;
-      }).filter(Boolean);
-      return groups.reduce(function (a, b) {
-        return _objectSpread(_objectSpread({}, a), {}, _defineProperty({}, b.id || b.title, b));
-      }, {});
-    },
-    synchronize: function synchronize() {
-      return new Promise(function (resolve, reject) {
-        reject("This store is read only");
-      });
-    }
-  }),
-  implemented_requirement: (0, _store.composeVirtualStore)({
-    fetch: function fetch() {
-      var _oscal$ssp$getState$w2;
-
-      var implemented_requirements = ((_oscal$ssp$getState$w2 = oscal.ssp.getState().workspace) === null || _oscal$ssp$getState$w2 === void 0 ? void 0 : _oscal$ssp$getState$w2.control_implementation.implemented_requirements) || [];
-      return implemented_requirements.reduce(function (a, b) {
-        return _objectSpread(_objectSpread({}, a), {}, _defineProperty({}, b.control_id, b));
-      }, {});
-    },
-    synchronize: function synchronize(inventoryRecords) {
-      return oscal.ssp.getState().updateWorkspace(function (ssp) {
-        ssp.control_implementation.implemented_requirements = Object.values(inventoryRecords);
-      });
-    }
   })
 };
+var useSSPInventoryitems = (0, _store.composeVirtualStore)({
+  fetch: function fetch() {
+    var _oscal$ssp$getState$w;
+
+    var inventory = ((_oscal$ssp$getState$w = oscal.ssp.getState().workspace) === null || _oscal$ssp$getState$w === void 0 ? void 0 : _oscal$ssp$getState$w.system_implementation.inventory_items) || [];
+    return inventory.reduce(function (a, b) {
+      return _objectSpread(_objectSpread({}, a), {}, _defineProperty({}, b.uuid, b));
+    }, {});
+  },
+  synchronize: function synchronize(inventoryRecords) {
+    return oscal.ssp.getState().updateWorkspace(function (ssp) {
+      ssp.system_implementation.inventory_items = Object.values(inventoryRecords);
+    });
+  }
+});
+exports.useSSPInventoryitems = useSSPInventoryitems;
+var useActiveControls = (0, _store.composeVirtualStore)({
+  fetch: function fetch() {
+    var _oscal$catalog$getSta;
+
+    var groups = (((_oscal$catalog$getSta = oscal.catalog.getState().activeInstance()) === null || _oscal$catalog$getSta === void 0 ? void 0 : _oscal$catalog$getSta.groups) || []).flatMap(function (x) {
+      return x.groups;
+    }).flatMap(function (x) {
+      return x === null || x === void 0 ? void 0 : x.groups;
+    }).flatMap(function (x) {
+      return x === null || x === void 0 ? void 0 : x.groups;
+    });
+    var controls = groups.flatMap(function (x) {
+      return x === null || x === void 0 ? void 0 : x.controls;
+    }).flatMap(function (x) {
+      return x === null || x === void 0 ? void 0 : x.controls;
+    }).flatMap(function (x) {
+      return x === null || x === void 0 ? void 0 : x.controls;
+    }).filter(Boolean);
+    return controls.reduce(function (a, b) {
+      return _objectSpread(_objectSpread({}, a), {}, _defineProperty({}, b.id, b));
+    }, {});
+  },
+  synchronize: function synchronize() {
+    return new Promise(function (resolve, reject) {
+      reject("This store is read only");
+    });
+  }
+});
+exports.useActiveControls = useActiveControls;
+var useActiveControlGroups = (0, _store.composeVirtualStore)({
+  fetch: function fetch() {
+    var _oscal$catalog$getSta2;
+
+    var groups = (((_oscal$catalog$getSta2 = oscal.catalog.getState().activeInstance()) === null || _oscal$catalog$getSta2 === void 0 ? void 0 : _oscal$catalog$getSta2.groups) || []).flatMap(function (x) {
+      return x.groups;
+    }).flatMap(function (x) {
+      return x === null || x === void 0 ? void 0 : x.groups;
+    }).flatMap(function (x) {
+      return x === null || x === void 0 ? void 0 : x.groups;
+    }).filter(Boolean);
+    return groups.reduce(function (a, b) {
+      return _objectSpread(_objectSpread({}, a), {}, _defineProperty({}, b.id || b.title, b));
+    }, {});
+  },
+  synchronize: function synchronize() {
+    return new Promise(function (resolve, reject) {
+      reject("This store is read only");
+    });
+  }
+});
+exports.useActiveControlGroups = useActiveControlGroups;
+var useWorkspaceSSPImplementedRequirements = (0, _store.composeVirtualStore)({
+  fetch: function fetch() {
+    var _oscal$ssp$getState$w2;
+
+    var implemented_requirements = ((_oscal$ssp$getState$w2 = oscal.ssp.getState().workspace) === null || _oscal$ssp$getState$w2 === void 0 ? void 0 : _oscal$ssp$getState$w2.control_implementation.implemented_requirements) || [];
+    return implemented_requirements.reduce(function (a, b) {
+      return _objectSpread(_objectSpread({}, a), {}, _defineProperty({}, b.control_id, b));
+    }, {});
+  },
+  synchronize: function synchronize(inventoryRecords) {
+    return oscal.ssp.getState().updateWorkspace(function (ssp) {
+      ssp.control_implementation.implemented_requirements = Object.values(inventoryRecords);
+    });
+  }
+});
+exports.useWorkspaceSSPImplementedRequirements = useWorkspaceSSPImplementedRequirements;
 var _default = oscal;
 exports["default"] = _default;
