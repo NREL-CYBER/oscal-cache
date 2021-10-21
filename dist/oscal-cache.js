@@ -226,9 +226,7 @@ var useSSPInventoryitems = (0, _store.composeVirtualStore)({
 exports.useSSPInventoryitems = useSSPInventoryitems;
 var useActiveControls = (0, _store.composeVirtualStore)({
   fetch: function fetch() {
-    var catalog = oscal.catalog(function (x) {
-      return x.activeInstance();
-    });
+    var catalog = oscal.catalog.getState().activeInstance();
     var groups = catalog && typeof catalog.groups !== "undefined" ? catalog.groups : [];
     var controls = groups.flatMap(function (x) {
       return x.controls ? _toConsumableArray(x.controls) : [];
@@ -245,9 +243,7 @@ var useActiveControls = (0, _store.composeVirtualStore)({
 exports.useActiveControls = useActiveControls;
 var useActiveControlGroups = (0, _store.composeVirtualStore)({
   fetch: function fetch() {
-    var catalog = oscal.catalog(function (x) {
-      return x.activeInstance();
-    });
+    var catalog = oscal.catalog.getState().activeInstance();
     var groups = catalog && typeof catalog.groups !== "undefined" ? catalog.groups : [];
     return groups;
   },
