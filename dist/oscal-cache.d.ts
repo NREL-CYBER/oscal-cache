@@ -1,4 +1,4 @@
-import { AssessmentPlatform, Catalog, ComponentDefinition, ComponentTypeInfo, Control, ControlBasedRequirement, ControlGroup, IdentifiedRisk, InformationType, InventoryItem, Observation, OrganizationMissionStatement, Party, PlanOfActionAndMilestones, Profile, Resource, Role, SecurityAssessmentPlan, SecurityAssessmentResults, SystemComponent, SystemSecurityPlan } from "oscal";
+import { Activity, AssessmentPlatform, Catalog, ComponentDefinition, ComponentTypeInfo, Control, ControlBasedRequirement, ControlGroup, IdentifiedRisk, InformationType, InventoryItem, Observation, OrganizationMissionStatement, Party, PlanOfActionAndMilestones, Profile, Resource, Role, SecurityAssessmentPlan, SecurityAssessmentResults, SystemComponent, SystemSecurityPlan, Task } from "oscal";
 import { Store, VirtualStore } from "store";
 import { UseStore } from "zustand";
 export declare type OscalCacheLayout = Record<OscalCachedDefinition, UseStore<Store<unknown>>>;
@@ -30,4 +30,6 @@ export declare const useSSPInventoryitems: UseStore<VirtualStore<InventoryItem>>
 export declare const useActiveControls: UseStore<VirtualStore<Control>>;
 export declare const useActiveControlGroups: UseStore<VirtualStore<ControlGroup>>;
 export declare const useImplementations: UseStore<VirtualStore<ControlBasedRequirement>>;
+export declare const useActivities: UseStore<VirtualStore<Activity>>;
+export declare const useTasks: UseStore<VirtualStore<Task>>;
 export default oscal;

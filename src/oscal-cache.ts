@@ -1,4 +1,5 @@
 import {
+    Activity,
     AssessmentPlatform, Catalog,
     ComponentDefinition, ComponentTypeInfo, Control,
     ControlBasedRequirement, ControlGroup,
@@ -8,9 +9,10 @@ import {
     PlanOfActionAndMilestones,
     Profile, Resource, Role,
     SecurityAssessmentPlan,
-    SecurityAssessmentResults, SystemComponent,
+    SecurityAssessmentResults, SelectAssessmentSubject, SubjectOfAssessment, SystemComponent,
     SystemComponentTypes,
-    SystemSecurityPlan
+    SystemSecurityPlan,
+    Task
 } from "oscal"
 import schema from "oscal/src/schemas/oscal_complete_schema.json"
 import { composeStore, composeVirtualStore, Store, VirtualStore } from "store"
@@ -276,6 +278,35 @@ export const useImplementations = composeVirtualStore<ControlBasedRequirement>({
         })
     }
 })
+
+export const useActivities = composeVirtualStore<Activity>({
+    fetch: () => {
+        const activities = oscal.sar.getState().workspace?.local_definitions?.activities
+        return activities ? activities : []
+    }, index: "uuid"
+    , synchronize: (activities) => {
+        return oscal.sar.getState().updateWorkspace((sar) => {
+            if (sar.local_definitions) {
+                sar.local_definitions.activities = [...activities];
+            } else {
+                sar.local_definitions = { activities }
+            }
+        })
+    }
+})
+export const useTasks = composeVirtualStore<Task>({
+    fetch: () => {
+        const tasks = oscal.sap.getState().workspace?.tasks
+        return tasks ? tasks : []
+    }, index: "uuid"
+    , synchronize: (tasks) => {
+        return oscal.sap.getState().updateWorkspace((sap) => {
+            sap.tasks = [...tasks];
+        })
+    }
+})
+
+
 
 
 export default oscal;

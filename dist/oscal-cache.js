@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = exports.useImplementations = exports.useActiveControlGroups = exports.useActiveControls = exports.useSSPInventoryitems = void 0;
+exports["default"] = exports.useTasks = exports.useActivities = exports.useImplementations = exports.useActiveControlGroups = exports.useActiveControls = exports.useSSPInventoryitems = void 0;
 
 var _oscal = require("oscal");
 
@@ -270,5 +270,41 @@ var useImplementations = (0, _store.composeVirtualStore)({
   }
 });
 exports.useImplementations = useImplementations;
+var useActivities = (0, _store.composeVirtualStore)({
+  fetch: function fetch() {
+    var _oscal$sar$getState$w, _oscal$sar$getState$w2;
+
+    var activities = (_oscal$sar$getState$w = oscal.sar.getState().workspace) === null || _oscal$sar$getState$w === void 0 ? void 0 : (_oscal$sar$getState$w2 = _oscal$sar$getState$w.local_definitions) === null || _oscal$sar$getState$w2 === void 0 ? void 0 : _oscal$sar$getState$w2.activities;
+    return activities ? activities : [];
+  },
+  index: "uuid",
+  synchronize: function synchronize(activities) {
+    return oscal.sar.getState().updateWorkspace(function (sar) {
+      if (sar.local_definitions) {
+        sar.local_definitions.activities = _toConsumableArray(activities);
+      } else {
+        sar.local_definitions = {
+          activities: activities
+        };
+      }
+    });
+  }
+});
+exports.useActivities = useActivities;
+var useTasks = (0, _store.composeVirtualStore)({
+  fetch: function fetch() {
+    var _oscal$sap$getState$w;
+
+    var tasks = (_oscal$sap$getState$w = oscal.sap.getState().workspace) === null || _oscal$sap$getState$w === void 0 ? void 0 : _oscal$sap$getState$w.tasks;
+    return tasks ? tasks : [];
+  },
+  index: "uuid",
+  synchronize: function synchronize(tasks) {
+    return oscal.sap.getState().updateWorkspace(function (sap) {
+      sap.tasks = _toConsumableArray(tasks);
+    });
+  }
+});
+exports.useTasks = useTasks;
 var _default = oscal;
 exports["default"] = _default;
