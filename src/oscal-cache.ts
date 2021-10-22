@@ -21,12 +21,15 @@ import { UseStore } from "zustand"
 import { flattenControlTree } from "./queries"
 
 const oscal_version = "1.0.0";
-
+type OscalTypeEnum = {
+    identifier: string, enum: String[],
+    pattern:string
+}
 export type OscalCacheLayout = Record<OscalCachedDefinition, UseStore<Store<unknown>>>
 export type OscalCache = {
     assessment_platform: UseStore<Store<AssessmentPlatform>>
     ssp: UseStore<Store<SystemSecurityPlan>>
-    component_type_info: UseStore<Store<ComponentTypeInfo>>
+    type_enum: UseStore<Store<OscalTypeEnum>>
     information_type: UseStore<Store<InformationType>>
     oms: UseStore<Store<OrganizationMissionStatement>>
     poam: UseStore<Store<PlanOfActionAndMilestones>>
@@ -46,7 +49,7 @@ export type OscalCache = {
 
 export type OscalCachedDefinition =
     "system_security_plan" |
-    "component_type_info" |
+    "type_enum" |
     "ssp" |
     "poam" |
     "sap" |
@@ -76,13 +79,47 @@ export type OscalCachedDefinition =
  *  Global cache hook for oscal data storage for use in react with hooks
  */
 const oscal: OscalCache = {
-    component_type_info: composeStore<ComponentTypeInfo>({
-        schema, definition: "component_type_info"
-        , initial: SystemComponentTypes.map((title) => ({
-            title, uuid: v4()
-        })).reduce((a, b) =>
-            ({ ...a, [b.uuid]: { title: b.title, uuid: b.uuid } }),
-            {})
+    type_enum: composeStore<OscalTypeEnum>({
+        schema, definition: "oscal_type_enum",
+        initial: {
+            "task_type": {
+                identifier: "task_type",
+                enum: [
+                    "milestone",
+                    "action"
+                ]
+            },
+            "address_type": {
+                identifier: "address_type",
+                enum: [
+                    "home", "business"
+                ]
+            },
+            "phone_type": {
+                identifier: "phone_type",
+                enum: [
+                    "home", "business"
+                ]
+            },
+            "system_component_type": {
+                identifier: "system_component_type",
+                enum: [
+                    "subnet",
+                    "leveraged-system",
+                    "interconnection",
+                    "software",
+                    "hardware",
+                    "service",
+                    "policy",
+                    "physical",
+                    "process-procedure",
+                    "plan",
+                    "guidance",
+                    "standard",
+                    "validation"
+                ]
+            }
+        }
     }),
     observation: composeStore<Observation>({
         schema, definition: "observation"
