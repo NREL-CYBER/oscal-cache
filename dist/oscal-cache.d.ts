@@ -4,7 +4,7 @@ import { UseStore } from "zustand";
 declare type OscalTypeEnum = {
     identifier: string;
     enum: String[];
-    pattern: string;
+    pattern?: string;
 };
 export declare type OscalCacheLayout = Record<OscalCachedDefinition, UseStore<Store<unknown>>>;
 export declare type OscalCache = {
@@ -31,10 +31,10 @@ export declare type OscalCachedDefinition = "system_security_plan" | "type_enum"
  *  Global cache hook for oscal data storage for use in react with hooks
  */
 declare const oscal: OscalCache;
-export declare const useSSPInventoryitems: UseStore<VirtualStore<InventoryItem>>;
-export declare const useActiveControls: UseStore<VirtualStore<Control>>;
-export declare const useActiveControlGroups: UseStore<VirtualStore<ControlGroup>>;
-export declare const useImplementations: UseStore<VirtualStore<ControlBasedRequirement>>;
-export declare const useActivities: UseStore<VirtualStore<Activity>>;
-export declare const useTasks: UseStore<VirtualStore<Task>>;
+export declare const useSSPInventoryitems: import("zustand").UseBoundStore<VirtualStore<InventoryItem>, import("zustand").StoreApi<VirtualStore<InventoryItem>>>;
+export declare const useActiveControls: import("zustand").UseBoundStore<VirtualStore<Control>, import("zustand").StoreApi<VirtualStore<Control>>>;
+export declare const useActiveControlGroups: import("zustand").UseBoundStore<VirtualStore<ControlGroup>, import("zustand").StoreApi<VirtualStore<ControlGroup>>>;
+export declare const useImplementations: import("zustand").UseBoundStore<VirtualStore<ControlBasedRequirement>, import("zustand").StoreApi<VirtualStore<ControlBasedRequirement>>>;
+export declare const useActivities: import("zustand").UseBoundStore<VirtualStore<Activity>, import("zustand").StoreApi<VirtualStore<Activity>>>;
+export declare const useTasks: import("zustand").UseBoundStore<VirtualStore<Task>, import("zustand").StoreApi<VirtualStore<Task>>>;
 export default oscal;

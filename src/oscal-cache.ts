@@ -22,8 +22,9 @@ import { flattenControlTree } from "./queries"
 
 const oscal_version = "1.0.0";
 type OscalTypeEnum = {
-    identifier: string, enum: String[],
-    pattern:string
+    identifier: string,
+    enum: String[],
+    pattern?: string
 }
 export type OscalCacheLayout = Record<OscalCachedDefinition, UseStore<Store<unknown>>>
 export type OscalCache = {
