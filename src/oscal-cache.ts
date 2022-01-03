@@ -1,23 +1,22 @@
 import {
     Activity,
     AssessmentPlatform, Catalog,
-    ComponentDefinition, ComponentTypeInfo, Control,
+    ComponentDefinition, Control,
     ControlBasedRequirement, ControlGroup,
     IdentifiedRisk, InformationType, InventoryItem,
-    LeveragedAuthorization, Observation,
+    Observation,
     OrganizationMissionStatement, Party,
     PlanOfActionAndMilestones,
     Profile, Resource, Role,
     SecurityAssessmentPlan,
-    SecurityAssessmentResults, SelectAssessmentSubject, SubjectOfAssessment, SystemComponent,
-    SystemComponentTypes,
+    SecurityAssessmentResults, SystemComponent,
     SystemSecurityPlan,
     Task
 } from "oscal"
 import schema from "oscal/src/schemas/oscal_complete_schema.json"
-import { composeStore, composeVirtualStore, Store, VirtualStore } from "store"
+import { composeStore, composeVirtualStore, Store } from "store"
 import { v4 } from "uuid"
-import { UseStore } from "zustand"
+import { UseBoundStore } from "zustand"
 import { flattenControlTree } from "./queries"
 
 const oscal_version = "1.0.0";
@@ -26,25 +25,25 @@ type OscalTypeEnum = {
     enum: String[],
     pattern?: string
 }
-export type OscalCacheLayout = Record<OscalCachedDefinition, UseStore<Store<unknown>>>
+export type OscalCacheLayout = Record<OscalCachedDefinition, UseBoundStore<Store<unknown>>>
 export type OscalCache = {
-    assessment_platform: UseStore<Store<AssessmentPlatform>>
-    ssp: UseStore<Store<SystemSecurityPlan>>
-    type_enum: UseStore<Store<OscalTypeEnum>>
-    information_type: UseStore<Store<InformationType>>
-    oms: UseStore<Store<OrganizationMissionStatement>>
-    poam: UseStore<Store<PlanOfActionAndMilestones>>
-    sar: UseStore<Store<SecurityAssessmentResults>>
-    sap: UseStore<Store<SecurityAssessmentPlan>>
-    profile: UseStore<Store<Profile>>
-    catalog: UseStore<Store<Catalog>>
-    party: UseStore<Store<Party>>
-    role: UseStore<Store<Role>>
-    component: UseStore<Store<SystemComponent>>
-    component_definition: UseStore<Store<ComponentDefinition>>
-    risk: UseStore<Store<IdentifiedRisk>>
-    resource: UseStore<Store<Resource>>
-    observation: UseStore<Store<Observation>>
+    assessment_platform: UseBoundStore<Store<AssessmentPlatform>>
+    ssp: UseBoundStore<Store<SystemSecurityPlan>>
+    type_enum: UseBoundStore<Store<OscalTypeEnum>>
+    information_type: UseBoundStore<Store<InformationType>>
+    oms: UseBoundStore<Store<OrganizationMissionStatement>>
+    poam: UseBoundStore<Store<PlanOfActionAndMilestones>>
+    sar: UseBoundStore<Store<SecurityAssessmentResults>>
+    sap: UseBoundStore<Store<SecurityAssessmentPlan>>
+    profile: UseBoundStore<Store<Profile>>
+    catalog: UseBoundStore<Store<Catalog>>
+    party: UseBoundStore<Store<Party>>
+    role: UseBoundStore<Store<Role>>
+    component: UseBoundStore<Store<SystemComponent>>
+    component_definition: UseBoundStore<Store<ComponentDefinition>>
+    risk: UseBoundStore<Store<IdentifiedRisk>>
+    resource: UseBoundStore<Store<Resource>>
+    observation: UseBoundStore<Store<Observation>>
 }
 
 
